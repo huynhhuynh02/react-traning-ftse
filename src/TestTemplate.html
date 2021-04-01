@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Template</title>
+    <link rel="stylesheet" href="./TestTemplate.css">
+    <script src="https://kit.fontawesome.com/2aeb2cddaa.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header id="headerPage">
+        <div id="logoTab">
+            <img src="./logo.png" id="logo" width="50%">
+        </div>
+        <div id="headerTab">
+            <button class="tab">
+                <i class="fas fa-comment-alt fa-2x"></i>
+            </button>
+            <button class="tab selected">
+                <i class="fas fa-home fa-2x"></i>
+            </button>
+            <button class="tab">
+                <i class="fas fa-user-friends fa-2x"></i>
+            </button>
+        </div>
+        <div id="featureTab">
+            <button class="ftr-btn">
+                <i class="fas fa-envelope fa-lg"></i>
+            </button>
+            <button class="ftr-btn">
+                <i class="fas fa-bell fa-lg"></i>
+            </button>
+            <button class="mre-btn">
+                <i class="fas fa-sort-down fa-lg"></i>
+            </button>
+        </div>
+    </header>
+
+    <div id="bodyPage">
+        <div id="yourShortcut" class="left-box">
+            <h5>Your Shortcut</h5>
+        </div>
+        <div id="dashboard" class="main-box">
+            <div id="mainSearch" class="search-bar">
+                <i class="fas fa-search fa-lg"></i>
+                <input type="text" placeholder="Search on Nista ...">
+            </div>
+            <div id="postList">
+                <div class="post-item">
+                    <div id="postOwner">
+                        <div class="avatar"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right-box">
+            <div id="yourSuggestFriend">
+                suggest
+            </div>
+            <div id="yourContact">
+                contact
+            </div>
+        </div>
+    </body>
+    <div id="accountSideNavBar" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <!-- Use any element to open the sidenav -->
+    <button id="avatarSideBar" onclick="openNav()" style="display: none;">
+        <img id="userAvatar" src="../assets/static/images/sakura_cute.jpeg" alt="avatarOwner" width="60px" height="60px" style="border-radius: 100%;">
+        <div id="userName">Bui Tuan Anh</div>
+    </button>
+
+    <script>
+        /* Set the width of the side navigation to 250px */
+        function openNav() {
+            document.getElementById("accountSideNavBar").style.width = "250px";
+        }
+    
+        /* Set the width of the side navigation to 0 */
+        function closeNav() {
+            document.getElementById("accountSideNavBar").style.width = "0";
+        }
+    
+        $("#headerTab").children("button").click(function (){
+            $("#headerTab").children("button").removeClass("selected")
+            $(this).addClass("selected")
+        })
+    </script>
+</body>
+
+</html>
