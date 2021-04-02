@@ -8,7 +8,8 @@
     <title>Test Template</title>
     <link rel="stylesheet" href="./TestTemplate.css">
     <script src="https://kit.fontawesome.com/2aeb2cddaa.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js"
+        integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -42,7 +43,33 @@
 
     <div id="bodyPage">
         <div id="yourShortcut" class="left-box">
-            <h5>Your Shortcut</h5>
+            <h3 class="box-title">Your Shortcut</h5>
+            <div class="shortcut-item-list">
+                <div class="shortcut-item">
+                    <img src="./avatar.jpeg" alt="shortcut-thumbnail" class="shortcut-thumbnail">
+                    <div class="info">
+                        <div class="title">Hội những người đam mê bách hợp</div>
+                        <div class="content">Hôm nay là ngày cá tháng ...</div>
+                    </div>
+                </div>
+                <div class="shortcut-item">
+                    <img src="./avatar.jpeg" alt="shortcut-thumbnail" class="shortcut-thumbnail">
+                    <div class="info">
+                        <div class="title">Anime Love</div>
+                        <div class="content">Hôm nay là ngày cá tháng ...</div>
+                    </div>
+                </div>
+                <div class="shortcut-item">
+                    <img src="./avatar.jpeg" alt="shortcut-thumbnail" class="shortcut-thumbnail">
+                    <div class="info">
+                        <div class="title">Yuri là một nền văn hoá tốt</div>
+                        <div class="content">Hôm nay là ngày cá tháng ...</div>
+                    </div>
+                </div>
+                <button class="shortcut-item-add-btn">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
         </div>
         <div id="dashboard" class="main-box">
             <div id="mainSearch" class="search-bar">
@@ -51,51 +78,123 @@
             </div>
             <div id="postList">
                 <div class="post-item">
-                    <div id="postOwner">
-                        <div class="avatar"></div>
+                    <div class="post-title">
+                        <div class="post-owner">
+                            <div class="avatar">
+                                <img src="./avatar.jpeg" alt="logo" width="60px" height="60px"
+                                    style="border-radius: 100%; border: 1px solid rgba(153, 153, 153, 0.295); background-color: honeydew;">
+                            </div>
+                            <div class="info">
+                                <div class="title-row">
+                                    <a class="post-username">Nguyễn Thị Thảo Hà</a>
+                                    <span class="check-tag-loc">đang ở <a class="target">Đà Nẵng</a></span>
+                                </div>
+                                <div class="date-upload">12:45 hôm nay</div>
+                            </div>
+                        </div>
+                        <button class="post-settings">
+                            ...
+                        </button>
+                    </div>
+                    <div class="post-content">
+                        <div class="content">
+                            Cute ghê :3
+                        </div>
+                        <div class="thumbnails">
+                            <img src="./thumbnail.jpeg" alt="thumbnail">
+                        </div>
+                    </div>
+                    <div class="post-comment-box">
+                        <div class="like-comment-share-info">
+                            <div class="like-amount">
+                                <span class="like-amount">10</span>
+                                <i class="fas fa-thumbs-up"></i>
+                            </div>
+                            <div class="comment-amount">
+                                <span class="comment-amount">10</span>
+                                <i class="fas fa-comment-alt"></i>
+                            </div>
+                            <div class="share-amount">
+                                <span class="share-amount">10</span>
+                                <i class="fas fa-share"></i>
+                            </div>
+                        </div>
+                        <div class="comment-box">
+                            <div class="like-comment-share-btn">
+                                <button class="like-btn">
+                                    <span class="like-text">Thích</span>
+                                    <i class="far fa-thumbs-up"></i>
+                                </button>
+                                <button class="comment-btn">
+                                    <span class="comment-text">Bình luận</span>
+                                    <i class="far fa-comment-alt"></i>
+                                </button>
+                                <button class="share-btn">
+                                    <span class="share-text">Chia sẻ</span>
+                                    <i class="fas fa-share-alt"></i>
+                                </button>
+                            </div>
+                            <div class="user-comment-list">
+                                <div class="user-comment-line">
+                                    <div class="user-comment">
+                                        <div class="info">
+                                            <div class="avatar">
+                                                <img src="./avatar.jpeg" alt="logo" width="60px" height="60px"
+                                                    style="border-radius: 100%; border: 1px solid rgba(153, 153, 153, 0.295); background-color: honeydew;">
+                                            </div>
+                                            <div class="comment">
+                                                <div class="title">
+                                                    <span class="comment-username">Cùi Văn Mía</span>
+                                                    <span class="date-upload">1 giờ trước</span>
+                                                </div>
+                                                <div class="comment-content">
+                                                    Yuri là một nền văn hoá tốt
+                                                </div>
+                                                <div class="comment-like-reply-btn">
+                                                    <span class="like-btn">Thích</span>
+                                                    <span class="reply-btn">Trả lời</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="comment-reaction-display"></div>
+                                    <div class="reply-list-display-trigger-btn">
+                                        <i class="fas fa-align-left"></i>
+                                        <span class="reply-text">Xem thêm <span class="amount-reply">3</span> trả lời</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="more-comment-btn">Load more comments</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="right-box">
             <div id="yourSuggestFriend">
-                suggest
+                <h3 class="box-title">People you may know</h3>
             </div>
             <div id="yourContact">
-                contact
+                <h3 class="box-title">Your Contact</h3>
             </div>
         </div>
-    </body>
-    <div id="accountSideNavBar" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
-    </div>
+</body>
+<div id="accountSideNavBar" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Clients</a>
+    <a href="#">Contact</a>
+</div>
 
-    <!-- Use any element to open the sidenav -->
-    <button id="avatarSideBar" onclick="openNav()" style="display: none;">
-        <img id="userAvatar" src="../assets/static/images/sakura_cute.jpeg" alt="avatarOwner" width="60px" height="60px" style="border-radius: 100%;">
-        <div id="userName">Bui Tuan Anh</div>
-    </button>
+<!-- Use any element to open the sidenav -->
+<button id="avatarSideBar" onclick="openNav()">
+    <img id="userAvatar" src="./avatar.jpeg" alt="avatarOwner" width="60px" height="60px"
+        style="border-radius: 100%;">
+    <div id="userName">Vô Văn Lại</div>
+</button>
 
-    <script>
-        /* Set the width of the side navigation to 250px */
-        function openNav() {
-            document.getElementById("accountSideNavBar").style.width = "250px";
-        }
-    
-        /* Set the width of the side navigation to 0 */
-        function closeNav() {
-            document.getElementById("accountSideNavBar").style.width = "0";
-        }
-    
-        $("#headerTab").children("button").click(function (){
-            $("#headerTab").children("button").removeClass("selected")
-            $(this).addClass("selected")
-        })
-    </script>
+<script src="./TestTemplate.js"></script>
 </body>
 
 </html>
