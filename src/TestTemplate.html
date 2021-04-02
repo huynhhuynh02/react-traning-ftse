@@ -44,32 +44,32 @@
     <div id="bodyPage">
         <div id="yourShortcut" class="left-box">
             <h3 class="box-title">Your Shortcut</h5>
-            <div class="shortcut-item-list">
-                <div class="shortcut-item">
-                    <img src="./avatar.jpeg" alt="shortcut-thumbnail" class="shortcut-thumbnail">
-                    <div class="info">
-                        <div class="title">Hội những người đam mê bách hợp</div>
-                        <div class="content">Hôm nay là ngày cá tháng ...</div>
+                <div class="shortcut-item-list">
+                    <div class="shortcut-item">
+                        <img src="./avatar.jpeg" alt="shortcut-thumbnail" class="shortcut-thumbnail">
+                        <div class="info">
+                            <div class="title">Hội những người đam mê bách hợp</div>
+                            <div class="content">Hôm nay là ngày cá tháng ...</div>
+                        </div>
                     </div>
-                </div>
-                <div class="shortcut-item">
-                    <img src="./avatar.jpeg" alt="shortcut-thumbnail" class="shortcut-thumbnail">
-                    <div class="info">
-                        <div class="title">Anime Love</div>
-                        <div class="content">Hôm nay là ngày cá tháng ...</div>
+                    <div class="shortcut-item">
+                        <img src="./avatar.jpeg" alt="shortcut-thumbnail" class="shortcut-thumbnail">
+                        <div class="info">
+                            <div class="title">Anime Love</div>
+                            <div class="content">Hôm nay là ngày cá tháng ...</div>
+                        </div>
                     </div>
-                </div>
-                <div class="shortcut-item">
-                    <img src="./avatar.jpeg" alt="shortcut-thumbnail" class="shortcut-thumbnail">
-                    <div class="info">
-                        <div class="title">Yuri là một nền văn hoá tốt</div>
-                        <div class="content">Hôm nay là ngày cá tháng ...</div>
+                    <div class="shortcut-item">
+                        <img src="./avatar.jpeg" alt="shortcut-thumbnail" class="shortcut-thumbnail">
+                        <div class="info">
+                            <div class="title">Yuri là một nền văn hoá tốt</div>
+                            <div class="content">Hôm nay là ngày cá tháng ...</div>
+                        </div>
                     </div>
+                    <button class="shortcut-item-add-btn">
+                        <i class="fas fa-plus"></i>
+                    </button>
                 </div>
-                <button class="shortcut-item-add-btn">
-                    <i class="fas fa-plus"></i>
-                </button>
-            </div>
         </div>
         <div id="dashboard" class="main-box">
             <div id="mainSearch" class="search-bar">
@@ -160,7 +160,8 @@
                                     <div class="comment-reaction-display"></div>
                                     <div class="reply-list-display-trigger-btn">
                                         <i class="fas fa-align-left"></i>
-                                        <span class="reply-text">Xem thêm <span class="amount-reply">3</span> trả lời</span>
+                                        <span class="reply-text">Xem thêm <span class="amount-reply">3</span> trả
+                                            lời</span>
                                     </div>
                                 </div>
                             </div>
@@ -173,28 +174,91 @@
         <div class="right-box">
             <div id="yourSuggestFriend">
                 <h3 class="box-title">People you may know</h3>
+                <div class="suggest-list">
+                    <div class="suggest-item">
+                        <img src="./avatar.jpeg" alt="suggest-avatar" class="suggest-avatar">
+                        <div class="info">
+                            <div class="suggest-username">Huấn Hoa Hồng</div>
+                            <div class="detail-info">Quảng Nam</div>
+                            <span class="mutual-info">
+                                <span class="mutual-amount">3</span>
+                                bạn chung
+                            </span>
+                        </div>
+                    </div>
+                    <div class="suggest-item">
+                        <img src="./avatar.jpeg" alt="suggest-avatar" class="suggest-avatar">
+                        <div class="info">
+                            <div class="suggest-username">Huấn Hoa Hồng</div>
+                            <div class="detail-info">Quảng Nam</div>
+                            <span class="mutual-info">
+                                <span class="mutual-amount">3</span>
+                                bạn chung
+                            </span>
+                        </div>
+                    </div>
+                    <button class="more-suggest-btn">Xem thêm ...</button>
+                </div>
             </div>
             <div id="yourContact">
                 <h3 class="box-title">Your Contact</h3>
+                <div class="contact-list">
+                    <div class="contact-item">
+                        <div class="info">
+                            <img src="./avatar.jpeg" alt="contact-avatar" class="contact-avatar">
+                            <div class="contact-name">Anonymous</div>
+                        </div>
+                        <div class="online-status"></div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="info">
+                            <img src="./avatar.jpeg" alt="contact-avatar" class="contact-avatar">
+                            <div class="contact-name">Anonymous</div>
+                        </div>
+                        <div class="online-status"></div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="info">
+                            <img src="./avatar.jpeg" alt="contact-avatar" class="contact-avatar">
+                            <div class="contact-name">Anonymous</div>
+                        </div>
+                        <div class="online-status"></div>
+                    </div>
+                </div>
             </div>
         </div>
-</body>
-<div id="accountSideNavBar" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="#">About</a>
-    <a href="#">Services</a>
-    <a href="#">Clients</a>
-    <a href="#">Contact</a>
-</div>
+    </div>
+    <div id="accountSideNavBar" class="sidenav">
+        <button href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</button>
+        <button href="#" class="account-preview">
+            <img src="./avatar.jpeg" alt="account-avatar" class="account-avatar">
+            <div class="info">
+                <span class="account-name">Vô Văn Lại</span>
+                Preview your page
+            </div>
+        </button>
+        <button class="option-btn" id="account-settings" href="#">
+            <i class="fas fa-user-cog"></i>
+            Profile Settings
+        </button>
+        <button class="option-btn" id="application-settings" href="#">
+            <i class="fas fa-cog"></i>
+            Application Settings
+        </button>
+        <button class="option-btn" id="logout" href="#">
+            <i class="fas fa-sign-out-alt"></i>
+            Log Out
+        </button>
+    </div>
 
-<!-- Use any element to open the sidenav -->
-<button id="avatarSideBar" onclick="openNav()">
-    <img id="userAvatar" src="./avatar.jpeg" alt="avatarOwner" width="60px" height="60px"
-        style="border-radius: 100%;">
-    <div id="userName">Vô Văn Lại</div>
-</button>
+    <!-- Use any element to open the sidenav -->
+    <button id="avatarSideBar" onclick="openNav()">
+        <img id="userAvatar" src="./avatar.jpeg" alt="avatarOwner" width="60px" height="60px"
+            style="border-radius: 100%;">
+        <div id="userName">Vô Văn Lại</div>
+    </button>
 
-<script src="./TestTemplate.js"></script>
+    <script src="./TestTemplate.js"></script>
 </body>
 
 </html>
