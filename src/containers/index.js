@@ -18,7 +18,7 @@ class HomePage extends React.Component
     render(){
         return(
             <>
-                <h1>Home Page</h1>
+                <h1>Login Page</h1>
                 <h1>{this.state.increment}</h1>
                 <Button onClick={this.couterIncremnt}/>
             </>

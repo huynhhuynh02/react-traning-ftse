@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {Jumbotron, Button} from 'react-bootstrap';
-class HomePage extends React.Component
+class RegisterPage extends React.Component
 {
     constructor(props){
         super(props);
@@ -12,8 +12,7 @@ class HomePage extends React.Component
         return(
             <>
                 <Jumbotron>
-                    <h1>Home Page</h1>
-                   
+                    <h1>Register Page</h1>
                 </Jumbotron>
             </>
             
@@ -22,4 +21,4 @@ class HomePage extends React.Component
 }
 
 
-export default HomePage;
+export default RegisterPage;

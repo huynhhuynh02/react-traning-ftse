@@ -7,8 +7,6 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import AboutPage from './containers/AboutPage';
-import ContactPage from './containers/ContactPage';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   Navbar,
@@ -22,20 +20,16 @@ function App() {
   return (
     
     <Router>
-      <>
+      {/* <>
       <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+        <Navbar.Brand href="#login">Navbar</Navbar.Brand>
         <Nav className="mr-auto">
-          <Link className="nav-link" to="/">Home</Link>
-          <Link className="nav-link" to="/about">About</Link>
-          <Link className="nav-link" to="/contact">Contact</Link>
+          <Link className="nav-link" to="/">Login</Link>
+          <Link className="nav-link" to="/register">Register</Link>
+          <Link className="nav-link" to="/home">Home</Link>
         </Nav>
-        <Form inline>
-          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          <Button variant="outline-info">Search</Button>
-        </Form>
       </Navbar>
-      </>
+      </> */}
       <Switch>
             {routes.map((route, index) => (
               // Render more <Route>s with the same paths as
