@@ -1,0 +1,21 @@
+.search-bar {
+    box-shadow: 0 2px 4px 0 grey;
+    border-radius: 24px;
+}
+
+.search-bar .input-group-prepend, .search-bar .input-group-text {
+    border-radius: 24px 0 0 24px !important;
+    background: white;
+    border-right: none;
+}
+
+.search-bar input {
+    border-radius: 0 24px 24px 0;
+    border-left: none;
+}
+
+.search-bar input:active, .search-bar input:focus, .search-bar:active, .search-bar:focus, .search-bar .input-group-prepend {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: #ced4da
+}

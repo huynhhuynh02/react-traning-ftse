@@ -1,5 +1,5 @@
-import AboutPage from "../containers/AboutPage";
-import ContactPage from "../containers/ContactPage";
+import MessagePage from "../containers/MessagePage";
+import FriendPage from "../containers/FriendPage";
 import HomePage from "../containers/HomePage";
 
 const routes = [
@@ -9,12 +9,12 @@ const routes = [
         component:HomePage
     },
     {
-        path: "/about",
-        component: AboutPage
+        path: "/message",
+        component: MessagePage
     },
     {
-        path: "/contact",
-        component: ContactPage
+        path: "/friend",
+        component: FriendPage
     }
 ];
 export default routes;

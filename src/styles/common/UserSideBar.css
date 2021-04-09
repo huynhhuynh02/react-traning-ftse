@@ -1,0 +1,102 @@
+/* The side navigation menu */
+
+.side-bar-trigger {
+    position: fixed;
+    top: 120px;
+    cursor: pointer;
+    z-index: 1;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    border-top-right-radius: 15px !important;
+    border-bottom-right-radius: 15px !important;
+    box-shadow: 2px 2px 8px 0 gray;
+}
+
+.sidenav {
+    height: 55%;
+    width: 0;
+    /* 0 width - change this with JavaScript */
+    position: fixed;
+    /* Stay in place */
+    z-index: 2;
+    /* Stay on top */
+    top: 120px;
+    left: 0;
+    background-color: #28a745;
+    /* Black*/
+    overflow-x: hidden;
+    /* Disable horizontal scroll */
+    padding-top: 60px;
+    /* Place content 60px from the top */
+    transition: 0.5s;
+    /* 0.5 second transition effect to slide in the sidenav */
+    display: flex !important;
+    flex-direction: column !important;
+    border-radius: 0 15px 15px 0;
+}
+
+.sidenav button, .sidenav span {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    flex-wrap: nowrap;
+}
+
+.sidenav button {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.sidenav.expanded {
+    width: 300px !important;
+}
+
+/* Position and style the close button (top right corner) */
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-bottom: 0 !important;
+    font-size: 36px;
+    margin-left: 50px;
+    background: none;
+    border: none;
+}
+
+.sidenav .closebtn:hover, .sidenav .closebtn:active, .sidenav .closebtn:focus {
+    background: none !important;
+    border: none !important;
+    color: rgb(172, 172, 172) !important;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+.avatar-user {
+    width: 60px;
+    height: 60px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.side-bar-trigger .user-name {
+    font-weight: bold;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.sidenav .preview {
+    font-size: 14px;
+}
+
+.sidenav .page-preview {
+    border-radius: 15px;
+}

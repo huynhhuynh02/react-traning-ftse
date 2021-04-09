@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import {Jumbotron, Button} from 'react-bootstrap';
-class ContactPage extends React.Component
+class FriendPage extends React.Component
 {
     constructor(props){
         super(props);
@@ -25,4 +25,4 @@ class ContactPage extends React.Component
 }
 
 
-export default ContactPage;
+export default FriendPage;

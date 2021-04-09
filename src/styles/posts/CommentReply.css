@@ -1,0 +1,37 @@
+.avatar-reply {
+    width: 40px;
+    height: 40px;
+}
+
+.reply-line {
+    font-size: 10px;
+    border-radius: 15px;
+    width: fit-content !important;
+}
+
+.reply-line .username-reply {
+    font-size: 12px;
+}
+
+.reply-line .date-reply {
+    font-size: 11px;
+}
+
+.reply-line-content {
+    width: fit-content;
+}
+
+.reply-line-button {
+    margin-left: 64px !important;
+    width: fit-content;
+}
+
+.reply-line-button button {
+    padding: 0;
+    margin-right: 20px;
+    font-size: 10px;
+}
+
+.reply-line-button button:active, .reply-line-button button:focus, .reply-line-button button:hover {
+    text-decoration-line: none;
+}

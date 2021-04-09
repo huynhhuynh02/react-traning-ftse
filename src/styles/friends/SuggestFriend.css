@@ -1,0 +1,40 @@
+.suggest-friend {
+    background-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px 1px grey inset;
+}
+
+.avatar-suggest {
+    width: 80px;
+    height: 80px;
+}
+
+.more-suggest {
+    font-weight: bold !important;
+}
+
+.more-suggest:hover {
+    color: rgb(253, 132, 132) !important;
+}
+
+.more-suggest:focus, .more-suggest:hover {
+    text-decoration: none !important;
+}
+
+.sf-item {
+    width: 100%;
+}
+
+.sf-info {
+    height: 100%;
+}
+
+.sf-info .user-name {
+    font-weight: bold;
+}
+
+.sf-info .user-info, .sf-info .mutual-info {
+    font-size: 12px;
+}

@@ -1,38 +1,79 @@
-.App {
-  text-align: center;
+body {
+  background-color: #E5E5E5 !important;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Hide scrollbar for Chrome, Safari and Opera */
+*::-webkit-scrollbar {
+  display: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Hide scrollbar for IE, Edge and Firefox */
+* {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+*:focus {
+  outline: none !important;
+  outline-offset: 0 !important;
+}
+
+.navbar-nav {
   display: flex;
-  flex-direction: column;
+  height: 88.5px;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.header-tab a {
+  height: 100%;
+  padding: 0 !important;
+  outline: none !important;
+  outline-offset: 0 !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.header-tab a.selected button{
+  background-color: white !important;
+  box-shadow: 0 0 10px 0 grey !important;
+  color: black !important;
+}
+
+.navbar {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  background-color: #007bff;
+  position: fixed !important;
+  box-shadow: 0 2px 4px 0 grey;
+  width: 100%;
+  z-index: 2;
+}
+
+.row {
+  width: 100%;
+}
+
+.left-box, .main-box, .right-box {
+  padding-left: 15px;
+  padding-right: 15px;
+  top: 88.5px;
+}
+
+.main-box {
+  background-color: white;
+  position: relative;
+  margin-left: 25%;
+  width: 50%;
+}
+
+.left-box {
+  position: fixed !important;
+  width: 25%;
+  left: 0;
+  height: 100%;
+}
+
+.right-box {
+  position: fixed !important;
+  width: 25%;
+  right: 0;
+  height: 100%;
 }

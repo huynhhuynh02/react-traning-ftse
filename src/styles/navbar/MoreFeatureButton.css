@@ -1,0 +1,13 @@
+.feature-tab button.more-feature-btn {
+    margin-left: 30px;
+    border: none !important;
+    outline: none !important;
+    outline-offset: 0 !important;
+    color: white;
+    background: none;
+}
+.feature-tab button.more-feature-btn:focus, .feature-tab button.more-feature-btn:active {
+    background: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}

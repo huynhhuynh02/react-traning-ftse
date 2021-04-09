@@ -1,0 +1,22 @@
+.shortcut {
+    position: relative;
+    overflow: hidden;
+    top: 210px;
+    border-radius: 10px;
+    border: none;
+    background-color: white;
+    box-shadow: 0 0 8px 1px grey inset;
+    height: 390px;
+    width: 100%;
+}
+
+.shortcut .shortcut-list {
+    height: 310px;
+    overflow: auto;
+}
+
+.shortcut .avatar-shortcut {
+    width: 60px;
+    height: 60px;
+    border-radius: 15px !important;
+}
