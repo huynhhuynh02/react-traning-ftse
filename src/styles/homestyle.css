@@ -1,0 +1,90 @@
+.music-item{
+    position: relative;
+    
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.music-item h5{
+    color: white;
+    text-align: center;
+}
+.playtist{
+    margin-left: 50px;
+    margin-right: 50px;
+    padding-bottom: 100px;
+}
+.playtist-item{
+    height: 215px;
+    overflow: hidden;
+}
+.playtist-item-img{
+    border-radius: 10px;
+    overflow: hidden;
+}
+.playtist-item-img img{
+    transition: all linear 0.1s;
+}
+.playtist-item-img img:hover{
+    -webkit-transform: scale(1.2); transform: scale(1.2);
+
+}
+.playtist-title-text{
+    color: white;
+}
+.card{
+    position: relative;
+    margin-left: 50px;
+    margin-right: 50px;
+    border-radius: 20px im !important;
+    
+}
+.view-ms{
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    
+    
+}
+.suggestions{
+    color: white;
+    margin-top: 50px;
+}
+.list-music{
+
+    
+    background-color: #170F23;
+    border-radius: 20px;
+}
+/* .music-item h4{
+    position: absolute;
+    z-index: 1000;
+    top: 50px;
+    color: white;
+    display: none;
+    
+} */
+body{
+    margin-bottom: 500px;
+}
+img{
+    width: 100%;
+}
+.wrap{
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    display: none;
+
+}
+/* .music-item:hover h4{
+    display: block;
+} */
+.music-item:hover .wrap{
+    display: block;
+}
+.container{
+    background-color: #231B2E;
+}

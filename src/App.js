@@ -1,7 +1,8 @@
 import logo from './logo.svg';
 import './App.css';
 import routes from './router/AppRouter';
-import { 
+
+import {
   BrowserRouter as Router,
   Switch,
   Route,
@@ -15,42 +16,61 @@ import {
   Nav,
   Form,
   FormControl,
-  Button
+  Button,
+  Container,
+  Row,
+  Col
 } from 'react-bootstrap';
+import {BsSearch} from 'react-icons/bs'
 
 function App() {
   return (
     
     <Router>
+
       <>
-      <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-        <Nav className="mr-auto">
-          <Link className="nav-link" to="/">Home</Link>
-          <Link className="nav-link" to="/about">About</Link>
-          <Link className="nav-link" to="/contact">Contact</Link>
-        </Nav>
-        <Form inline>
-          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          <Button variant="outline-info">Search</Button>
-        </Form>
-      </Navbar>
+      <div className="search">
+        <input className="ipt" type="text" placeholder="Tìm tên ca sĩ, tên bài hát"/>
+        <div className="ipt-search"><BsSearch /></div>
+      </div>
+        <div className="menu-char"> 
+              <Link className="nav-link" to="/">Trang chủ</Link>
+              <Link className="nav-link" to="/about">Cá Nhân</Link>
+              <Link className="nav-link" to="/contact">Zing char</Link>
+              <Link className="nav-link" to="/contact">Theo dõi</Link>
+              <Link className="nav-link" to="/contact">Nhạc Mới</Link>
+              <Link className="nav-link" to="/contact">Thể loại</Link>
+              <Link className="nav-link" to="/contact">MV</Link>
+              
+        </div>
+        {/* <div className="play-music">
+        
+      </div> */}
       </>
+      <div className="div-component">
       <Switch>
-            {routes.map((route, index) => (
-              // Render more <Route>s with the same paths as
-              // above, but different components this time.
-              <Route
-                exact={route.exact}
-                path={route.path}
-                render={props => (
-                  // pass the sub-routes down to keep nesting
-                  <route.component {...props} routes={route.routes} />
-                )}
-              />
-            ))}
-          </Switch>
+        
+        {routes.map((route, index) => (
+          // Render more <Route>s with the same paths as
+          // above, but different components this time.
+          <Route
+            exact={route.exact}
+            path={route.path}
+            render={props => (
+              // pass the sub-routes down to keep nesting
+              <route.component {...props} routes={route.routes} />
+            )}
+          />
+        ))}
+      </Switch>
+      </div>
+      
+      <div>
+        ádfsd
+      </div>
     </Router>
+    
+
   );
 }
 
