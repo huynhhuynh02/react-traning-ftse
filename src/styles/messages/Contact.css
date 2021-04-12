@@ -2,7 +2,6 @@
     background-color: white;
     box-shadow: 0 0 8px 1px grey inset;
     border-radius: 10px;
-    height: 288px;
     overflow-y: hidden;
 }
 
@@ -20,5 +19,4 @@
 
 .contact .contact-list {
     overflow: scroll;
-    height: 220px;
 }

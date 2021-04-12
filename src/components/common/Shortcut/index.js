@@ -4,10 +4,6 @@ import { Col, Container, Row, Button, Image } from 'react-bootstrap';
 import "./../../../styles/common/Shortcut.css";
 import shortcutList from "./../../../resources/database/shortcutData";
 class Shortcut extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         return (
             <Container className="shortcut px-3">

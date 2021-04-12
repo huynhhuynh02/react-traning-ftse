@@ -33,7 +33,7 @@ button.post-settings-btn {
 }
 
 button.post-settings-btn:hover, button.post-settings-btn:focus, button.post-settings-btn:active {
-    background: none;
+    background: none !important;
     border: none;
     box-shadow: none;
 }

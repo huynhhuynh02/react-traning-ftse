@@ -1,0 +1,39 @@
+.message-list .search-bar input {
+    font-size: 12px;
+}
+
+.message-list {
+    position: relative;
+    overflow: hidden;
+    top: 210px;
+    border-radius: 10px;
+    border: none;
+    background-color: white;
+    box-shadow: 0 0 8px 1px grey inset;
+    height: 390px;
+    width: 100%;
+}
+
+.message-list .message-list-box {
+    height: 295px;
+    overflow: auto;
+}
+
+.message-list .avatar-message {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+}
+.message-list .chat-last {
+    font-size: 12px;
+    color: rgb(95, 95, 95);
+}
+
+.message-list .item-button {
+    border: none;
+}
+
+.message-list .item-button:active, .message-list .item-button:focus {
+    background-color: #CEF4F6;
+    border: none;
+}

@@ -1,0 +1,84 @@
+.avatar-chat {
+    width: 100%;
+    height: auto;
+    border-radius: 100%;
+}
+
+.status-dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+}
+
+button.chat-settings-btn {
+    background: none;
+    border: none;
+}
+
+button.chat-settings-btn:hover, button.chat-settings-btn:focus, button.chat-settings-btn:active {
+    background: none !important;
+    border: none !important;
+    box-shadow: none;
+    color: gray;
+}
+
+.chat-user-info {
+    background-color: #E4FFDD;
+    width: auto;
+    padding-left: -15px !important;
+    padding-right: -15px !important;
+}
+
+.chat-box {
+    position: fixed;
+    background-color: white;
+    width: calc(50% - 15px) !important;
+    top: calc(88.5px + 24px + 38px + 24px);
+    height: calc(100% - 88.5px - 24px - 38px - 24px);
+    margin-left: -15px !important;
+    margin-right: -15px !important;
+}
+
+.chat-input {
+    position: absolute;
+    bottom: 0;
+}
+
+.chat-input {
+    border: none !important;
+}
+
+.chat-input .chat-input-field {
+    box-shadow: 0 2px 4px 0 grey;
+    border-radius: 24px;
+}
+
+.chat-input .input-group-text svg {
+    cursor: pointer;
+}
+
+.chat-input .input-group-text svg:hover {
+    opacity: 0.6;
+}
+
+ .chat-input .input-group-prepend .input-group-text {
+    border-radius: 24px 0 0 24px !important;
+    background: white;
+}
+
+.chat-input .input-group-append .input-group-text {
+    border-radius: 0 24px 24px 0 !important;
+    background: white;
+}
+
+.chat-input input {
+    border-radius: 0 24px 24px 0;
+    border-left: none;
+    border-right: none;
+}
+
+.chat-input input:active, .chat-input input:focus, .chat-input:active, .chat-input:focus, .chat-input .input-group-prepend {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: #ced4da
+}

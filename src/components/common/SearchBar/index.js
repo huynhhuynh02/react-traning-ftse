@@ -5,9 +5,9 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import "./../../../styles/common/SearchBar.css"
 class SeachBar extends React.Component {
     render() {
-        const placeholder = "Search on " + this.props.targetsearch + " ...";
+        const placeholder = "Tìm kiếm trên " + this.props.targetsearch + " ...";
         return (
-            <InputGroup className="search-bar mb-4" {...this.props}>
+            <InputGroup className="search-bar mb-4">
                 <InputGroup.Prepend id="searchBar">
                     <InputGroup.Text>
                         <FontAwesomeIcon icon={faSearch} />

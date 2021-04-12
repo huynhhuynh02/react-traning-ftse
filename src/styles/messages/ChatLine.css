@@ -1,0 +1,40 @@
+.chat-line .chat-line-text .text {
+    position: absolute;
+    z-index: 1;
+    border-radius: 18px;
+    max-width: 100%;
+}
+
+.chat-line .avatar-chat-line {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+}
+
+.chat-line .chat-line-text {
+    position: relative;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.chat-line.friend .chat-line-text .text {
+    left: 17px;
+}
+
+.chat-line.friend .chat-line-text svg {
+    position: absolute;
+    left: 0;
+}
+
+.chat-line.owner .chat-line-text .text {
+    right: 17px;
+}
+
+.chat-line.owner .chat-line-text svg {
+    position: absolute;
+    right: 0;
+}
+
+.chat-line .chat-input {
+    position: relative;
+}

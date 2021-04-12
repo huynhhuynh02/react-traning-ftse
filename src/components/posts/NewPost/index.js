@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Col, Jumbotron, Row } from "react-bootstrap";
+import { Button, Jumbotron } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faTimes, faImages, faFilm, faLink } from "@fortawesome/free-solid-svg-icons";
 
@@ -55,6 +55,7 @@ class NewPost extends React.Component {
                         Đăng bài
                     </Button>
                 </Jumbotron>
+                <div className={ this.state.isOpened ? "page-blur-cover" : "" }></div>
             </>
         );
     }

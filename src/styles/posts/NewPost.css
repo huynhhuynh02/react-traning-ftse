@@ -19,7 +19,7 @@
     width: 60%;
     height: 80%;
     border-radius: 20px !important;
-    z-index: 3;
+    z-index: 4;
     background-color: #65adfa !important;
 }
 
@@ -53,6 +53,12 @@
     box-shadow: 2px 2px 4px 0 gray;
 }
 
-.blur {
-    opacity: 0.4;
+.page-blur-cover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    background-color: rgba(128, 128, 128, 0.7);
+    z-index: 3;
 }
