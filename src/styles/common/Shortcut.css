@@ -6,12 +6,12 @@
     border: none;
     background-color: white;
     box-shadow: 0 0 8px 1px grey inset;
-    height: 390px;
+    height: 382px;
     width: 100%;
 }
 
 .shortcut .shortcut-list {
-    height: 310px;
+    height: 300px;
     overflow: auto;
 }
 
@@ -19,4 +19,12 @@
     width: 60px;
     height: 60px;
     border-radius: 15px !important;
+}
+
+.shortcut .add-shortcut-button {
+    cursor: pointer;
+}
+
+.shortcut .add-shortcut-button:hover {
+    color: gray;
 }

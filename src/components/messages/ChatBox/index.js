@@ -93,6 +93,22 @@ class ChatBox extends React.Component {
         } else {
             return (
                 <>
+                    <Container
+                        className="px-0"
+                    >
+                        <Row className="mx-0">
+                            <Col xs={12} className="d-flex align-items-center px-2">
+                                <span
+                                    style={{
+                                        fontSize: "40px",
+                                        color: "#CBCBCB",
+                                    }}
+                                >
+                                    Chọn một đoạn hội thoại
+                                </span>
+                            </Col>
+                        </Row>
+                    </Container>
                 </>
             )
         }

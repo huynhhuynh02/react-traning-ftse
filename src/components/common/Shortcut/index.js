@@ -1,5 +1,7 @@
 import React from 'react';
 import { Col, Container, Row, Button, Image } from 'react-bootstrap';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 import "./../../../styles/common/Shortcut.css";
 import shortcutList from "./../../../resources/database/shortcutData";
@@ -8,7 +10,12 @@ class Shortcut extends React.Component {
         return (
             <Container className="shortcut px-3">
                 <Row className="title mx-0 py-2">
-                    <Col className="px-0 py-2"><h5>Lối tắt của bạn</h5></Col>
+                    <Col xs={10} className="d-flex align-items-center px-0 py-2">
+                        <h5 className="mb-0">Lối tắt của bạn</h5>
+                    </Col>
+                    <Col xs={2} className="d-flex align-items-center justify-content-end px-0 py-2">
+                        <FontAwesomeIcon className="add-shortcut-button" icon={faPlus} />
+                    </Col>
                 </Row>
                 <Row className="mx-0 py-1">
                     <Col className="shortcut-list px-0">

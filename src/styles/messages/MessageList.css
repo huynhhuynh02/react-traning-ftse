@@ -5,12 +5,12 @@
 .message-list {
     position: relative;
     overflow: hidden;
-    top: 210px;
+    top: 150px;
     border-radius: 10px;
     border: none;
     background-color: white;
     box-shadow: 0 0 8px 1px grey inset;
-    height: 390px;
+    height: 440px;
     width: 100%;
 }
 
@@ -31,6 +31,10 @@
 
 .message-list .item-button {
     border: none;
+}
+
+.message-list .item-button.selected {
+    background-color: #CEF4F6 !important;
 }
 
 .message-list .item-button:active, .message-list .item-button:focus {

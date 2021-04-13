@@ -7,17 +7,21 @@ class MessageList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            typeList: "invidual"
+            typeList: "invidual",
+            indexMesssageSelect: ""
         }
     }
-    liftMessageId(message) {
+    liftMessageId(message, i) {
         this.props.select(message)
+        this.setState({
+            indexMesssageSelect: i
+        })
     }
     render() {
         return (
             <Container fluid className="message-list">
                 <Row className="mx-0 pt-4">
-                    <SearchBar targetsearch="danh sách tin nhắn" />
+                    <SearchBar targetsearch="tin nhắn" />
                 </Row>
                 <Row className="mx-0">
                     <Col className="message-list-box mx-0 px-0">
@@ -27,8 +31,9 @@ class MessageList extends React.Component {
                                     <Col xs={12} className="px-0">
                                         <Button
                                             variant="light"
-                                            className="item-button d-flex align-items-center px-4 w-100"
-                                            onClick={this.liftMessageId.bind(this, message)}>
+                                            className={(this.state.indexMesssageSelect === i ? "selected " : "") + "item-button d-flex align-items-center px-4 w-100"}
+                                            onClick={this.liftMessageId.bind(this, message, i)}
+                                        >
                                             <Col xs={3} className="d-flex justify-content-end px-0">
                                                 <Image className="avatar-message" src={message.member[0].avatar} />
                                             </Col>

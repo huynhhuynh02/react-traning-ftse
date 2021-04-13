@@ -13,12 +13,17 @@ class SuggestFriend extends React.Component {
 
     render() {
         return (
-            <Container className="suggest-friend mt-2 pb-0">
+            <Container
+                className="suggest-friend mt-1 pb-0"
+                style={{
+                    top: this.props.top
+                }}
+            >
                 <h5 className="py-1">Có thể bạn quen biết</h5>
                 {suggestFriendList.map((sfdata, i) => {
                     return (
-                        <Button 
-                            className="sf-item d-flex align-items-center mx-0 mb-2 px-2 py-2 rounded" 
+                        <Button
+                            className="sf-item d-flex align-items-center mx-0 mb-2 px-2 py-2 rounded"
                             variant="light"
                             key={i}>
                             <Col xs={4} className="pl-0">

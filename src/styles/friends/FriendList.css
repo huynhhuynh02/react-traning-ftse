@@ -1,0 +1,15 @@
+.friend-item {
+    width: 100%;
+}
+
+.friend-info {
+    height: 100%;
+}
+
+.friend-info .user-name {
+    font-weight: bold;
+}
+
+.friend-info .user-info, .friend-info .mutual-info {
+    font-size: 12px;
+}

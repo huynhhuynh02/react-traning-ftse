@@ -1,11 +1,6 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 
-import UserSideBar from "./../components/common/UserSideBar";
-import SearchBar from "./../components/common/SearchBar";
-import Contact from "./../components/messages/Contact";
-import Shortcut from "./../components/common/Shortcut";
-import FriendControl from "./../components/friends/FriendControl";
 class FriendPage extends React.Component {
     render() {
         return (

@@ -22,8 +22,8 @@ class HomePage extends React.Component {
                         <PostList />
                     </div>
                     <div className="right-box">
-                        <SuggestFriend />
-                        <Contact height="288px" listheight="220px" />
+                        <SuggestFriend top="0" />
+                        <Contact height="280px" listheight="215px" mt="1" />
                     </div>
                 </Container>
                 <NewPost />

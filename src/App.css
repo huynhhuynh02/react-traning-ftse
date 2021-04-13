@@ -68,12 +68,12 @@ body {
   position: fixed !important;
   width: 25%;
   left: 0;
-  height: 100%;
+  height: calc(100% - 88.5px);
 }
 
 .right-box {
   position: fixed !important;
   width: 25%;
   right: 0;
-  height: 100%;
+  height: calc(100% - 88.5px);
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
 
 import UserSideBar from "./../components/common/UserSideBar";
@@ -36,7 +35,7 @@ class MessagePage extends React.Component
                         <ChatBox data={this.state.messageSelected} />
                     </div>
                     <div className="right-box">
-                        <Contact height="594px" listheight="525px" />
+                        <Contact height="586px" listheight="520px" mt="1" />
                     </div>
                 </Container>
             </>

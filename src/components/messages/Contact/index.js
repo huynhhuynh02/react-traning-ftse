@@ -13,12 +13,17 @@ class Contact extends React.Component {
 
     render() {
         return (
-            <Container className="contact mt-1" style={{height: this.props.height}}>
+            <Container
+                className={ "contact mt-" + this.props.mt }
+                style={{
+                    height: this.props.height
+                }}
+            >
                 <Row className="title mx-0 pt-2">
                     <Col className="px-0 pt-2"><h5>Liên hệ của bạn</h5></Col>
                 </Row>
                 <Row className="mx-0 py-1">
-                    <Col className="contact-list px-0" style={{height: this.props.listheight}}>
+                    <Col className="contact-list px-0" style={{ height: this.props.listheight }}>
                         {this.state.contactList.map((contact, i) => {
                             return (
                                 <Row className="contact-item mx-0 my-2 px-0" key={i}>
