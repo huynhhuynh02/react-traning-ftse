@@ -1,7 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
+import TrangThanhtoan from './containers/TrangThanhtoan';
 import routes from './router/AppRouter';
-import { 
+// import TrangMuahang from './containers/TrangMuahang';
+import HomePage from './containers/HomePage';
+import Home1 from './components/Home1';
+import {
   BrowserRouter as Router,
   Switch,
   Route,
@@ -20,37 +24,38 @@ import {
 
 function App() {
   return (
-    
-    <Router>
-      <>
-      <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-        <Nav className="mr-auto">
-          <Link className="nav-link" to="/">Home</Link>
-          <Link className="nav-link" to="/about">About</Link>
-          <Link className="nav-link" to="/contact">Contact</Link>
-        </Nav>
-        <Form inline>
-          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          <Button variant="outline-info">Search</Button>
-        </Form>
-      </Navbar>
-      </>
-      <Switch>
-            {routes.map((route, index) => (
-              // Render more <Route>s with the same paths as
-              // above, but different components this time.
-              <Route
-                exact={route.exact}
-                path={route.path}
-                render={props => (
-                  // pass the sub-routes down to keep nesting
-                  <route.component {...props} routes={route.routes} />
-                )}
-              />
-            ))}
-          </Switch>
-    </Router>
+    <TrangThanhtoan>
+    </TrangThanhtoan>
+    // <Router>
+    // <>
+    //   /* <Navbar bg="dark" variant="dark">
+    //     <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+    //     <Nav className="mr-auto">
+    //       <Link className="nav-link" to="/">Home</Link>
+    //       <Link className="nav-link" to="/about">About</Link>
+    //       <Link className="nav-link" to="/contact">Contact</Link>
+    //     </Nav>
+    //     <Form inline>
+    //       <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+    //       <Button variant="outline-info">Search</Button>
+    //     </Form>
+    //   </Navbar> */
+    // </>
+    /* <Switch>
+          {routes.map((route, index) => (
+            // Render more <Route>s with the same paths as
+            // above, but different components this time.
+            <Route
+              exact={route.exact}
+              path={route.path}
+              render={props => (
+                // pass the sub-routes down to keep nesting
+                <route.component {...props} routes={route.routes} />
+              )}
+            />
+          ))}
+        </Switch>
+  </Router> */
   );
 }
 

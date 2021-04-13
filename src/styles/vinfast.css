@@ -1,0 +1,103 @@
+.logovinfast{
+    width: 100px;
+}
+.logovinchebrand img{
+    width: 100px;
+    height: 45px;
+    margin-left: 50px;
+}
+.logovinche{
+    width: 250px;
+    height: 250px;
+    margin-top: 300px;
+}
+.navsanpham{
+    margin-right: 150px;
+}
+#responsive-navbar-nav{
+    flex-direction: column;
+    align-items:flex-end;
+}
+.sanphamvinfastvietnamtextaligncenter{
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+}
+.imghinhanhxe{
+    width: 200px;
+}
+.contentsanpham{
+    text-align: left;
+    padding-left: 80px;
+}
+.abc{
+    background-image:url(../images/Banner03min.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 768px;
+    width: 1366px;
+}
+.footerbackground{
+    background: rgba(0, 0, 0, 0.3);
+    height: 768px;
+    width: 1366px;
+}
+#dichvukhachhang{
+    margin-top: 250px;
+    margin-left: 250px;
+}
+#iconlienhekhachhangcenter{
+    margin-left: 400px;
+    text-align: center;
+    margin-top: 50px;
+}
+.iconcenter{
+    text-align: center;
+}
+.widthluxam2{
+    width: 300px;
+    height: 400px;
+    margin: 20px
+}
+/* vi sao bop width 200px tu dong margin  */
+.logovinfasthome{
+width: 200px;
+height: 200px;
+}
+.baogiawebxe img{
+    width: 100%;
+    height: 100%;
+}
+#sanphammuahang{
+    border-bottom:  2px solid rgb(19, 17, 17);
+    width: 95%;
+}
+#logosanpham{
+    width: 100px;
+    height: 100px;
+}
+.bodergiohang{
+    border-bottom: 1px solid black;
+}
+#col4boderleft{
+    border-left: 1px solid black;
+}
+.sub{
+    height: 50%;
+}
+.imgsanpham{
+    width: 150px;
+}
+.tienhanhthanhtoan{
+    margin-top: 70px;
+    margin-left: 70px;
+}
+.btngroupsub{
+    height: 50%;
+}
+.buttonborder{
+    height: 40px;
+}
+.googlemap{
+    width: 100%;
+}

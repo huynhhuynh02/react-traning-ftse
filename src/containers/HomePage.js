@@ -1,27 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {Jumbotron, Button} from 'react-bootstrap';
-class HomePage extends React.Component
-{
-    constructor(props){
+import { Jumbotron, Button } from 'react-bootstrap';
+import Home1 from '../components/Home1';
+import '../styles/vinfast.css';
+class HomePage extends React.Component {
+    constructor(props) {
         super(props);
     }
-        
-    render(){
-        return(
+    s
+    render() {
+        return (
             <>
-                <Jumbotron>
-                    <h1>Hello, world!, I'm Base Project Please follow me !!</h1>
-                    <p>
-                        This is a simple hero unit, a simple jumbotron-style component for calling
-                        extra attention to featured content or information.
-                    </p>
-                    <p>
-                        <Button variant="primary">Learn more</Button>
-                    </p>
-                </Jumbotron>
+                <Home1 content="VINFAST FADIL" content1="Fadil Tiêu Chuẩn" content2="Fadil Nâng cao" content3="Fadil Cao cấp" giatiensanpham1=" 425.000.000đ" giatiensanpham2=" 625.000.000đ" giatiensanpham3=" 925.000.000đ" >
+                </Home1>
             </>
-            
+
         );
     }
 }
