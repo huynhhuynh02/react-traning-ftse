@@ -1,0 +1,12 @@
+.signup-form {
+    top: 50%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    position: fixed;
+    width: 80%;
+    height: 80%;
+    border-radius: 15px;
+    background-color: white;
+    box-shadow: 4px 4px 8px 2px gray;
+    z-index: 3;
+}

@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 class FeatureButton extends React.Component {
     render() {
         return (
-            <Button variant="light" className="feature-btn">
+            <Button variant="light" className="feature-btn" {...this.props}>
                 <FontAwesomeIcon icon={this.props.icon} size={this.props.size} />
             </Button>
         );

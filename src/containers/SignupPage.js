@@ -1,11 +1,11 @@
 import React from 'react';
 
-import LoginForm from "./../components/login/LoginForm";
-class LoginPage extends React.Component {
+import SignupForm from "../components/login/SignupForm";
+class SignupPage extends React.Component {
     render() {
         return (
             <div
-                className="page-login"
+                className="page-signup"
                 style={{
                     position: "fixed",
                     width: "100%",
@@ -13,11 +13,11 @@ class LoginPage extends React.Component {
                 }}
             >
                 <div className="bg-blur"></div>
-                <LoginForm />
+                <SignupForm />
             </div>
         );
     }
 }
 
 
-export default LoginPage;
+export default SignupPage;
