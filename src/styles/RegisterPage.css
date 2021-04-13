@@ -1,0 +1,160 @@
+* {
+    box-sizing: border-box;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100vh !important;
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+}
+
+.back {
+    display: inline;
+    width: 20px;
+    height: 20px;
+}
+
+#back {
+    width: 48px;
+    height: 24px;
+    left: 740px;
+    top: 74px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #8692A6;
+    text-decoration: none;
+}
+
+#back:hover {
+    color: #1565D8;
+    text-decoration: underline;
+}
+
+.form {
+    width: 431px;
+    height: 756px;
+    left: 1140px;
+    top: 174px;
+}
+
+#register-title {
+    width: 430px;
+    height: 36px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 36px;
+    display: flex;
+    align-items: center;
+    color: #000000;
+}
+
+#description {
+    width: 411px;
+    height: 56px;
+    top: 60px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    color: #8692A6;
+}
+
+.register-form {
+    top: 150px;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 10px;
+    text-align: center;
+}
+
+.register-form input {
+    font-family: Inter;
+    font-style: normal;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19px;
+    margin: 0 0 15px;
+    padding: 15px;
+    width: 100%;
+    border: 1;
+    outline: 0;
+    box-sizing: border-box;
+    color: #696F79;
+}
+
+.md-radio {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    font-size: 20px;
+    user-select: none;
+    left: -50px;
+    padding-top: 20px;
+    padding-left: 30px;
+}
+
+.md-radio input {
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    top: 20px;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background: #eee;
+    border-radius: 50%;
+}
+
+.md-radio:hover .checkmark {
+    background: #ccc;
+}
+
+.checkmark:after {
+    content: "";
+    display: none;
+}
+
+.md-radio .checkmark:after {
+    top: 50%;
+    left: 50%;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: solid 3px white;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.md-radio input:checked~.checkmark {
+    background: #1565D8;
+}
+
+.md-radio input:checked~.checkmark:after {
+    display: block;
+}
+
+.register-form button {
+    font-family: Inter;
+    text-transform: uppercase;
+    outline: 0;
+    background: #1565D8;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    margin-top: 20px;
+    color: #FFFFFF;
+    font-size: 14px;
+}
