@@ -12,7 +12,7 @@ class Thanhtoan extends React.Component {
                     <Container>
                         <Navbar.Brand className="logovinchebrand" href="#home"></Navbar.Brand>
                         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                        <Navbar.Collapse className="navsanpham" id="responsive-navbar-nav">
+                        <Navbar.Collapse className="navsanphamsub" id="responsive-navbar-nav">
                             <Nav>
                                 <NavDropdown title="Sản Phẩm" id="collasible-nav-dropdown">
                                     <NavDropdown.Item href="#action/3.1">VINFAST VF E34</NavDropdown.Item>

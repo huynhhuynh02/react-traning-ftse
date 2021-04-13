@@ -14,6 +14,9 @@
 .navsanpham{
     margin-right: 150px;
 }
+.navsanphamsub{
+    margin-right: 350px;
+}
 #responsive-navbar-nav{
     flex-direction: column;
     align-items:flex-end;
@@ -100,4 +103,10 @@ height: 200px;
 }
 .googlemap{
     width: 100%;
+}
+.video{
+    width: 100%;
+}
+#collasible-nav-dropdown{
+    color: white;
 }

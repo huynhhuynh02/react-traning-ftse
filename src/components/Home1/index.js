@@ -140,7 +140,7 @@ class Home1 extends React.Component {
                         </div>
                     </div>
                 </div>
-                <video controls autoplay="1"
+                <video className="video" controls autoplay="1"
                     src={vinfast}>
                 </video>
                 {/* footer */}

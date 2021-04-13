@@ -1,9 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
-import TrangThanhtoan from './containers/TrangThanhtoan';
-import routes from './router/AppRouter';
-// import TrangMuahang from './containers/TrangMuahang';
 import HomePage from './containers/HomePage';
+import TrangThanhtoan from './containers/TrangThanhtoan';
+import TrangMuahang from './containers/TrangMuahang';
+import routes from './router/AppRouter';
 import Home1 from './components/Home1';
 import {
   BrowserRouter as Router,
@@ -24,8 +24,16 @@ import {
 
 function App() {
   return (
-    <TrangThanhtoan>
-    </TrangThanhtoan>
+    <>
+      <HomePage>
+      </HomePage>
+
+      <TrangMuahang>
+      </TrangMuahang>
+      
+      <TrangThanhtoan>
+      </TrangThanhtoan>
+    </>
     // <Router>
     // <>
     //   /* <Navbar bg="dark" variant="dark">
