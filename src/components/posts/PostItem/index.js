@@ -6,17 +6,25 @@ import { faCog, faThumbsUp, faCommentAlt, faShareAlt } from "@fortawesome/free-s
 
 import "./../../../styles/posts/PostItem.css";
 import CommentReply from "./../CommentReply";
+import PostDetail from "./../PostDetail";
 class PostItem extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            isLike: this.props.postdata.isLike
+            isLike: this.props.postdata.isLike,
+            showDetail: false
         }
         this.handleLikeClick = this.handleLikeClick.bind(this);
+        this.handlePostDetailClick = this.handlePostDetailClick.bind(this);
     }
     handleLikeClick() {
         this.setState({
             isLike: !this.state.isLike
+        })
+    }
+    handlePostDetailClick() {
+        this.setState({
+            showDetail: !this.state.showDetail
         })
     }
     render() {
@@ -47,7 +55,7 @@ class PostItem extends React.Component {
                         <Col className="thumbnail-list d-flex justify-content-center py-2">
                             {postData.thumbnails.images.map((item, i) => {
                                 return (
-                                    <Image src={item} className="w-100" key={i} />
+                                    <Image src={item} className="post-thumbnail w-100" onClick={this.handlePostDetailClick} key={i} />
                                 )
                             })}
                         </Col>
@@ -94,8 +102,8 @@ class PostItem extends React.Component {
                                 {postData.comments.map((comment, i) => {
                                     return (
                                         <Container key={i}>
-                                            <Row className="comment-line px-2 py-1 my-2 ml-0 bg-light">
-                                                <Col>
+                                            <Row className="comment-line px-2 py-2 my-2 ml-0 bg-light">
+                                                <Col className="pl-0">
                                                     <Row className="comment-line-content mx-0">
                                                         <div className="px-2">
                                                             <Image src={comment.user.avatar} roundedCircle className="avatar-comment" />
@@ -129,6 +137,7 @@ class PostItem extends React.Component {
                         </Col>
                     </Row>
                 </Container>
+                <PostDetail postdata={postData} display={this.state.showDetail} close={this.handlePostDetailClick} />
             </Jumbotron>
         );
     }

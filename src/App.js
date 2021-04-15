@@ -38,54 +38,52 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-
+      isOpenedDetailPost: false
     }
   }
   render() {
     return (
       <Router>
-        <>
-          <Navbar>
-            <Container fluid>
-              <Col xs={3}>
-                <Navbar.Brand className="py-0">
-                  <Link className="nav-link py-0" to="/">
-                    <Logo />
-                  </Link>
-                </Navbar.Brand>
-              </Col>
-              <Col xs={6}>
-                <Nav className="header-tab justify-content-center">
-                  <NavLink exact activeClassName="selected" to="message">
-                    <NavbarButton
-                      icon="comment-alt"
-                      size="2x"
-                    />
-                  </NavLink>
-                  <NavLink exact activeClassName="selected" to="/">
-                    <NavbarButton
-                      icon="home"
-                      size="2x"
-                    />
-                  </NavLink>
-                  <NavLink exact activeClassName="selected" to="friend">
-                    <NavbarButton
-                      icon="user-friends"
-                      size="2x"
-                    />
-                  </NavLink>
-                </Nav>
-              </Col>
-              <Col xs={3} className="pr-0">
-                <Nav className="feature-tab justify-content-end">
-                  <FeatureButton icon="envelope" size="lg" />
-                  <FeatureButton icon="bell" size="lg" />
-                  <MoreFeatureButton icon="caret-down" size="2x" />
-                </Nav>
-              </Col>
-            </Container>
-          </Navbar>
-        </>
+        <Navbar>
+          <Container fluid>
+            <Col xs={3}>
+              <Navbar.Brand className="py-0">
+                <Link className="nav-link py-0" to="/">
+                  <Logo />
+                </Link>
+              </Navbar.Brand>
+            </Col>
+            <Col xs={6}>
+              <Nav className="header-tab justify-content-center">
+                <NavLink exact activeClassName="selected" to="message">
+                  <NavbarButton
+                    icon="comment-alt"
+                    size="2x"
+                  />
+                </NavLink>
+                <NavLink exact activeClassName="selected" to="/">
+                  <NavbarButton
+                    icon="home"
+                    size="2x"
+                  />
+                </NavLink>
+                <NavLink exact activeClassName="selected" to="friend">
+                  <NavbarButton
+                    icon="user-friends"
+                    size="2x"
+                  />
+                </NavLink>
+              </Nav>
+            </Col>
+            <Col xs={3} className="pr-0">
+              <Nav className="feature-tab justify-content-end">
+                <FeatureButton icon="envelope" size="lg" />
+                <FeatureButton icon="bell" size="lg" />
+                <MoreFeatureButton icon="caret-down" size="2x" />
+              </Nav>
+            </Col>
+          </Container>
+        </Navbar>
         <Switch>
           {routes.map((route, index) => (
             // Render more <Route>s with the same paths as

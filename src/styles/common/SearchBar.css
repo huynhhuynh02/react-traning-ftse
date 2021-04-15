@@ -1,5 +1,6 @@
 .search-bar {
     border-radius: 24px;
+    position: relative;
 }
 
 .search-bar .input-group-prepend, .search-bar .input-group-text {
@@ -16,5 +17,6 @@
 .search-bar input:active, .search-bar input:focus, .search-bar:active, .search-bar:focus, .search-bar .input-group-prepend {
     outline: none !important;
     box-shadow: none !important;
-    border-color: #ced4da
+    border-color: #ced4da;
+    z-index: 1 !important;
 }

@@ -20,7 +20,7 @@
     height: 80%;
     border-radius: 20px !important;
     z-index: 4;
-    background-color: #65adfa !important;
+    background-color: #6c757d !important;
 }
 
 .new-post-box .close-button {
@@ -29,12 +29,12 @@
     top: 3%;
     z-index: 4;
     border-radius: 100%;
-    box-shadow: 2px 2px 4px 0 gray;
+    box-shadow: 2px 2px 4px 0 #535353;
 }
 
 .new-post-box .attachment-button {
     border-radius: 25px;
-    box-shadow: 2px 2px 6px 0 gray;
+    box-shadow: 2px 2px 6px 0 #535353;
 }
 
 .new-post-box .post-content {
@@ -50,7 +50,7 @@
     right: 3%;
     bottom: 3%;
     border-radius: 25px;
-    box-shadow: 2px 2px 4px 0 gray;
+    box-shadow: 2px 2px 4px 0 #535353;
 }
 
 .page-blur-cover {

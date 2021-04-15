@@ -1,123 +1,124 @@
-.post-item {
-    box-shadow: 0 2px 8px 2px rgb(172, 172, 172);
-}
-
-button:focus, button:active {
+.post-item button:focus, button:active {
     box-shadow: none !important;
 }
 
-.avatar-post {
+.post-item .avatar-post {
     width: 80px;
     height: 80px;
 }
 
-.avatar-comment {
+.post-item .avatar-comment {
     width: 50px;
     height: 50px;
 }
 
-.post-info {
+.post-item .post-info {
     font-size: 12px;
     color: #5F5F5F;
 }
 
-.post-info .user-name {
+.post-item .post-info .user-name {
     font-size: 14px;
     font-weight: bold;
     color: black;
 }
 
-button.post-settings-btn {
+.post-item button.post-settings-btn {
     background: none;
     border: none;
 }
 
-button.post-settings-btn:hover, button.post-settings-btn:focus, button.post-settings-btn:active {
+.post-item button.post-settings-btn:hover, button.post-settings-btn:focus, button.post-settings-btn:active {
     background: none !important;
     border: none;
     box-shadow: none;
 }
 
-button.post-settings-btn:hover {
-    color: rgb(85, 85, 85);
+.post-item button.post-settings-btn:hover {
+    color: #555555;
 }
 
-.buttons button, .buttons button.active {
+.post-item .buttons button, .buttons button.active {
     border-radius: 0;
     border: none;
     background-color: #21d49f;
+    transition: all 0.1s linear;
 }
 
-.buttons button:hover {
+.post-item .buttons button:hover {
     background-color: #21e4a9;
 }
 
-.post-liked {
+.post-item .post-liked {
     background-color: #007bff !important;
 }
 
-.post-liked:hover {
+.post-item .post-liked:hover {
     background-color: #2a91ff !important;
 }
 
-.buttons .col:first-child button {
+.post-item .buttons .col:first-child button {
     border-top-left-radius: 15px;
 }
 
-.buttons .col:last-child button {
+.post-item .buttons .col:last-child button {
     border-top-right-radius: 15px;
 }
 
-.comment-box {
+.post-item .comment-box {
     border-radius: 15px;
 }
 
-.comment-line {
+.post-item .comment-line {
     font-size: 12px;
     border-radius: 15px;
     width: fit-content !important;
 }
 
-.comment-line .username-comment {
+.post-item .comment-line .username-comment {
     font-size: 14px;
 }
 
-.comment-line .date-comment {
+.post-item .comment-line .date-comment {
     font-size: 11px;
 }
 
-.comment-line-content {
+.post-item .comment-line-content {
     width: fit-content;
 }
 
-.comment-line-button {
+.post-item .comment-line-button {
     margin-left: 66px !important;
     width: fit-content;
 }
 
-.comment-line-button button {
+.post-item .comment-line-button button {
     padding: 0;
     margin-right: 20px;
     font-size: 12px;
 }
 
-.comment-line-button button:active, .comment-line-button button:focus, .comment-line-button button:hover {
+.post-item .comment-line-button button:active, .comment-line-button button:focus, .comment-line-button button:hover {
     text-decoration-line: none;
 }
 
-.more-comment button {
+.post-item .more-comment button {
     font-size: 14px;
     font-weight: bold;
 }
 
-.more-comment button:active, .more-comment button:focus, .more-comment button:hover {
+.post-item .more-comment button:active, .more-comment button:focus, .more-comment button:hover {
     text-decoration-line: none;
 }
 
-.more-comment button:hover {
-    color: rgb(255, 121, 121) !important;
+.post-item .more-comment button:hover {
+    color: #ff7979 !important;
 }
 
-.reply {
+.post-item .reply {
     width: fit-content;
+}
+
+.post-item .post-thumbnail {
+    cursor: pointer;
 }

@@ -13,7 +13,7 @@
 }
 
 .sidenav {
-    height: 55%;
+    height: 380px;
     width: 0;
     /* 0 width - change this with JavaScript */
     position: fixed;

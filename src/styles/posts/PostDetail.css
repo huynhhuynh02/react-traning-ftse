@@ -1,0 +1,147 @@
+.post-detail button:focus, button:active {
+    box-shadow: none !important;
+}
+
+.post-detail .avatar-post {
+    width: 80px;
+    height: 80px;
+}
+
+.post-detail .avatar-comment {
+    width: 50px;
+    height: 50px;
+}
+
+.post-detail .post-info {
+    font-size: 12px;
+    color: #5F5F5F;
+}
+
+.post-detail .post-info .user-name {
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+}
+
+.post-detail button.post-settings-btn {
+    background: none;
+    border: none;
+}
+
+.post-detail button.post-settings-btn:hover, button.post-settings-btn:focus, button.post-settings-btn:active {
+    background: none !important;
+    border: none;
+    box-shadow: none;
+}
+
+.post-detail button.post-settings-btn:hover {
+    color: #555555;
+}
+
+.post-detail .buttons button, .buttons button.active {
+    border-radius: 0;
+    border: none;
+    background-color: #21d49f;
+    transition: all 0.1s linear;
+}
+
+.post-detail .buttons button:hover {
+    background-color: #21e4a9;
+}
+
+.post-detail .post-liked {
+    background-color: #007bff !important;
+}
+
+.post-detail .post-liked:hover {
+    background-color: #2a91ff !important;
+}
+
+.post-detail .buttons .col:first-child button {
+    border-top-left-radius: 15px;
+}
+
+.post-detail .buttons .col:last-child button {
+    border-top-right-radius: 15px;
+}
+
+.post-detail .comment-box {
+    border-radius: 15px;
+}
+
+.post-detail .comment-line {
+    font-size: 12px;
+    border-radius: 15px;
+    width: fit-content !important;
+}
+
+.post-detail .comment-line .username-comment {
+    font-size: 14px;
+}
+
+.post-detail .comment-line .date-comment {
+    font-size: 11px;
+}
+
+.post-detail .comment-line-content {
+    width: fit-content;
+}
+
+.post-detail .comment-line-button {
+    margin-left: 66px !important;
+    width: fit-content;
+}
+
+.post-detail .comment-line-button button {
+    padding: 0;
+    margin-right: 20px;
+    font-size: 12px;
+}
+
+.post-detail .comment-line-button button:active, .comment-line-button button:focus, .comment-line-button button:hover {
+    text-decoration-line: none;
+}
+
+.post-detail .more-comment button {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.post-detail .more-comment button:active, .more-comment button:focus, .more-comment button:hover {
+    text-decoration-line: none;
+}
+
+.post-detail .more-comment button:hover {
+    color: #ff7979 !important;
+}
+
+.post-detail .reply {
+    width: fit-content;
+}
+
+.post-detail .post-thumbnail {
+    position: relative;
+    max-width: 100%;
+}
+
+.post-detail {
+    position: fixed !important;
+    z-index: 5;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 90%;
+}
+
+.post-detail .close-post-detail {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 6;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 1px 2px 0px grey;
+}
