@@ -3,10 +3,9 @@
     transform: translate(-50%, -50%);
     left: 50%;
     position: fixed;
-    width: 30%;
+    width: 420px;
     border-radius: 15px;
     background-color: #3FC600;
-    box-shadow: 4px 4px 8px 2px gray;
     z-index: 3;
 }
 

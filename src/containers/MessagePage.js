@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
 
 import UserSideBar from "./../components/common/UserSideBar";
@@ -8,40 +8,24 @@ import ChatBox from "./../components/messages/ChatBox";
 import MessageList from "./../components/messages/MessageList";
 
 import messageList from "./../resources/database/messageData";
-class MessagePage extends React.Component
-{
-    constructor(props){
-        super(props);
-        this.state = {
-            messageSelected: ""
-        }
-        this.selectMessage = this.selectMessage.bind(this)
-    }
-    selectMessage(message) {
-        this.setState({
-            messageSelected: message
-        })
-    }
-    render(){
-        return(
-            <>
-                <UserSideBar />
-                <Container fluid className="page d-flex fixed">
-                    <div className="left-box">
-                        <MessageList data={messageList} select={this.selectMessage} />
-                    </div>
-                    <div className="main-box d-flex flex-column justify-content-center py-4">
-                        {this.state.messageSelected !== "" ? <SearchBar targetsearch={"tin nhắn với " + this.state.messageSelected.member[0].username} /> : <></>}
-                        <ChatBox data={this.state.messageSelected} />
-                    </div>
-                    <div className="right-box">
-                        <Contact height="586px" listheight="520px" mt="1" />
-                    </div>
-                </Container>
-            </>
-        );
-    }
+export default function MessagePage(props) {
+    const [messageSelected, selectMessage] = useState("");
+    useEffect(() => props.hideNavBar(false));
+    return (
+        <>
+            <UserSideBar />
+            <Container fluid className="page d-flex fixed">
+                <div className="left-box">
+                    <MessageList data={messageList} select={selectMessage} />
+                </div>
+                <div className="main-box d-flex flex-column justify-content-center py-4">
+                    {messageSelected !== "" ? <SearchBar targetsearch={"tin nhắn với " + messageSelected.member[0].username} /> : <></>}
+                    <ChatBox data={messageSelected} />
+                </div>
+                <div className="right-box">
+                    <Contact height="586px" listheight="520px" mt="1" />
+                </div>
+            </Container>
+        </>
+    );
 }
-
-
-export default MessagePage;

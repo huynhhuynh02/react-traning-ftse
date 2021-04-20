@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col, Container, Image } from 'react-bootstrap';
 
-import avatar from "./../../../resources/images/avatar.jpeg";
+import avatar from "./../../../resources/images/avatar.png";
 class className extends React.Component {
     constructor(props) {
         super(props);

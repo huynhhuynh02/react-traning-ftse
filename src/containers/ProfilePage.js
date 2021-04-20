@@ -3,13 +3,13 @@ import { Col, Container, Image, Row, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCog, faCity, faGlobeEurope } from "@fortawesome/free-solid-svg-icons";
 
-import profileBg from "./../../../resources/images/login-bg.jpeg";
-import profileAvatar from "./../../../resources/images/avatar.jpeg";
-import "./../../../styles/common/Profile.css";
-import PostList from "../../posts/PostList";
-import FriendList from "../../friends/FriendList";
-import LibraryList from "../LibraryList";
-class Profile extends React.Component {
+import profileBg from "./../resources/images/login-bg.jpeg";
+import profileAvatar from "./../resources/images/avatar.png";
+import "./../styles/containers/ProfilePage.css";
+import PostList from "../components/posts/PostList";
+import FriendList from "../components/friends/FriendList";
+import LibraryList from "../components/common/LibraryList";
+class ProfilePage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -106,4 +106,4 @@ class Profile extends React.Component {
 }
 
 
-export default Profile;
+export default ProfilePage;

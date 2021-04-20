@@ -1,7 +1,7 @@
-import avatar from "./../images/avatar.jpeg";
-import ID from "./../functions/ID";
+import avatar from "./../images/avatar.png";
+import generateId from "../functions/generateId";
 
-let id1 = ID();
+let id1 = generateId();
 
 let friendList = [
     {

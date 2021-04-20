@@ -6,11 +6,6 @@
     position: relative;
 }
 
-.avatar-suggest {
-    width: 80px;
-    height: 80px;
-}
-
 .more-suggest {
     font-weight: bold !important;
 }

@@ -34,7 +34,7 @@ class PostItem extends React.Component {
                 <Container fluid className="justify-content-between">
                     <Row className="mx-0">
                         <Col xs={2} className="pl-0">
-                            <Image src={postData.user.avatar} roundedCircle className="avatar-post" />
+                            <Image src={postData.user.avatar} thumbnail roundedCircle className="avatar-post" />
                         </Col>
                         <Col xs={8} className="post-info py-2 d-flex flex-column justify-content-between align-items-left">
                             <span className="user-name ml-0 my-auto">{postData.user.username}</span>
@@ -55,7 +55,9 @@ class PostItem extends React.Component {
                         <Col className="thumbnail-list d-flex justify-content-center py-2">
                             {postData.thumbnails.images.map((item, i) => {
                                 return (
-                                    <Image src={item} className="post-thumbnail w-100" onClick={this.handlePostDetailClick} key={i} />
+                                    <Col key={i}>
+                                        <Image src={item} thumbnail className="post-thumbnail" onClick={this.handlePostDetailClick} />
+                                    </Col>
                                 )
                             })}
                         </Col>
@@ -105,10 +107,10 @@ class PostItem extends React.Component {
                                             <Row className="comment-line px-2 py-2 my-2 ml-0 bg-light">
                                                 <Col className="pl-0">
                                                     <Row className="comment-line-content mx-0">
-                                                        <div className="px-2">
-                                                            <Image src={comment.user.avatar} roundedCircle className="avatar-comment" />
+                                                        <div style={{ width: "80px" }} className="d-inline-block px-2">
+                                                            <Image src={comment.user.avatar} thumbnail roundedCircle className="avatar-comment" />
                                                         </div>
-                                                        <div className="px-2 py-1 d-flex flex-column justify-content-between">
+                                                        <div className="px-2 py-2 d-flex flex-column justify-content-between">
                                                             <div className="d-flex align-items-center">
                                                                 <span className="username-comment font-weight-bold">{comment.user.username}</span>
                                                                 <span className="date-comment ml-2 text-secondary">{comment.dateCmt}</span>

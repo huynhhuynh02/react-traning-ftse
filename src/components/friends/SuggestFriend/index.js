@@ -27,7 +27,7 @@ class SuggestFriend extends React.Component {
                             variant="light"
                             key={i}>
                             <Col xs={4} className="pl-0">
-                                <Image src={sfdata.avatar} roundedCircle className="avatar-suggest ml-2" />
+                                <Image src={sfdata.avatar} thumbnail roundedCircle className="avatar-suggest ml-2" />
                             </Col>
                             <Col xs={8} className="sf-info d-flex flex-column justify-content-between align-items-start py-1">
                                 <span className="user-name ml-0">{sfdata.username}</span>

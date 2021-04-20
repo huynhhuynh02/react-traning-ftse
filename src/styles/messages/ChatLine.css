@@ -5,15 +5,9 @@
     max-width: 100%;
 }
 
-.chat-line .avatar-chat-line {
-    width: 60px;
-    height: 60px;
-    border-radius: 100%;
-}
-
 .chat-line .chat-line-text {
     position: relative;
-    margin-top: 15px;
+    margin-top: 40px;
     width: 100%;
 }
 

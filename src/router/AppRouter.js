@@ -3,6 +3,7 @@ import LoginPage from "../containers/LoginPage";
 import MessagePage from "../containers/MessagePage";
 import FriendPage from "../containers/FriendPage";
 import HomePage from "../containers/HomePage";
+import ProfilePage from "../containers/ProfilePage";
 
 const routes = [
     {
@@ -19,11 +20,15 @@ const routes = [
         component: FriendPage
     },
     {
+        path: "/user",
+        component: ProfilePage
+    },
+    {
         path: "/login",
         component: LoginPage
     },
     {
-        path: "/register",
+        path: "/signup",
         component: SignupPage
     }
 ];

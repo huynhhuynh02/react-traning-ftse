@@ -16,7 +16,7 @@ class FriendList extends React.Component {
                             key={i}
                         >
                             <Col xs={2} className="pl-0">
-                                <Image src={friend.avatar} roundedCircle className="avatar-suggest ml-2" />
+                                <Image src={friend.avatar} thumbnail roundedCircle className="avatar-suggest ml-2" />
                             </Col>
                             <Col xs={8} className="friend-info d-flex flex-column justify-content-between align-items-start py-1">
                                 <span className="user-name ml-0">{friend.username}</span>

@@ -29,7 +29,7 @@ class Contact extends React.Component {
                                 <Row className="contact-item mx-0 my-2 px-0" key={i}>
                                     <Button variant="light" className="d-flex justify-content-between align-items-center w-100">
                                         <div className="pr-2">
-                                            <Image src={contact.avatar} roundedCircle className="avatar-contact" />
+                                            <Image src={contact.avatar} roundedCircle thumbnail className="avatar-contact" />
                                             <span className="username-contact font-weight-bold ml-2">{contact.username}</span>
                                         </div>
                                         <span className={contact.isOnline ? "status-contact online" : "status-contact"}></span>

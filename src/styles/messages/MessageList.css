@@ -19,8 +19,6 @@
 }
 
 .message-list .avatar-message {
-    width: 60px;
-    height: 60px;
     border-radius: 100%;
 }
 .message-list .chat-last {
@@ -37,6 +35,7 @@
 }
 
 .message-list .item-button:active, .message-list .item-button:focus {
+    box-shadow: none;
     background-color: #CEF4F6;
     border: none;
 }

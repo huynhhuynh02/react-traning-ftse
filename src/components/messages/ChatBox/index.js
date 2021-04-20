@@ -21,7 +21,7 @@ class ChatBox extends React.Component {
                             <Col xs={10}>
                                 <Row>
                                     <Col xs={3} className="d-flex justify-content-end">
-                                        <Image className="avatar-chat" src={this.props.data.member[0].avatar} />
+                                        <Image className="avatar-chat" thumbnail roundedCircle src={this.props.data.member[0].avatar} />
                                     </Col>
                                     <Col xs={9} className="d-flex flex-column justify-content-center align-items-start">
                                         <div className="chat-name font-weight-bold">{this.props.data.member[0].username}</div>

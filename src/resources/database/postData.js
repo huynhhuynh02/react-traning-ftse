@@ -1,10 +1,9 @@
-import avatar from "./../images/avatar.jpeg";
+import avatar from "./../images/avatar.png";
 import thumbnail from "./../images/thumbnail.jpeg";
-import ID from "../functions/ID";
+import generateId from "../functions/generateId";
 
-let id1 = ID() ; 
-let id2 = ID() ;
-
+let id1 = generateId() ; 
+let id2 = generateId() ;
 let postList = [
     {
         id: id1,
@@ -18,7 +17,9 @@ let postList = [
         textContent: "Content Sample",
         thumbnails: {
             images: [
-                thumbnail
+                thumbnail,
+                avatar,
+                avatar
             ]
         },
         infoAmount: {

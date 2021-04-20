@@ -62,3 +62,7 @@
     background-color: rgba(128, 128, 128, 0.7);
     z-index: 3;
 }
+
+.new-post-box button:active, .new-post-box button:focus {
+    box-shadow: none;
+}

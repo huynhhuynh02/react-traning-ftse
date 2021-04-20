@@ -31,11 +31,11 @@ class MessageList extends React.Component {
                                     <Col xs={12} className="px-0">
                                         <Button
                                             variant="light"
-                                            className={(this.state.indexMesssageSelect === i ? "selected " : "") + "item-button d-flex align-items-center px-4 w-100"}
+                                            className={(this.state.indexMesssageSelect === i ? "selected " : "") + "item-button d-flex align-items-center px-3 w-100"}
                                             onClick={this.liftMessageId.bind(this, message, i)}
                                         >
                                             <Col xs={3} className="d-flex justify-content-end px-0">
-                                                <Image className="avatar-message" src={message.member[0].avatar} />
+                                                <Image className="avatar-message" thumbnail src={message.member[0].avatar} />
                                             </Col>
                                             <Col xs={9} className="d-flex flex-column justify-content-center align-items-start">
                                                 <div className="name font-weight-bold">Test</div>

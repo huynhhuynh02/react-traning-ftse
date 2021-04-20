@@ -1,5 +1,5 @@
 import React from 'react';
-import { Jumbotron, Container, Row, Col, Button, Image } from "react-bootstrap";
+import { Jumbotron, Container, Row, Col, Button, Image, Carousel } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCog, faThumbsUp, faCommentAlt, faShareAlt, faTimes } from "@fortawesome/free-solid-svg-icons";
 
@@ -31,16 +31,18 @@ class PostDetail extends React.Component {
                     <Row className="mx-0">
                         <Col xs={6}>
                             <Row className="mx-0">
-                                <Col className="thumbnail-list d-flex justify-content-center py-2">
-                                    {postData.thumbnails.images.map((item, i) => {
-                                        return (
-                                            <Image src={item} thumbnail className="post-thumbnail w-100" key={i} />
-                                        )
-                                    })}
+                                <Col className="thumbnail-list d-flex justify-content-center py-2 bg-secondary rounded">
+                                    <Carousel interval={null} indicators={false}>
+                                        {postData.thumbnails.images.map((item, i) => (
+                                            <Carousel.Item key={i}>
+                                                <Image src={item} thumbnail className="post-thumbnail" />
+                                            </Carousel.Item>
+                                        ))}
+                                    </Carousel>
                                 </Col>
                             </Row>
                         </Col>
-                        <Col xs={6}>
+                        <Col xs={6} className="py-3 bg-light rounded">
                             <Row className="mx-0">
                                 <Col xs={2} className="pl-0">
                                     <Image src={postData.user.avatar} roundedCircle className="avatar-post" />
@@ -143,7 +145,7 @@ class PostDetail extends React.Component {
                     className="close-post-detail"
                     variant="danger"
                     onClick={this.handleCloseClick}>
-                    <FontAwesomeIcon icon={faTimes} size="2x" />
+                    <FontAwesomeIcon icon={faTimes} size="lg" />
                 </Button>
             </Jumbotron>
         );

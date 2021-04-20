@@ -15,7 +15,7 @@ class InviteList extends React.Component {
                             className="invite-item d-flex align-items-center mx-0 mb-2 px-2 py-2 rounded bg-light"
                             key={i}>
                             <Col xs={2} className="pl-0">
-                                <Image src={invite.avatar} roundedCircle className="avatar-suggest ml-2" />
+                                <Image src={invite.avatar} thumbnail roundedCircle className="avatar-suggest ml-2" />
                             </Col>
                             <Col xs={8} className="invite-info d-flex flex-column justify-content-between align-items-start py-1">
                                 <span className="user-name ml-0">{invite.username}</span>

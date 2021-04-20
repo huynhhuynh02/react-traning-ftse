@@ -14,3 +14,7 @@
     box-shadow: 0 0 10px 0 grey !important;
     color: black !important;
 }
+
+.header-tab button:active, .header-tab button:focus {
+    box-shadow: none;
+}
