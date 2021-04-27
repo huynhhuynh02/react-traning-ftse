@@ -1,3 +1,7 @@
+.post-item {
+    box-shadow: 0 2px 4px 0 grey;
+}
+
 .post-item button:focus, button:active {
     box-shadow: none !important;
 }
@@ -57,52 +61,7 @@
 
 .post-item .comment-box {
     border-radius: 15px;
-}
-
-.post-item .comment-line {
-    font-size: 12px;
-    border-radius: 15px;
-    width: fit-content !important;
-}
-
-.post-item .comment-line .username-comment {
-    font-size: 14px;
-}
-
-.post-item .comment-line .date-comment {
-    font-size: 11px;
-}
-
-.post-item .comment-line-content {
-    width: fit-content;
-}
-
-.post-item .comment-line-button {
-    margin-left: 66px !important;
-    width: fit-content;
-}
-
-.post-item .comment-line-button button {
-    padding: 0;
-    margin-right: 20px;
-    font-size: 12px;
-}
-
-.post-item .comment-line-button button:active, .comment-line-button button:focus, .comment-line-button button:hover {
-    text-decoration-line: none;
-}
-
-.post-item .more-comment button {
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.post-item .more-comment button:active, .more-comment button:focus, .more-comment button:hover {
-    text-decoration-line: none;
-}
-
-.post-item .more-comment button:hover {
-    color: #ff7979 !important;
+    box-shadow: 0 2px 4px 0 grey;
 }
 
 .post-item .reply {
@@ -116,4 +75,17 @@
 .post-item .post-thumbnail {
     cursor: pointer;
     width: auto;
+}
+
+.post-item .more-comment button {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.post-item .more-comment button:active, .more-comment button:focus, .more-comment button:hover {
+    text-decoration-line: none;
+}
+
+.post-item .more-comment button:hover {
+    color: #ff7979 !important;
 }

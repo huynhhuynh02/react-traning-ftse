@@ -46,27 +46,19 @@ class ChatBox extends React.Component {
                                 </Button>
                             </Col>
                         </Row>
-                        <Row className="chat-line-list mx-0 pt-3 pb-5">
+                        <Row className="chat-line-list mx-0 pt-3 pb-2">
                             <Col xs={12}>
-                                <ChatLine
-                                    sender="friend"
-                                    bubbleColor="#F3F3F3"
-                                    textColor="#000000"
-                                    fontSize="14px"
-                                    content={this.props.data.chatList[0].content}
-                                    avatar={this.props.data.avatar}
-                                />
-                                <ChatLine
-                                    sender="owner"
-                                    bubbleColor="#007BFF"
-                                    textColor="#FFFFFF"
-                                    fontSize="14px"
-                                    content={this.props.data.chatList[1].content}
-                                    avatar={this.props.data.avatar}
-                                />
+                                {this.props.data.chatList.map((chatLine, i) =>
+                                    <ChatLine
+                                        key={i}
+                                        sender={chatLine.sender}
+                                        content={chatLine.content}
+                                        avatar={this.props.data.avatar}
+                                    />
+                                )}
                             </Col>
                         </Row>
-                        <Row className="chat-input mx-0 mb-2 px-3">
+                        <Row className="chat-input mx-0 mb-2 px-3 w-100">
                             <Col xs={12} className="px-0">
                                 <InputGroup className="chat-input-field mx-0">
                                     <InputGroup.Prepend id="messageInput">

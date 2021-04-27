@@ -24,7 +24,7 @@ class Shortcut extends React.Component {
                                 <Row className="shortcut-item mx-0 my-2 px-0" key={i}>
                                     <Button variant="light" className="d-flex justify-content-left w-100">
                                         <div className="pr-2">
-                                            <Image src={shortcut.shortcutInfo.avatar} thumbnail roundedCircle className="avatar-shortcut" />
+                                            <Image src={shortcut.shortcutInfo.avatar} thumbnail className="avatar-shortcut" />
                                         </div>
                                         <div className="px-2 py-1 d-flex flex-column justify-content-between">
                                             <div className="d-flex flex-column justify-content-between align-items-start py-1">

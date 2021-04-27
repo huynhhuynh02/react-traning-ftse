@@ -1,4 +1,4 @@
-import avatar from "./../images/avatar.png";
+import avatarDemo from "./../../resources/images/avatar.jpg";
 import generateId from "../functions/generateId";
 
 let id1 = generateId();
@@ -7,7 +7,7 @@ let friendList = [
     {
         id: id1,
         username: "Friend Test",
-        avatar: avatar,
+        avatar: avatarDemo,
         info: "Some infos",
         isOnline: true,
         mutualFriend: 4
@@ -15,7 +15,7 @@ let friendList = [
     {
         id: id1,
         username: "Friend Test",
-        avatar: avatar,
+        avatar: avatarDemo,
         info: "Some infos",
         isOnline: true,
         mutualFriend: 3
@@ -23,7 +23,7 @@ let friendList = [
     {
         id: id1,
         username: "Friend Test",
-        avatar: avatar,
+        avatar: avatarDemo,
         info: "Some infos",
         isOnline: false,
         mutualFriend: 2
@@ -31,7 +31,7 @@ let friendList = [
     {
         id: id1,
         username: "Friend Test",
-        avatar: avatar,
+        avatar: avatarDemo,
         info: "Some infos",
         isOnline: false,
         mutualFriend: 8

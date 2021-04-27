@@ -1,5 +1,6 @@
 body {
   background-color: #E5E5E5 !important;
+  overflow-y: scroll;
 }
 
 *:focus {
@@ -34,10 +35,6 @@ body {
   box-shadow: 0 2px 4px 0 grey;
   width: 100%;
   z-index: 2;
-}
-
-.row {
-  width: 100%;
 }
 
 .left-box, .main-box, .right-box {

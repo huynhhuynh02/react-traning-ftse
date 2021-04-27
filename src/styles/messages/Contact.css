@@ -17,5 +17,5 @@
 }
 
 .contact .contact-list {
-    overflow: scroll;
+    overflow-y: auto;
 }

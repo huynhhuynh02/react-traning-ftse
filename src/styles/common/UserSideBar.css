@@ -17,7 +17,7 @@
 }
 
 .sidenav {
-    height: 380px;
+    height: auto;
     width: 0;
     /* 0 width - change this with JavaScript */
     position: fixed;

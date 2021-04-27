@@ -1,4 +1,4 @@
-import avatar from "./../images/avatar.png";
+import avatarDemo from "./../images/avatar.jpg";
 import generateId from "../functions/generateId";
 
 let id1 = generateId();
@@ -8,14 +8,14 @@ let suggestFriendList = [
     {
         id: id1,
         username: "User Test 1",
-        avatar: avatar,
+        avatar: avatarDemo,
         info: "Some sample info 1",
         mutualFriend: 3
     },
     {
         id: id2,
         username: "User Test 2",
-        avatar: avatar,
+        avatar: avatarDemo,
         info: "Some sample info 2",
         mutualFriend: 2
     }

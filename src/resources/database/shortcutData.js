@@ -1,4 +1,4 @@
-import avatar from "./../images/avatar.png";
+import avatarDemo from "./../images/avatar.jpg";
 import generateId from "../functions/generateId";
 
 let id1 = generateId() ; 
@@ -11,7 +11,7 @@ let shortcutList = [
             type: "Group",
             id: id1,
             name: "Group Test",
-            avatar: avatar
+            avatar: avatarDemo
         }
     },
     {
@@ -20,7 +20,7 @@ let shortcutList = [
             type: "Page",
             id: id1,
             name: "Page Test",
-            avatar: avatar
+            avatar: avatarDemo
         }
     },
     {
@@ -29,7 +29,7 @@ let shortcutList = [
             type: "Group",
             id: id1,
             name: "Group Test",
-            avatar: avatar
+            avatar: avatarDemo
         }
     },
     {
@@ -38,7 +38,7 @@ let shortcutList = [
             type: "Group",
             id: id1,
             name: "Group Test",
-            avatar: avatar
+            avatar: avatarDemo
         }
     },
     {
@@ -47,7 +47,7 @@ let shortcutList = [
             type: "Group",
             id: id1,
             name: "Group Test",
-            avatar: avatar
+            avatar: avatarDemo
         }
     },
     {
@@ -56,7 +56,7 @@ let shortcutList = [
             type: "Group",
             id: id1,
             name: "Group Test",
-            avatar: avatar
+            avatar: avatarDemo
         }
     }
 ];

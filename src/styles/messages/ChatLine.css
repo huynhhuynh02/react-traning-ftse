@@ -7,28 +7,45 @@
 
 .chat-line .chat-line-text {
     position: relative;
-    margin-top: 40px;
-    width: 100%;
+    width: calc(100% - 120px);
+    height: fit-content !important;
+    border-radius: 15px;
 }
 
-.chat-line.friend .chat-line-text .text {
-    left: 17px;
+.chat-line.friend .chat-line-text {
+    left: -9px;
 }
 
-.chat-line.friend .chat-line-text svg {
-    position: absolute;
+.chat-line.friend svg {
+    top: 12px;
+    position: relative;
     left: 0;
 }
 
-.chat-line.owner .chat-line-text .text {
-    right: 17px;
+.chat-line.owner .chat-line-text  {
+    right: -9px;
 }
 
-.chat-line.owner .chat-line-text svg {
-    position: absolute;
+.chat-line.owner svg {
+    top: 12px;
+    position: relative;
     right: 0;
 }
 
 .chat-line .chat-input {
     position: relative;
+}
+
+.chat-line .avatar-chat-line {
+    max-width: 65px;
+    max-height: 65px;
+    position: relative;
+}
+
+.chat-line.friend .avatar-chat-line {
+    left: 0;
+}
+
+.chat-line.owner .avatar-chat-line {
+    right: 0;
 }

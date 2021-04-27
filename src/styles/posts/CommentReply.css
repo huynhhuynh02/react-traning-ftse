@@ -1,11 +1,15 @@
 .reply-line {
-    font-size: 10px;
+    font-size: 12px;
     border-radius: 15px;
     width: fit-content !important;
 }
 
+.reply-line .avatar-reply {
+    max-width: 65px !important;
+}
+
 .reply-line .username-reply {
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .reply-line .date-reply {
@@ -17,14 +21,14 @@
 }
 
 .reply-line-button {
-    margin-left: 64px !important;
+    margin-left: 65px !important;
     width: fit-content;
 }
 
 .reply-line-button button {
     padding: 0;
     margin-right: 20px;
-    font-size: 10px;
+    font-size: 12px;
 }
 
 .reply-line-button button:active, .reply-line-button button:focus, .reply-line-button button:hover {

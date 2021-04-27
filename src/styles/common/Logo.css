@@ -1,10 +1,12 @@
 .app-logo img {
-    width: 80px;
+    width: 65px;
+    height: 65px;
+    background: none;
+    border: none;
 }
 
 .app-logo span, .app-logo span:hover {
     font-family: cursive;
     font-size: 30px;
     font-weight: bold;
-    color: white;
 }

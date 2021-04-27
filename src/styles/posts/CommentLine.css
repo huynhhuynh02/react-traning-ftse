@@ -1,0 +1,40 @@
+.post-item .comment-line {
+    font-size: 12px;
+    border-radius: 15px;
+    width: fit-content !important;
+}
+
+.post-item .comment-line .avatar-comment {
+    max-width: 65px !important;
+}
+
+.post-item .comment-line .username-comment {
+    font-size: 14px;
+}
+
+.post-item .comment-line .date-comment {
+    font-size: 11px;
+}
+
+.post-item .comment-line-content {
+    width: fit-content;
+}
+
+.post-item .comment-line-button {
+    margin-left: 65px !important;
+    width: fit-content;
+}
+
+.post-item .comment-line-button button {
+    padding: 0;
+    margin-right: 20px;
+    font-size: 12px;
+}
+
+.post-item .comment-line-button button:active, .comment-line-button button:focus, .comment-line-button button:hover {
+    text-decoration-line: none;
+}
+
+.comment-line-container {
+    transition: all ease-out 0.5s;
+}

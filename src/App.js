@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 // import components
 import Logo from './components/common/Logo';
 import NavbarButton from "./components/navbar/NavbarButton";
@@ -23,7 +23,7 @@ import {
   Col
 } from 'react-bootstrap';
 // import FontAwesome
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faHome,
   faCommentAlt,
@@ -31,14 +31,15 @@ import {
   faEnvelope,
   faBell,
   faCaretDown
-} from '@fortawesome/free-solid-svg-icons'
+} from '@fortawesome/free-solid-svg-icons';
 // import and initialize Firebase
 // Firebase App (the core Firebase SDK) is always required and must be listed first
 import firebase from "firebase/app";
 // If you are using v7 or any earlier version of the JS SDK, you should import firebase using namespace import
 // import * as firebase from "firebase/app"
-import "firebase/auth"
-import "firebase/firestore"
+import "firebase/auth";
+import "firebase/firestore";
+import "firebase/storage";
 
 // TODO: Replace the following with your app's Firebase project configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -55,27 +56,27 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 // Add FontAwesome icon ref to library
-library.add(faHome, faCommentAlt, faUserFriends, faEnvelope, faBell, faCaretDown)
+library.add(faHome, faCommentAlt, faUserFriends, faEnvelope, faBell, faCaretDown);
+
+export { firebase };
 
 export default function App() {
-  let [ navBar, hideNavBar ] = useState(true)
-  const childMethod = (params) => {
-    hideNavBar(params)
-  }
+  const [navBar, setNavBar] = useState(false);
+  
   return (
     <Router>
-      <Navbar style={{ display: (navBar ? "none" : "flex") }}>
+      <Navbar style={{ display: (navBar ? "flex" : "none") }}>
         <Container fluid>
           <Col xs={3}>
             <Navbar.Brand className="py-0">
               <Link className="nav-link py-0" to="/">
-                <Logo align="left" />
+                <Logo align="left" textVariant="light" />
               </Link>
             </Navbar.Brand>
           </Col>
           <Col xs={6}>
             <Nav className="header-tab justify-content-center">
-              <NavLink exact activeClassName="selected" to="message">
+              <NavLink exact activeClassName="selected" to="/message">
                 <NavbarButton
                   icon="comment-alt"
                   size="2x"
@@ -87,7 +88,7 @@ export default function App() {
                   size="2x"
                 />
               </NavLink>
-              <NavLink exact activeClassName="selected" to="friend">
+              <NavLink exact activeClassName="selected" to="/friend">
                 <NavbarButton
                   icon="user-friends"
                   size="2x"
@@ -112,9 +113,14 @@ export default function App() {
             key={index}
             exact={route.exact}
             path={route.path}
-            render={routeProps => (
+            render={props => (
               // pass the sub-routes down to keep nesting
-              <route.component {...routeProps} hideNavBar={childMethod} />
+              <route.component
+                {...props} 
+                routes={route.routes}
+                navBarState={navBar}
+                setNavBar={(params) => setNavBar(params)}
+              />
             )}
           />
         ))}

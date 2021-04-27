@@ -5,9 +5,12 @@
     position: fixed;
     max-width: 80%;
     border-radius: 15px;
-    background-color: #3FC600;
-    box-shadow: 4px 4px 8px 2px gray;
+    background-color: #f8f9fa;
     z-index: 3;
+}
+
+.signup .signup-form .form-check-label {
+    color: #6c757d !important;
 }
 
 .signup .form-title span {
@@ -18,7 +21,6 @@
 .signup .signup-form label {
     font-size: 14px;
     font-weight: bold;
-    color: white;
 }
 
 .signup .signup-form input, .signup .signup-form select, .signup .signup-form textarea {

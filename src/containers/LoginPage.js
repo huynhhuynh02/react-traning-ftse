@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 
 import LoginForm from "./../components/login/LoginForm";
+
 export default function LoginPage(props) {
-    useEffect(() => props.hideNavBar(true));
+    useEffect(() => {if (props.navBarState) props.setNavBar(false)});
     return (
         <div
             className="page-login"

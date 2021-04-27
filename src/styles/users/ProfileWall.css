@@ -9,20 +9,15 @@
 }
 
 .avatar-profile {
-    width: 100px;
-    height: 100px;
-    border: 1px solid rgb(206, 206, 206);
-    border-radius: 100%;
+    width: auto;
+    height: auto;
+    max-width: 100px;
+    max-height: 100px;
 }
 
 .profile .profile-name {
     font-size: 20px;
     font-weight: bold;
-    text-align: center;
-}
-
-.profile .personal-slogan {
-    font-size: 12px;
     text-align: center;
 }
 
@@ -32,6 +27,9 @@
 
 .profile .tab-button {
     width: 32%;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    text-align: center;
 }
 
 .profile .addition-info .share-info, .profile .addition-info .sumary-info {
@@ -40,12 +38,10 @@
     font-size: 14px !important;
 }
 
-.profile .settings-friend-button svg {
-    cursor: pointer;
-}
-
-.profile .settings-friend-button svg:hover {
-    opacity: 0.6;
+.profile .settings-friend-button .menu-items {
+    transform: translateX(-50%) !important;
+    left: 50% !important;
+    top: 100% !important;
 }
 
 .profile button:active, .profile button:focus {

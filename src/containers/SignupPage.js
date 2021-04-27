@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 
 import SignupForm from "../components/login/SignupForm";
+
 export default function SignupPage(props) {
-    useEffect(() => props.hideNavBar(true))
+    useEffect(() => {if (props.navBarState) props.setNavBar(false)});
     return (
         <div
             className="page-signup"
