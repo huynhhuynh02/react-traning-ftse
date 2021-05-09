@@ -15,10 +15,11 @@ import {
   FormControl,
   Button
 } from 'react-bootstrap';
-
+import { UserContext } from "./providers/UserProvider";
+import UserProvider from "./providers/UserProvider";
 function App() {
   return (
-    
+    <UserProvider>
     <Router>
       {/* <>
       <Navbar bg="dark" variant="dark">
@@ -30,6 +31,7 @@ function App() {
         </Nav>
       </Navbar>
       </> */}
+      
       <Switch>
             {routes.map((route, index) => (
               // Render more <Route>s with the same paths as
@@ -44,7 +46,9 @@ function App() {
               />
             ))}
           </Switch>
+         
     </Router>
+    </UserProvider>
   );
 }
 

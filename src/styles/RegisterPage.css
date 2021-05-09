@@ -5,18 +5,19 @@
 .wrapper {
     width: 100%;
     height: 100vh !important;
-    background: #FFFFFF;
     display: flex;
+    justify-content: flex-end;
     align-items: center;
 }
 
 .back {
-    display: inline;
+    display: inline-block;
     width: 20px;
     height: 20px;
 }
 
 #back {
+    display: block;
     width: 48px;
     height: 24px;
     left: 740px;
@@ -28,12 +29,12 @@
     line-height: 24px;
     display: flex;
     align-items: center;
-    color: #8692A6;
+    color: white;
     text-decoration: none;
 }
 
 #back:hover {
-    color: #1565D8;
+    color: white;
     text-decoration: underline;
 }
 
@@ -47,6 +48,7 @@
 #register-title {
     width: 430px;
     height: 36px;
+    margin: 20px 0 20px 20px;
     font-family: Inter;
     font-style: normal;
     font-weight: bold;
@@ -54,13 +56,13 @@
     line-height: 36px;
     display: flex;
     align-items: center;
-    color: #000000;
+    color: white;
 }
 
 #description {
     width: 411px;
     height: 56px;
-    top: 60px;
+    margin: 20px 0 20px 20px;
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
@@ -68,7 +70,7 @@
     line-height: 28px;
     display: flex;
     align-items: center;
-    color: #8692A6;
+    color: white;
 }
 
 .register-form {
@@ -88,73 +90,25 @@
     margin: 0 0 15px;
     padding: 15px;
     width: 100%;
-    border: 1;
+    border: 1px solid #FFFFFF;
+    border-radius: 5px;
     outline: 0;
     box-sizing: border-box;
     color: #696F79;
 }
 
-.md-radio {
-    display: inline-block;
-    position: relative;
-    cursor: pointer;
-    font-size: 20px;
-    user-select: none;
-    left: -50px;
-    padding-top: 20px;
-    padding-left: 30px;
-}
-
-.md-radio input {
-    opacity: 0;
-    cursor: pointer;
-}
-
-.checkmark {
-    top: 20px;
-    left: 0;
-    width: 20px;
-    height: 20px;
-    background: #eee;
-    border-radius: 50%;
-}
-
-.md-radio:hover .checkmark {
-    background: #ccc;
-}
-
-.checkmark:after {
-    content: "";
-    display: none;
-}
-
-.md-radio .checkmark:after {
-    top: 50%;
-    left: 50%;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    border: solid 3px white;
-    transform: translate(-50%, -50%) rotate(45deg);
-}
-
-.md-radio input:checked~.checkmark {
-    background: #1565D8;
-}
-
-.md-radio input:checked~.checkmark:after {
-    display: block;
-}
-
 .register-form button {
     font-family: Inter;
+    font-size: 20px;
     text-transform: uppercase;
     outline: 0;
     background: #1565D8;
     width: 100%;
-    border: 0;
+    border: 1px solid transparent;
+    border-radius: 15px;
     padding: 15px;
     margin-top: 20px;
     color: #FFFFFF;
-    font-size: 14px;
+    font-weight: 10px;
+    line-height: 20px;
 }

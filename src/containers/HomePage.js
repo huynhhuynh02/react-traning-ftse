@@ -12,8 +12,10 @@ class HomePage extends React.Component
         super(props);
         this.toggleClass = this.toggleClass.bind(this);
         this.expandClass = this.expandClass.bind(this);
+		this.openForm = this.openForm.bind(this);
 
         this.state = {
+			isAddedContact: false,
             active: false,
             isExpanded: false,
             status: ""
@@ -28,6 +30,16 @@ class HomePage extends React.Component
         const currentExpanded = this.state.isExpanded;
         this.setState({ isExpanded: !currentExpanded });
     }
+	openForm() {
+		
+		if (!this.state.isAddedContact){
+			document.getElementById("myForm").style.display = "block";
+		}
+		else {
+			document.getElementById("myForm").style.display = "none";
+		}
+		this.setState({ isAddedContact: !this.state.isAddedContact})
+	  }
         
     render(){
         return(
@@ -38,7 +50,7 @@ class HomePage extends React.Component
 			<div class="wrap">
 				<img id="profile-img" src="img/myavatar.jpg" class={this.state.status} alt="" onClick={this.toggleClass}/>
 				<p>Mai Huynh Loc</p>
-				<i class="fa fa-chevron-down expand-button" aria-hidden="true" onClick={this.expandClass}></i>
+				<i class="fa fa-cog expand-button" aria-hidden="true" onClick={this.expandClass}></i>
 				<div id="status-options" class={this.state.active ? 'active' : null}>
 					<ul>
 						<li id="status-online" onClick={()=>{this.setState({status:'online'})}}><span class="status-circle"></span> <p>Online</p></li>
@@ -48,12 +60,14 @@ class HomePage extends React.Component
 					</ul>
 				</div>
 				<div id="expanded">
-					<label for="facebook"><i class="fa fa-facebook fa-fw" aria-hidden="true"></i></label>
-					<input name="facebook" type="text" value="maihuynhloc" />
-					<label for="twitter"><i class="fa fa-twitter fa-fw" aria-hidden="true"></i></label>
-					<input name="twitter" type="text" value="loc98" />
-					<label for="instagram"><i class="fa fa-instagram fa-fw" aria-hidden="true"></i></label>
-					<input name="instagram" type="text" value="mhloc98" />
+					<label for="name"><i class="fa fa-info fa-fw" aria-hidden="true"></i></label>
+					<input name="name" type="text" placeholder="maihuynhloc" />
+					<label for="password"><i class="fa fa-lock fa-fw" aria-hidden="true"></i></label>
+					<input name="twitter" type="password" placeholder="loc98" />
+					<label for="phone-number"><i class="fa fa-phone fa-fw" aria-hidden="true"></i></label>
+					<input name="phone-number" type="number" placeholder="0866113626" />
+					<label for="address"><i class="fa fa-address-book fa-fw" aria-hidden="true"></i></label>
+					<input name="address" type="text" placeholder="Cam Le, Da Nang" />
 				</div>
 			</div>
 		</div>
@@ -165,10 +179,23 @@ class HomePage extends React.Component
 				</li>
 			</ul>
 		</div>
+
 		<div id="bottom-bar">
-			<button id="addcontact"><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i> <span>Add contact</span></button>
+			<button id="addcontact" onClick={this.openForm}><i class="fa fa-user-plus fa-fw" aria-hidden="true"></i> <span>Add contact</span></button>
+			
 			<button id="settings"><i class="fa fa-cog fa-fw" aria-hidden="true"></i> <span>Settings</span></button>
+			
+			<div class="form-popup" id="myForm">
+			<form class="form-container">
+				<h3 class="text-center">Add contact</h3>
+				<input type="email" placeholder="Type email" name="email"></input>
+				<button class="btn btn-primary btn-block" disabled>Add</button>
+			</form>
+			</div>
 		</div>
+
+		
+
 	</div>
 	<div class="content">
 		<div class="contact-profile">
