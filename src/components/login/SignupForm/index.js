@@ -9,11 +9,12 @@ import admin from "./../../../resources/functions/admin-sdk-service-account";
 import "./../../../styles/login/SignupForm.css"
 import { country_list } from "./../../../resources/database/necessaryData";
 import Logo from "./../../common/Logo";
-
+import LoaderSpinner from "./../../common/LoaderSpinner";
 export default function SignUpForm() {
   // Set loading button
   const [isLoading, setLoading] = useState(false);
   const [isSignedUpSuccessfully, login] = useState(false);
+  const [isLocalUserIdValid, setLocalUserId] = useState(false);
 
   // Initialize hook form
   const { register, watch, formState: { errors }, handleSubmit } = useForm();
@@ -34,6 +35,7 @@ export default function SignUpForm() {
         data.friendList = [];
         data.libraryList = [];
         data.messageList = [];
+        data.inviteList = [];
         data.uid = user.uid;
         const firebaseDatabase = firebase.firestore();
         // Add document to Firestore
@@ -90,9 +92,17 @@ export default function SignUpForm() {
   const tooltipPasswordComfirm = useRef(null);
   const tooltipFirstName = useRef(null);
   const tooltipCountry = useRef(null);
-
+  let checkLocalUserId = setInterval(() => {
+    if (localStorage.getItem("id") && localStorage.getItem("uid")) {
+      setLocalUserId(true);
+      clearTimeout(checkLocalUserId);
+    }
+  }, 500)
   return (
-    isSignedUpSuccessfully ? <Redirect to="/" /> :
+    isSignedUpSuccessfully ?
+      isLocalUserIdValid ?
+        <Redirect to="/" /> :
+        <LoaderSpinner label="Đang đăng nhập..." /> :
       <Container fluid className="signup py-4">
         <Row className="mx-0 align-items-center">
           <Col xs={8} className="form-title">
@@ -238,10 +248,12 @@ export default function SignUpForm() {
               <Form.Row className="mt-1 justify-content-center">
                 <Link to="/login" className="mr-4">
                   <Button
+                    disabled={isLoading}
+                    variant="secondary"
                     className="font-weight-bold px-5 w-auto"
                     type="button"
                   >
-                    {isLoading ? <Spinner animation="border" variant="light" size="sm" /> : "Trở lại đăng nhập"}
+                    Trở lại đăng nhập
                   </Button>
                 </Link>
                 <Button

@@ -21,22 +21,6 @@
     color: black;
 }
 
-.post-detail button.post-settings-btn {
-    background: none;
-    border: none;
-    height: fit-content;
-}
-
-.post-detail button.post-settings-btn:hover, button.post-settings-btn:focus, button.post-settings-btn:active {
-    background: none !important;
-    border: none;
-    box-shadow: none;
-}
-
-.post-detail button.post-settings-btn:hover {
-    color: #555555;
-}
-
 .post-detail .buttons button, .buttons button.active {
     border-radius: 0;
     border: none;
@@ -67,12 +51,13 @@
 .post-detail .comment-box {
     border-radius: 15px;
     box-shadow: 1px 1px 2px 0 grey;
+    max-height: 400px;
 }
 
 .post-detail .comment-box .comment-list {
-    height: 230px;
     overflow-y: auto;
     scroll-behavior: smooth;
+    max-height: 290px;
 }
 
 .post-detail .comment-line {
@@ -127,7 +112,8 @@
 
 .post-detail .post-thumbnail {
     position: relative;
-    max-height: 560px;
+    height: fit-content;
+    max-height: 580px;
     max-width: 100%;
     cursor: unset;
 }
@@ -159,13 +145,22 @@
 
 .post-detail .carousel.slide {
     width: 100%;
+    display: flex;
+}
+
+.post-detail .carousel.slide a {
+    height: fit-content;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .post-detail .carousel-inner .carousel-item {
     display: flex !important;
     justify-content: center;
+    align-items: center;
     opacity: 0;
     transition: none;
+    max-height: 580px;
 }
 
 .post-detail .carousel-inner .carousel-item.active {
@@ -175,4 +170,8 @@
 .post-detail .carousel-inner {
     display: flex;
     align-items: center !important;
+}
+
+.post-detail .amount {
+    font-size: 12px;
 }

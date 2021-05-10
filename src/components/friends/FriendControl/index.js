@@ -1,20 +1,18 @@
 import React from 'react';
-import { Button, Col, Container, Row } from 'react-bootstrap';
+import { Container, Row, Button } from 'react-bootstrap';
 
 import "./../../../styles/friends/FriendControl.css";
 import SearchBar from "./../../common/SearchBar";
-import FriendList from "./../FriendList";
-import InviteList from "./../InviteList";
-class FriendControl extends React.Component {
+export default class FriendControl extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedTab: "friend-list"
+            tabSelect: this.props.tabSelected !== undefined ? this.props.tabSelected : 0
         }
     }
-    selectTab(tab) {
+    selectTab(index) {
         this.setState({
-            selectedTab: tab
+            tabSelect: index
         })
     }
     render() {
@@ -22,41 +20,20 @@ class FriendControl extends React.Component {
             <Container fluid className="friend-control pt-4">
                 <SearchBar targetsearch="danh sách bạn bè" />
                 <Row className="tab-button-list justify-content-between mx-0 mb-3 pb-2">
-                    <Col className="px-0">
+                    {this.props.tabs.map((tabButton, index) =>
                         <Button
-                            variant={this.state.selectedTab === "friend-list" ? "primary" : "white"}
-                            className="tab-button py-2 w-100"
-                            onClick={this.selectTab.bind(this, "friend-list")}
-                        >
-                            Tất cả bạn bè
+                            key={index}
+                            variant={this.state.tabSelect === index ? "primary" : "link"}
+                            onClick={this.selectTab.bind(this, index)}
+                            className="tab-button px-5 py-2">
+                            {tabButton.label}
                         </Button>
-                    </Col>
-                    <Col className="px-0">
-                        <Button
-                            variant={this.state.selectedTab === "invite-list" ? "primary" : "white"}
-                            className="tab-button py-2 w-100"
-                            onClick={this.selectTab.bind(this, "invite-list")}
-                        >
-                            Lời mời kết bạn
-                        </Button>
-                    </Col>
-                    <Col className="px-0">
-                        <Button
-                            variant={this.state.selectedTab === "suggest-list" ? "primary" : "white"}
-                            className="tab-button py-2 w-100"
-                            onClick={this.selectTab.bind(this, "suggest-list")}
-                        >
-                            Gợi ý kết bạn
-                        </Button>
-                    </Col>
+                    )}
                 </Row>
                 <Row className="tab-display mx-0 pb-2">
-                    {this.state.selectedTab === "friend-list" ? <FriendList /> : <InviteList />}
+                    {this.props.tabs[this.state.tabSelect].component}
                 </Row>
             </Container>
         );
     }
 }
-
-
-export default FriendControl;

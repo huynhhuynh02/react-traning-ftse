@@ -24,18 +24,16 @@ class UserSideBar extends React.Component {
     }
     componentDidMount() {
         // Get the uid from localStorage
-        const uid = localStorage.getItem("uid");
+        const userId = localStorage.getItem("id");
         // Get Firebase firestore data
         const database = firebase.firestore();
-        database.collection("users")
-            .where("uid", "==", uid)
-            .get()
-            .then((querySnapshot) => {
-                querySnapshot.forEach((doc) => {
-                    // doc.data() is never undefined for query doc snapshots
-                    console.log("Get user data", doc.id, " => ", doc.data());
-                    // Get Firebase storage data
-                    const storage = firebase.storage().ref();
+        database.collection("users").doc(userId).get()
+            .then((doc) => {
+                // doc.data() is never undefined for query doc snapshots
+                console.log("Get user data successfully for sideBar");
+                // Get Firebase storage data
+                const storage = firebase.storage().ref();
+                if (doc.data().avatar !== undefined) {
                     const avatarPath = "avatars/" + doc.data().avatar;
                     storage.child(avatarPath)
                         .getDownloadURL()
@@ -46,23 +44,33 @@ class UserSideBar extends React.Component {
                             })
                         })
                         .catch((error) => {
-                            console.log(error.code, error.message);
+                            console.log("Error while getting avatar: ", error);
                             this.setState({
                                 avatar: avatarDemo,
                                 displayName: doc.data().displayName
                             })
                         });
-                })
+                } else {
+                    this.setState({
+                        avatar: avatarDemo,
+                        displayName: doc.data().displayName
+                    })
+                }
             }).catch((error) => {
                 console.log("Error getting documents: ", error);
             });
     }
     /* Set the width of the side navigation to 250px */
     openNav() {
+        clearTimeout(this.closeNavWaiter);
         this.setState({ expanded: !this.state.expanded })
+        this.closeNavWaiter = setTimeout(() => {
+            this.closeNav();
+        }, 5000);
     }
     /* Set the width of the side navigation to 0 */
     closeNav() {
+        clearTimeout(this.closeNavWaiter);
         this.setState({ expanded: !this.state.expanded })
     }
     userSignOut() {
@@ -93,7 +101,7 @@ class UserSideBar extends React.Component {
                                 <span className="username-shortcut font-weight-bold">
                                     {this.state.displayName.length > 12 ? (this.state.displayName.substring(0, 11) + "...") : this.state.displayName}
                                 </span>
-                                <span className="preview text-secondary">Preview your page</span>
+                                <span className="preview text-secondary">Xem trước trang cá nhân</span>
                             </div>
                         </Button>
                     </Link>
@@ -101,13 +109,13 @@ class UserSideBar extends React.Component {
                         <Link className="profile-settings-button px-3">
                             <Button variant="light" className="text-left py-3 mt-2 w-100">
                                 <FontAwesomeIcon icon={faUserCog} size="lg" className="mr-3" />
-                                Profile Settings
+                                Cài đặt tài khoản
                             </Button>
                         </Link>
                         <Link className="app-settings-button px-3">
                             <Button variant="light" className="text-left py-3 mt-2 w-100">
                                 <FontAwesomeIcon icon={faCog} size="lg" className="mr-3" />
-                                Application Settings
+                                Cài đặt ứng dụng
                             </Button>
                         </Link>
                         <Link className="signout-button px-3" to="/login">
@@ -116,7 +124,7 @@ class UserSideBar extends React.Component {
                                 className="text-left py-3 mt-2 w-100"
                                 onClick={this.userSignOut}>
                                 <FontAwesomeIcon icon={faSignOutAlt} size="lg" className="mr-3" />
-                                Sign Out
+                                Đăng xuất
                             </Button>
                         </Link>
                     </div>

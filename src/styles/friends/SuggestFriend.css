@@ -4,32 +4,46 @@
     padding-bottom: 10px;
     border-radius: 10px;
     position: relative;
+    text-align: center;
 }
 
-.more-suggest {
+.suggest-friend .loading-spinner {
+    width: 40px;
+    height: 40px;
+}
+
+.suggest-friend .more-suggest {
     font-weight: bold !important;
+    font-size: 12px;
+    position: absolute;
+    right: 15px;
+    bottom: 0;
 }
 
-.more-suggest:hover {
+.suggest-friend .more-suggest:hover {
     color: rgb(253, 132, 132) !important;
 }
 
-.more-suggest:focus, .more-suggest:hover {
+.suggest-friend .more-suggest:focus, .more-suggest:hover {
     text-decoration: none !important;
 }
 
-.sf-item {
+.suggest-friend .sf-item {
     width: 100%;
+    background-color: #e8ecf1;
+    color: #4d545a;
 }
 
-.sf-info {
-    height: 100%;
+.suggest-friend .sf-item:hover {
+    text-decoration: none !important;
+    background-color: #e2e5e7;
+    color: #4b5157;
 }
 
-.sf-info .user-name {
+.suggest-friend .sf-info .user-name {
     font-weight: bold;
 }
 
-.sf-info .user-info, .sf-info .mutual-info {
+.suggest-friend .sf-info .user-info, .sf-info .mutual-info {
     font-size: 12px;
 }

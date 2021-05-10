@@ -11,11 +11,12 @@ import admin from "./../../../resources/functions/admin-sdk-service-account";
 
 import "./../../../styles/login/LoginForm.css"
 import Logo from "./../../common/Logo";
-
+import LoaderSpinner from "./../../common/LoaderSpinner";
 export default function LoginForm() {
     const [isLoading, setLoading] = useState(false);
     const [isLoggedIn, setLoggedIn] = useState(false);
-    const [isErrored, showErrMes] = useState(false)
+    const [isErrored, showErrMes] = useState(false);
+    const [isLocalUserIdValid, setLocalUserId] = useState(false);
     // Initialize hook form
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
@@ -43,12 +44,25 @@ export default function LoginForm() {
                 var errorCode = error.code;
                 var errorMessage = error.message;
                 console.log(errorCode, errorMessage);
-                errorCode === "auth/user-not-found" ? showErrMes(true) : alert("Đăng nhập thất bại, hãy thử lại sau...");
+                (errorCode === "auth/user-not-found" || errorCode === "auth/wrong-password")
+                    ? showErrMes(true)
+                    : alert("Đăng nhập thất bại, hãy thử lại sau...");
                 setLoading(false);
             });
     };
+    let checkLocalUserId = setInterval(() => {
+        if (localStorage.getItem("id") && localStorage.getItem("uid")) {
+            setLocalUserId(true);
+            clearTimeout(checkLocalUserId);
+        }
+    }, 500)
     return (
-        isLoggedIn ? <Redirect to="/" /> :
+        isLoggedIn
+            ?
+            isLocalUserIdValid ?
+                <Redirect to="/" /> :
+                <LoaderSpinner label="Đang đăng nhập..." />
+            :
             <Form onSubmit={handleSubmit(onSubmit)} className="login-form d-flex flex-column px-3 py-3">
                 <Logo align="left" textVariant="secondary" />
                 <Form.Group controlId="formBasicEmail">

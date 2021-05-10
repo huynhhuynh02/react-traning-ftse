@@ -4,13 +4,15 @@ import { Redirect } from "react-router-dom";
 import { firebase } from "./../App";
 
 import LoaderSpinner from "./../components/common/LoaderSpinner";
-import UserSideBar from "./../components/common/UserSideBar";
 import Contact from "./../components/messages/Contact";
 import Shortcut from "./../components/common/Shortcut";
 import FriendControl from "./../components/friends/FriendControl";
 
 export default function FriendPage(props) {
-    useEffect(() => { if (!props.navBarState) props.setNavBar(true) });
+    useEffect(() => { 
+        if (!props.navBarState) props.setNavBar(true);
+        if (!props.userSideBarState) props.setUserSideBar(true);
+    });
     const [auth, setAuth] = useState(false);
     const token = localStorage.getItem("token");
     const isLoggedIn = localStorage.getItem("isLoggedIn");
@@ -31,13 +33,12 @@ export default function FriendPage(props) {
     }
     return (
         auth ? <>
-            <UserSideBar />
             <Container fluid className="page d-flex">
                 <div className="left-box">
                     <Shortcut />
                 </div>
                 <div className="main-box d-flex flex-column justify-content-center pt-4">
-                    <FriendControl />
+                    <FriendControl tabs={props.tabs} tabSelected={props.location.state !== null ? props.location.state.tabSelected : undefined} />
                 </div>
                 <div className="right-box">
                     <Contact height="586px" listheight="520px" mt="1" />

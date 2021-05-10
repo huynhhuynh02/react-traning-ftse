@@ -3,7 +3,10 @@ import React, { useEffect } from 'react';
 import SignupForm from "../components/login/SignupForm";
 
 export default function SignupPage(props) {
-    useEffect(() => {if (props.navBarState) props.setNavBar(false)});
+    useEffect(() => {
+        if (props.navBarState) props.setNavBar(false);
+        if (props.userSideBarState) props.setUserSideBar(false);
+    });
     return (
         <div
             className="page-signup"

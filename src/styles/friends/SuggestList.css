@@ -1,0 +1,9 @@
+.suggest-list .sf-item .avatar-suggest {
+    width: 100px;
+    height: 100px;
+}
+
+.suggest-list .suggest-friend-list {
+    height: 380px;
+    overflow-y: auto;
+}

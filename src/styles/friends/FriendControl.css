@@ -10,6 +10,17 @@
     border-bottom: 5px solid #30B800;
 }
 
+.friend-control .tab-button {
+    width: 32%;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    text-align: center;
+}
+
+.friend-control .tab-button:hover {
+    text-decoration: none;
+}
+
 .friend-control {
     position: fixed;
     top: 88.5px;

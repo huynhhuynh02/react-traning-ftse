@@ -1,7 +1,7 @@
 import React from 'react';
 import { Jumbotron, Container, Row, Col, Button, Image, Carousel } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCog, faThumbsUp, faCommentAlt, faShareAlt, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faThumbsUp, faCommentAlt, faShareAlt, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 import "./../../../styles/posts/PostDetail.css";
 import CommentLine from "./../CommentLine";
@@ -27,40 +27,38 @@ class PostDetail extends React.Component {
         })
     }
     handleCloseClick() {
-        const closeDetail = this.props.close
-        closeDetail()
+        this.props.close();
     }
     render() {
         return (
-            <Jumbotron className={"post-detail py-5 " + (this.props.display ? "d-block" : "d-none")}>
+            <Jumbotron className="post-detail py-5">
                 <Container fluid className="justify-content-between">
                     <Row className="mx-0">
-                        <Col xs={6}>
+                        <Col xs={6} className="thumbnail-field rounded">
                             <Row className="mx-0">
                                 <Col className="thumbnail-list d-flex justify-content-center py-2 bg-secondary rounded">
                                     <Carousel interval={null} indicators={false}>
                                         {this.props.postdata.postThumbnails.map((thumbnail, i) => (
                                             <Carousel.Item key={i}>
-                                                <Image src={thumbnail} thumbnail className="post-thumbnail" />
+                                                {
+                                                    thumbnail.type === "video" ?
+                                                        <video className="post-thumbnail" src={thumbnail.url} controls></video> :
+                                                        <Image src={thumbnail.url} thumbnail rounded className="post-thumbnail" />
+                                                }
                                             </Carousel.Item>
                                         ))}
                                     </Carousel>
                                 </Col>
                             </Row>
                         </Col>
-                        <Col xs={6} className="py-3 bg-light rounded">
-                            <Row className="mx-0">
+                        <Col xs={6} className="info-field py-3 bg-light rounded">
+                            <Row className="mx-0 align-items-center">
                                 <div className="px-0">
                                     <Image src={this.props.postdata.avatarUserPost} thumbnail roundedCircle className="avatar-post" />
                                 </div>
                                 <Col className="post-info py-2 d-flex flex-column justify-content-between align-items-left">
                                     <span className="user-name ml-0 my-auto">{this.props.postdata.displayNameUserPost}</span>
                                     <span className="date-upload ml-0 my-auto">{this.props.postdata.createdAt}</span>
-                                </Col>
-                                <Col xs={2} className="d-flex justify-content-end pr-0">
-                                    <Button className="post-settings-btn" variant="light">
-                                        <FontAwesomeIcon icon={faCog} size="lg" />
-                                    </Button>
                                 </Col>
                             </Row>
                             <Row className="py-3">
@@ -70,16 +68,18 @@ class PostDetail extends React.Component {
                             </Row>
                             <Row className="align-item-center pt-3 mx-0 mb-1">
                                 <Col xs={4} className="like-info text-left text-primary">
-                                    <span className="amount pr-2 justify-content-left">{this.props.postdata.likedInfo.amount}</span>
-                                    <FontAwesomeIcon icon={faThumbsUp} />
+                                    <FontAwesomeIcon icon={faThumbsUp} className="mr-1" />
+                                    <span className="amount pr-2 justify-content-left">
+                                        {this.state.isLike ? "Bạn và " + this.props.postdata.likedInfo.amount + " người khác" : this.props.postdata.likedInfo.amount}
+                                    </span>
                                 </Col>
                                 <Col xs={4} className="comment-info text-center text-secondary">
-                                    <span className="amount pr-2 justify-content-center">{this.props.postdata.commentedInfo.amount}</span>
-                                    <FontAwesomeIcon icon={faCommentAlt} />
+                                    <FontAwesomeIcon icon={faCommentAlt} className="mr-1" />
+                                    <span className="amount justify-content-center">{this.props.postdata.commentedInfo.amount}</span>
                                 </Col>
                                 <Col xs={4} className="share-info text-right text-success">
-                                    <span className="amount pr-2 justify-content-center">{this.props.postdata.sharedInfo.amount}</span>
-                                    <FontAwesomeIcon icon={faShareAlt} />
+                                    <FontAwesomeIcon icon={faShareAlt} className="mr-1" />
+                                    <span className="amount justify-content-center">{this.props.postdata.sharedInfo.amount}</span>
                                 </Col>
                             </Row>
                             <Row className="mx-0">
@@ -89,19 +89,19 @@ class PostDetail extends React.Component {
                                             <button
                                                 className={this.state.isLike ? "like-button post-liked w-100 py-2 text-light" : "like-button w-100 py-2 text-light"}
                                                 onClick={this.handleLikeClick}>
-                                                <span className="amount px-2 font-weight-bold">Thích</span>
+                                                <span className="px-2">Thích</span>
                                                 <FontAwesomeIcon icon={faThumbsUp} />
                                             </button>
                                         </Col>
                                         <Col className="text-info text-center px-0">
                                             <button className="comment-button w-100 py-2 text-light">
-                                                <span className="amount px-2 font-weight-bold">Bình luận</span>
+                                                <span className="px-2">Bình luận</span>
                                                 <FontAwesomeIcon icon={faCommentAlt} />
                                             </button>
                                         </Col>
                                         <Col className="text-info text-center px-0">
                                             <button className="share-button w-100 py-2 text-light">
-                                                <span className="amount px-2 font-weight-bold">Chia sẻ</span>
+                                                <span className="px-2">Chia sẻ</span>
                                                 <FontAwesomeIcon icon={faShareAlt} />
                                             </button>
                                         </Col>

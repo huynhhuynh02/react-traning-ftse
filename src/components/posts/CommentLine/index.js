@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Row, Col, Button, Image } from "react-bootstrap";
+import { Container, Row, Col, Button, Image, Spinner } from "react-bootstrap";
 
 import { firebase } from "./../../../App";
 import convertTimestamp from "./../../../resources/functions/convertTimestamp";
@@ -10,6 +10,7 @@ export default class CommentLine extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            showReply: false,
             avatar: "",
             userCommentDisplayName: "",
             commentedDate: "",
@@ -20,6 +21,7 @@ export default class CommentLine extends React.Component {
                 user: []
             }
         }
+        this.handleShowReplyClick = this.handleShowReplyClick.bind(this);
     }
     componentDidMount() {
         let database = firebase.firestore();
@@ -53,34 +55,51 @@ export default class CommentLine extends React.Component {
                             commentedDate: createdAtRef,
                             commentContent: this.props.comment.commentContent,
                             likeData: this.props.comment.liked,
-                            replyData: this.props.comment.reply
+                            replyData: this.props.comment.replied
                         })
                     })
             })
     }
+    handleShowReplyClick() {
+        this.setState({
+            showReply: !this.state.showReply
+        })
+    }
     render() {
         return (
-            <Container className="comment-line-container" style={{ display: this.props.display }}>
-                <Row className="comment-line px-2 py-2 my-2 ml-0 bg-light">
-                    <Col className="pl-0">
-                        <Row className="comment-line-content mx-0">
-                            <Image src={this.state.avatar} thumbnail roundedCircle className="avatar-comment" />
-                            <div className="px-2 py-2 d-flex flex-column justify-content-between">
-                                <div className="d-flex align-items-center">
-                                    <span className="username-comment font-weight-bold">{this.state.userCommentDisplayName}</span>
-                                    <span className="date-comment ml-2 text-secondary">{this.state.commentedDate}</span>
-                                </div>
-                                <span>{this.state.commentContent}</span>
-                            </div>
+            < Container className="comment-line-container" style={{ display: this.props.display }}>
+                {this.state.avatar === "" ?
+                    <Spinner animation="border" size="sm" /> :
+                    <>
+                        <Row className="comment-line px-2 py-2 my-2 ml-0 bg-light">
+                            <Col className="pl-0">
+                                <Row className="comment-line-content mx-0">
+                                    <Image src={this.state.avatar} thumbnail roundedCircle className="avatar-comment" />
+                                    <div className="px-2 py-2 d-flex flex-column justify-content-between">
+                                        <div className="d-flex align-items-center">
+                                            <span className="username-comment font-weight-bold">{this.state.userCommentDisplayName}</span>
+                                            <span className="date-comment ml-2 text-secondary">{this.state.commentedDate}</span>
+                                        </div>
+                                        <span>{this.state.commentContent}</span>
+                                    </div>
+                                </Row>
+                                <Row className="comment-line-button pl-2">
+                                    <Button variant="link" className="text-button">Thích</Button>
+                                    <Button variant="link" className="text-button">Trả lời</Button>
+                                </Row>
+                            </Col>
                         </Row>
-                        <Row className="comment-line-button pl-2">
-                            <Button variant="link" className="text-button">Thích</Button>
-                            <Button variant="link" className="text-button">Trả lời</Button>
-                        </Row>
-                    </Col>
-                </Row>
-                {this.state.replyData.user.map((reply, i) => <CommentReply reply={reply} key={i} />)}
-            </Container>
-        );
+                        {
+                            this.state.showReply ?
+                                this.state.replyData.user.map((reply, i) => <CommentReply reply={reply} key={i} />) :
+                                this.state.replyData.amount > 0 ?
+                                    <Button variant="link" className="show-reply font-weight-bold ml-5" onClick={this.handleShowReplyClick}>
+                                        Xem {this.state.replyData.amount} trả lời
+                                    </Button> :
+                                    <></>
+                        }
+                    </>}
+            </Container >
+        )
     }
 }

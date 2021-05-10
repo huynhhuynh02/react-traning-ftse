@@ -1,4 +1,4 @@
-.new-post-button {
+.edit-post-button {
     position: fixed;
     bottom: 50px;
     left: 80px;
@@ -8,7 +8,7 @@
     box-shadow: 2px 2px 8px 0 gray;
 }
 
-.new-post-box {
+.edit-post-box {
     padding-top: 30px;
     padding-bottom: 30px;
     position: fixed;
@@ -23,7 +23,7 @@
     background-color: #e6e6e6 !important;
 }
 
-.new-post-box .close-button {
+.edit-post-box .close-button {
     position: absolute;
     width: 40px;
     height: 40px;
@@ -34,36 +34,36 @@
     box-shadow: 2px 2px 4px 0 #535353;
 }
 
-.new-post-box .attachment-button {
+.edit-post-box .attachment-button {
     border-radius: 25px;
-    box-shadow: 1px 1px 3px 0 #535353;
+    box-shadow: 2px 2px 6px 0 #535353;
     position: relative;
     display: flex;
     width: fit-content;
 }
 
-.new-post-box .attachment-button label {
+.edit-post-box .attachment-button label {
     cursor: pointer;
     border-radius: 25px;
 }
 
-.new-post-box .attachment-button input {
+.edit-post-box .attachment-button input {
     width: 100%;
     height: 100%;
     display: none;
 }
 
-.new-post-box .attachment-button:hover {
+.edit-post-box .attachment-button:hover {
     opacity: 0.8;
 }
 
-.new-post-box .attachment-button .attachment-input {
+.edit-post-box .attachment-button .attachment-input {
     position: absolute;
     opacity: 0;
     top: 0;
 }
 
-.new-post-box .post-content {
+.edit-post-box .post-content {
     border-radius: 10px;
     width: 100%;
     height: 30%;
@@ -72,7 +72,7 @@
     box-shadow: 0 1px 2px 0 grey;
 }
 
-.new-post-box .post-button {
+.edit-post-box .post-button {
     position: absolute;
     right: 3%;
     bottom: 3%;
@@ -80,7 +80,7 @@
     box-shadow: 2px 2px 4px 0 #535353;
 }
 
-.new-page-blur-cover {
+.edit-page-blur-cover {
     position: fixed;
     top: 0;
     left: 0;
@@ -90,41 +90,35 @@
     z-index: 3;
 }
 
-.new-post-box button:active, .new-post-box button:focus {
+.edit-post-box button:active, .edit-post-box button:focus {
     box-shadow: none;
 }
 
-.new-post-box .thumbnail-item {
-    height: 100%;
-}
-
-.new-post-box .thumbnail-item .image {
+.edit-post-box .thumbnail-item .image {
     width: auto;
     max-height: 180px;
 }
 
-.new-post-box .thumbnail-item .video {
-    position: relative;
-}
-
-.new-post-box .thumbnail-item .video .fake-play-button {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    background-color: black;
-    border-radius: 50%;
-    box-shadow: 0 0 8px 2px black;
-}
-
-.new-post-box .thumbnail-item .video .video-thumbnail {
-    max-width: 100%;
+.edit-post-box .thumbnail-item .react-thumbnail-generator img {
+    width: 100%;
     max-height: 180px;
 }
 
-.new-post-box .thumbnail-item-exceed {
+.edit-post-box .thumbnail-item .video-thumbnail-cover {
+    width: calc(100% - 30px);
+    height: 100%;
     position: absolute;
+    top: 0;
+    left: 15px;
+    background-color: #80808063;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-post-box .thumbnail-item-exceed {
+    position: absolute;
+    width: 100%;
     height: 100%;
     top: 0;
     right: 0;
@@ -134,12 +128,14 @@
     align-items: center;
     font-size: 40px;
     font-weight: bold;
-    color: #fff;
 }
 
-.new-post-box .clear-files-button {
+.edit-post-box .clear-files-button {
     position: absolute;
     right: 0;
-    top: -55px;
-    border-radius: 10px;
+    top: -40px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    padding: 0;
 }

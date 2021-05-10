@@ -1,14 +1,14 @@
 import React from 'react';
 import { Button, Jumbotron, Form, FormFile, Row, Col, Image } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlus, faTimes, faPhotoVideo, faPlayCircle } from "@fortawesome/free-solid-svg-icons";
+import { faTimes, faPhotoVideo, faPlayCircle } from "@fortawesome/free-solid-svg-icons";
 
 import { firebase } from "./../../../App";
 import generateId from "./../../../resources/functions/generateId"
 
-import "./../../../styles/posts/NewPost.css";
+import "./../../../styles/posts/EditPost.css";
 import LoaderSpinner from "./../../common/LoaderSpinner";
-export default class NewPost extends React.Component {
+export default class EditPost extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -219,13 +219,6 @@ export default class NewPost extends React.Component {
                     </Button>
                 </Jumbotron>
                 {this.state.isOpened ? <div className="new-page-blur-cover"></div> : <></>}
-                <Button
-                    className="new-post-button"
-                    disabled={this.state.isOpened}
-                    variant="secondary"
-                    onClick={this.openBox}>
-                    <FontAwesomeIcon icon={faPlus} size="2x" />
-                </Button>
             </>
         );
     }

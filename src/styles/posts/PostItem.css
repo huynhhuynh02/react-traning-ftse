@@ -32,23 +32,14 @@
     color: #555555;
 }
 
-.post-item .buttons button, .buttons button.active {
+.post-item .amount {
+    font-size: 12px;
+}
+
+.post-item .buttons button, .post-item .buttons button.active {
     border-radius: 0;
     border: none;
-    background-color: #21d49f;
     transition: all 0.1s linear;
-}
-
-.post-item .buttons button:hover {
-    background-color: #21e4a9;
-}
-
-.post-item .post-liked {
-    background-color: #007bff !important;
-}
-
-.post-item .post-liked:hover {
-    background-color: #2a91ff !important;
 }
 
 .post-item .buttons .col:first-child button {
@@ -74,7 +65,8 @@
 
 .post-item .post-thumbnail {
     cursor: pointer;
-    width: auto;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .post-item .more-comment button {
@@ -88,4 +80,11 @@
 
 .post-item .more-comment button:hover {
     color: #ff7979 !important;
+}
+
+.post-item .comment-input {
+    border-radius: 20px;
+    border: 1px solid rgb(194, 194, 194);
+    width: 100%;
+    font-size: 14px;
 }

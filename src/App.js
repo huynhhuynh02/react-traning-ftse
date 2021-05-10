@@ -40,6 +40,8 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 import "firebase/storage";
+// import UserSideBar
+import UserSideBar from "./components/common/UserSideBar";
 
 // TODO: Replace the following with your app's Firebase project configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -62,6 +64,7 @@ export { firebase };
 
 export default function App() {
   const [navBar, setNavBar] = useState(false);
+  const [userSideBar, setUserSideBar] = useState(false);
   
   return (
     <Router>
@@ -105,6 +108,7 @@ export default function App() {
           </Col>
         </Container>
       </Navbar>
+      {userSideBar ? <UserSideBar /> : <></>}
       <Switch>
         {routes.map((route, index) => (
           // Render more <Route>s with the same paths as
@@ -118,8 +122,11 @@ export default function App() {
               <route.component
                 {...props} 
                 routes={route.routes}
+                tabs={route.tabs}
                 navBarState={navBar}
                 setNavBar={(params) => setNavBar(params)}
+                userSideBarState={userSideBar}
+                setUserSideBar={(params => setUserSideBar(params))}
               />
             )}
           />

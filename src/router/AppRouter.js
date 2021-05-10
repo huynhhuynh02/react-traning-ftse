@@ -4,10 +4,14 @@ import MessagePage from "../containers/MessagePage";
 import FriendPage from "../containers/FriendPage";
 import HomePage from "../containers/HomePage";
 import ProfilePage from "../containers/ProfilePage";
+import UserPage from "../containers/UserPage";
 
 import PostList from "./../components/posts/PostList";
 import LibraryList from "../components/users/LibraryList";
 import BuddyList from "./../components/users/BuddyList";
+import FriendList from "./../components/friends/FriendList";
+import InviteList from "./../components/friends/InviteList";
+import SuggestList from "./../components/friends/SuggestList";
 
 const routes = [
     {
@@ -22,27 +26,64 @@ const routes = [
     },
     {
         path: "/friend",
-        exact: true,
-        component: FriendPage
+        component: FriendPage,
+        tabs: [
+            {
+                component: <FriendList />,
+                label: "Tất cả bạn bè"
+            },
+            {
+                component: <InviteList />,
+                label: "Lời mời kết bạn"
+            },
+            {
+                component: <SuggestList />,
+                label: "Gợi ý kết bạn"
+            }
+        ]
     },
     {
         path: "/profile",
         component: ProfilePage,
         routes: [
             {
-                path: "/profile/post",
+                path: "",
                 component: PostList,
                 label: "Bài viết",
                 exact: true
             },
             {
-                path: "/profile/buddy",
+                path: "/buddy",
                 component: BuddyList,
                 label: "Bạn bè",
                 exact: true
             },
             {
-                path: "/profile/library",
+                path: "/library",
+                component: LibraryList,
+                label: "Thư viện",
+                exact: true
+            }
+        ]
+    },
+    {
+        path: "/user",
+        component: UserPage,
+        routes: [
+            {
+                path: "",
+                component: PostList,
+                label: "Bài viết",
+                exact: true
+            },
+            {
+                path: "/buddy",
+                component: BuddyList,
+                label: "Bạn bè",
+                exact: true
+            },
+            {
+                path: "/library",
                 component: LibraryList,
                 label: "Thư viện",
                 exact: true

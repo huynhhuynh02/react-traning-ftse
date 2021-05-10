@@ -38,3 +38,11 @@
 .comment-line-container {
     transition: all ease-out 0.5s;
 }
+
+.comment-line-container .show-reply {
+    font-size: 12px;
+}
+
+.comment-line-container .show-reply:active, .comment-line-container .show-reply:focus, .comment-line-container .show-reply:hover {
+    text-decoration: none;
+}
