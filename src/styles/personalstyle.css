@@ -1,0 +1,33 @@
+.container{
+    background-color: white;
+}
+.btn-accout{
+    display: block;
+    width: 100%;
+    height: 50px;
+    padding-left: 20px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    border: 0.5px solid gray;
+}
+.login{
+    padding-top: 100px;
+    padding-bottom: 300px;
+    width: 40%;
+    margin: auto;
+}
+.login p{
+    text-align: center;
+}
+.btn-login{
+    font-size: 25px;
+    margin-bottom: 5px;
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+    height: 50px;
+    background-color: #170F23;
+    color: white;
+    border: none;
+    border-radius: 10px;
+}

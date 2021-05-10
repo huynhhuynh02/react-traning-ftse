@@ -28,7 +28,7 @@ const albums = [
         source: CauHenCauThe,
         singer: "Nguyễn Văn A",
         category: "nhac-tre",
-        time: "3:30p",
+        time: "03:30",
         viewer: "90k",
         img: cauhencautheimg
     },
@@ -38,7 +38,7 @@ const albums = [
         source: Gone,
         singer: "Nguyễn Văn B",
         category: "nhac-tre",
-        time: "3:30p",
+        time: "03:30",
         viewer: "17Tr",
         img: goneimg
     },
@@ -48,7 +48,7 @@ const albums = [
         source: CauHon,
         singer: "Nguyễn Văn c",
         category: "nhac-tre",
-        time: "3:30p",
+        time: "03:30",
         viewer: "1T",
         img: cauhonimg
     },
@@ -58,7 +58,7 @@ const albums = [
         source: ChuyenCuaMuaDong,
         singer: "Trần Thị D",
         category: "nhac-tre",
-        time: "3:30p",
+        time: "03:30",
         viewer: "10Tr",
         img: chuyencuamuadongimg
     },
@@ -68,7 +68,7 @@ const albums = [
         source: DongThoiGian,
         singer: "Nguyễn Thị E",
         category: "nhac-phim",
-        time: "3:30p",
+        time: "03:30",
         viewer: "100k",
         img: dongthoigianimg
     },

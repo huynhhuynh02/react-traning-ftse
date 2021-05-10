@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/homestyle.css'
-import { Link } from 'react-router-dom';
+import { Link, NavLink, Router } from 'react-router-dom';
 import { Jumbotron, Button, Carousel, Container, Row, Col, Accordion, Card } from 'react-bootstrap';
 import ButtonMS from '../components/Button';
 import albums from '../data'
@@ -14,32 +14,36 @@ import secondplaytist from '../data/img/freedom.jpg'
 import thirdplaytist from '../data/img/dancinwiththedevil.jpg'
 import fourplaytist from '../data/img/position.jpg'
 import fiveplaytist from '../data/img/chemtrail.jpg'
-import {BsSearch} from 'react-icons/fa'
+
+import { BsSearch, BsPerson, BsLayoutTextWindow, BsFillPlayFill } from 'react-icons/bs'
+import { RiCompassDiscoverLine } from 'react-icons/ri'
+import { AiOutlineYoutube, AiOutlineHeart } from 'react-icons/ai'
+import { BiMusic, BiSkipPrevious, BiSkipNext } from 'react-icons/bi'
+import PlayMS from '../components/PlayMusic/playmusic';
+import GetId from '../components/PlayMusic/getId';
+
+
 class HomePage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             currentSong: 1
         };
-        this.play = this.play.bind(this)
+        // this.play = this.play.bind(this)
         const audioRef = React.createRef();
     }
 
 
-    play(i) {
-        alert(i)
-        this.setState({
-            currentSong: i,
-        })
-    }
+    
     render() {
+        // alert(this.state.currentSong)
         const ListMusic = albums.map((element, i) => {
 
             if (i <= 3) {
                 return (
                     <Col xs={3}>
 
-                        <div key={i} onClick={this.play.bind(this, i)} className="music-item">
+                        <div onClick={this.props.source.bind(this, i, element.source, element.img, element.name, element.singer)} key={i} className="music-item">
                             <div className="wrap"></div>
 
 
@@ -52,93 +56,176 @@ class HomePage extends React.Component {
                 )
             }
         })
+
+
+        const ListSinger = albums.map((element, i) => {
+            return (
+                <div className="list">
+                    <Col><div className="img-singer"><img src={firstSL} /></div><p>{element.singer}<span className="infor">asdf</span></p></Col>
+                </div>
+            )
+        })
         const ListTop = albums.map((element, i) => {
+
             if (i <= 10) {
-                return(
-                <Card>
-                    <Card.Header>
-                        <Accordion.Toggle as={Button} variant="link" eventKey={i+1}>
-                            <p><span>{i+1}. </span>{element.name}<span className="view-ms">{element.viewer}.viewer </span></p>
-                        </Accordion.Toggle>
-                    </Card.Header>
-                    <Accordion.Collapse eventKey={i+1}>
-                        <Card.Body>
-                            <p><span>Singer: </span>{element.singer}</p>
-                            <p>Thời lượng: {element.time}</p>
-                            <Button variant="secondary">Play</Button>{' '}
-                        </Card.Body>
-                    </Accordion.Collapse>
-                </Card>
+                return (
+                    <div>
+
+                        <Col>
+                            <p onClick={this.props.source.bind(this, i, element.source, element.img, element.name)} className="topms-bar"><span>{i+1} .</span><span className="control"><BsFillPlayFill /></span>{element.name}<span className="view-ms">{element.time}</span></p>
+                        </Col>
+
+                    </div>
                 )
             }
 
+        }
+        )
+        const ParentList = albums.map((element, i) => {
+            return (
+                <>
+                    {ListTop}
+                </>
+            )
         })
         return (
             <>
 
                 <Container>
-                    <Carousel fade>
-                        <Carousel.Item>
-                            <img
-                                className="d-block w-100"
-                                src={firstSL}
-                                alt="First slide"
-                            />
-                            <Carousel.Caption>
-                                <h3>First slide label</h3>
-                                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                            </Carousel.Caption>
-                        </Carousel.Item>
-                        <Carousel.Item>
-                            <img
-                                className="d-block w-100"
-                                src={secondSL}
-                                alt="Second slide"
-                            />
 
-                            <Carousel.Caption>
-                                <h3>Second slide label</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            </Carousel.Caption>
+
+                    <Carousel>
+                        <Carousel.Item>
+                            <Row>
+                                <Col>
+
+                                    <NavLink to="/getId" >
+                                        <img onClick={this.props.albums.bind(this, 1)}
+                                            className="d-block w-100"
+                                            src={firstSL}
+                                            alt="First slide"
+                                        />
+                                    </NavLink>
+                                </Col>
+                                <Col>
+                                    <p className="playlist-title">Sơn Tùng</p>
+                                    <p className="playlist-infor">23 al</p>
+                                    <img
+                                        className="d-block w-100"
+                                        src={firstSL}
+                                        alt="First slide"
+                                    />
+                                </Col>
+                                <Col>
+                                    <img
+                                        className="d-block w-100"
+                                        src={firstSL}
+                                        alt="First slide"
+                                    />
+                                </Col>
+                            </Row>
+
                         </Carousel.Item>
                         <Carousel.Item>
-                            <img
-                                className="d-block w-100"
-                                src={thirdSL}
-                                alt="Third slide"
-                            />
+                            <Row>
+                                <Col>
+                                    <img
+                                        className="d-block w-100"
+                                        src={firstSL}
+                                        alt="First slide"
+                                    />
+                                </Col>
+                                <Col>
+                                    <img
+                                        className="d-block w-100"
+                                        src={firstSL}
+                                        alt="First slide"
+                                    />
+                                </Col>
+                                <Col>
+                                    <img
+                                        className="d-block w-100"
+                                        src={firstSL}
+                                        alt="First slide"
+                                    />
+                                </Col>
+                            </Row>
 
-                            <Carousel.Caption>
-                                <h3>Third slide label</h3>
-                                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                            </Carousel.Caption>
                         </Carousel.Item>
+                        <Carousel.Item>
+                            <Row>
+                                <Col>
+                                    <img
+                                        className="d-block w-100"
+                                        src={firstSL}
+                                        alt="First slide"
+                                    />
+                                </Col>
+                                <Col>
+                                    <img
+                                        className="d-block w-100"
+                                        src={firstSL}
+                                        alt="First slide"
+                                    />
+                                </Col>
+                                <Col>
+                                    <img
+                                        className="d-block w-100"
+                                        src={firstSL}
+                                        alt="First slide"
+                                    />
+                                </Col>
+                            </Row>
+
+                        </Carousel.Item>
+
+
                     </Carousel>
-                    <h2 className="suggestions">GỢI Ý CHO HÔM NAY</h2>
+
                     <div className="list-music">
+                        <h2 className="suggestions">GỢI Ý CHO HÔM NAY</h2>
 
                         <Row>
                             {ListMusic}
                         </Row>
                     </div>
 
-                    <h2 className="suggestions">TOP THỊNH HÀNH</h2>
-                    <div className="top-music">
-                        <Accordion>
-                            {ListTop}
 
-                        </Accordion>
+                    <div className="top-music">
+                        <Row>
+                            <Col xs={7}>
+                                <h2 className="suggestions">TOP THỊNH HÀNH<AiOutlineHeart /></h2>
+                                <label id="tag" for="read-more">Xem thêm</label>
+                                <input className="check" type="checkbox" id="read-more" />
+                                <div className="div-top">
+                                    {ListTop}
+
+                                </div>
+
+                            </Col>
+                            <Col xs={5}>
+                                <h2 className="suggestions">NGHE TRONG TUẦN</h2>
+                                <div className="singer-top">
+                                    {ListSinger}
+                                </div>
+                            </Col>
+                        </Row>
+
+
+
+
 
                     </div>
-                    <h2 className="suggestions">PLAYTIST</h2>
+
                     <div className="playtist">
+                        <h2 className="suggestions">PLAYTIST</h2>
                         <Row>
-                            
+
                             <Col>
                                 <div className="playtist-item">
                                     <div className="wrap"></div>
                                     <div className="playtist-item-img">
-                                        <img src={fistplaytist} alt="playtist"/>
+                                        <img src={fistplaytist} alt="playtist" />
 
                                     </div>
 
@@ -151,7 +238,7 @@ class HomePage extends React.Component {
                                 <div className="playtist-item">
                                     <div className="wrap"></div>
                                     <div className="playtist-item-img">
-                                        <img src={secondplaytist} alt="playtist"/>
+                                        <img src={secondplaytist} alt="playtist" />
 
                                     </div>
 
@@ -164,7 +251,7 @@ class HomePage extends React.Component {
                                 <div className="playtist-item">
                                     <div className="wrap"></div>
                                     <div className="playtist-item-img">
-                                        <img src={thirdplaytist} alt="playtist"/>
+                                        <img src={thirdplaytist} alt="playtist" />
 
                                     </div>
 
@@ -177,7 +264,7 @@ class HomePage extends React.Component {
                                 <div className="playtist-item">
                                     <div className="wrap"></div>
                                     <div className="playtist-item-img">
-                                        <img src={fourplaytist} alt="playtist"/>
+                                        <img src={fourplaytist} alt="playtist" />
 
                                     </div>
 
@@ -186,11 +273,12 @@ class HomePage extends React.Component {
                                     </div>
                                 </div>
                             </Col>
+
                             <Col>
                                 <div className="playtist-item">
                                     <div className="wrap"></div>
                                     <div className="playtist-item-img">
-                                        <img src={fiveplaytist} alt="playtist"/>
+                                        <img src={fiveplaytist} alt="playtist" />
 
                                     </div>
 
@@ -199,8 +287,8 @@ class HomePage extends React.Component {
                                     </div>
                                 </div>
                             </Col>
-                            
-                            
+
+
                         </Row>
                     </div>
 

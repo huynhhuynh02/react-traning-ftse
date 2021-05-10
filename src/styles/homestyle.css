@@ -4,23 +4,51 @@
     border-radius: 20px;
     overflow: hidden;
     background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0.5px 0.5px 5px 0.4px gray;
+}
+.carousel{
+    
+    padding: 20px;
+    padding-top: 100px;
+    
+}
+.carousel-item .row{
+    padding-right: 30px;
+}
+.carousel-item img{
+    height: 200px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 5px;
+
 }
 .music-item h5{
-    color: white;
+    color: black ;
     text-align: center;
 }
 .playtist{
-    margin-left: 50px;
-    margin-right: 50px;
+    
     padding-bottom: 100px;
 }
+.carousel-indicators{
+    display: none !important;
+}
+.carousel-control-next, .carousel-control-prev{
+    top: 25% !important;
+}
 .playtist-item{
-    height: 215px;
-    overflow: hidden;
+    height: 225px;
+    /* overflow: hidden; */
+    
+    border-radius: 10px;
+    
+    margin-bottom: 100px;
 }
 .playtist-item-img{
     border-radius: 10px;
     overflow: hidden;
+    box-shadow: 0px 0px 10px 4px gray;
+    
 }
 .playtist-item-img img{
     transition: all linear 0.1s;
@@ -30,40 +58,99 @@
 
 }
 .playtist-title-text{
-    color: white;
+    color: black;
+    height: 50px;
+    overflow: hidden;
 }
 .card{
     position: relative;
-    margin-left: 50px;
-    margin-right: 50px;
-    border-radius: 20px im !important;
+
     
 }
 .view-ms{
     position: absolute;
     right: 20px;
-    top: 15px;
-    
+   
+    margin: 0;
+    line-height: 25px;
     
 }
 .suggestions{
-    color: white;
-    margin-top: 50px;
+    font-size: 25px;
+    width: 100%;
+    padding-left: 10px;
+    color: black ;
 }
-.list-music{
+.suggestions svg{
+    color: gray;
+    text-align: right;
+    position: absolute;
+    right: 50px;
+}
+.list-music, .top-music, .playtist{
+    background-color: white;
+    border-radius: 5px;
 
+    margin-top: 50px;
+    padding: 20px;
     
-    background-color: #170F23;
-    border-radius: 20px;
 }
-/* .music-item h4{
+#tag{
+    position: absolute;
+    bottom: -30px;
+}
+.check{
+    display: none;
+}
+
+.check:checked ~ .div-top{
+    height: 1000px;
+}
+.div-top{
+    height: 410px;
+    overflow: hidden;
+    transition: linear 1s;
+}
+.img-singer img{
+    width: 100%;
+    height: 100%;
+}
+.img-singer{
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 50pc;
+    display: inline-block;
+}
+
+.music-item h4{
     position: absolute;
     z-index: 1000;
     top: 50px;
     color: white;
     display: none;
     
-} */
+}
+.list .col p{
+    padding-bottom: 20px;
+    position: relative;
+    margin: 0;
+    margin-left: 20px;
+    
+}
+.list .col p span{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+   
+}
+.list .col{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
 body{
     margin-bottom: 500px;
 }
@@ -86,5 +173,52 @@ img{
     display: block;
 }
 .container{
-    background-color: #231B2E;
+    background-color: white;
+}
+
+.carousel-indicators li{
+    height: 20px !important;
+}
+.topms-bar{
+    padding: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    margin: 0;
+    transition: linear 0.2s;
+
+
+    
+}
+
+
+.topms-bar:hover .control svg{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: #FF2654;
+    margin-right: 20px;
+    
+}
+.topms-bar:hover{
+    color: #FF2654;
+    font-weight: bold;
+    padding-left: 50px;
+}
+
+.control svg{
+    color: black;
+
+}
+.control svg{
+    height: 0px;
+    width: 0px;
+    transition: linear 0.2s;
+    border-radius: 50pc;
+    padding-left: 3px;
+    transform: translateY( -50%);
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    
+    
 }
