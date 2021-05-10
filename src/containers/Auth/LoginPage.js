@@ -25,7 +25,11 @@ class LoginPage extends React.Component {
      this.setState({ password: value})
     }
   }
-  signInWithEmailAndPasswordHandler = (event,email, password) => {
+
+
+  signInWithEmailAndPasswordHandler(event,email,password)  {
+
+
     event.preventDefault();
     auth.signInWithEmailAndPassword(email, password).catch(error => {
     this.setState({error:"Error signing in with password and email!"});
@@ -65,7 +69,7 @@ class LoginPage extends React.Component {
                                 
                             </div>
 
-                            <button id="btnLogin" className="form-control" onClick = {(event) => {signInWithEmailAndPasswordHandler(event, this.state.email, this.state.password)}}>
+                            <button id="btnLogin" className="form-control" onClick = {(event) => {this.signInWithEmailAndPasswordHandler(event, this.state.email, this.state.password)}}>
                                     LOGIN
                             </button>
 
