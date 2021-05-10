@@ -1,20 +1,11 @@
 import AboutPage from "../containers/AboutPage";
 import ContactPage from "../containers/ContactPage";
-import HomePage from "../containers/HomePage";
-
+import Information from '../components/Information';
+import Home from "../components/Home";
 const routes = [
     {
         path: "/",
-        exact: true,
-        component:HomePage
-    },
-    {
-        path: "/about",
-        component: AboutPage
-    },
-    {
-        path: "/contact",
-        component: ContactPage
+        component:Home
     }
 ];
 export default routes;

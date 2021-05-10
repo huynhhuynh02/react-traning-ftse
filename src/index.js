@@ -3,10 +3,19 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Home from './components/Home';
+import Information from './components/Information';
+import Technicalspecifications from './components/Technicalspecifications';
 
 ReactDOM.render(
   <React.StrictMode>
     <App />
+    {/* <Home>
+    </Home> */}
+    {/* <Information>
+    </Information> */}
+    {/* <Technicalspecifications>
+    </Technicalspecifications> */}
   </React.StrictMode>,
   document.getElementById('root')
 );
