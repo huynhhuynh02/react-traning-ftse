@@ -1,6 +1,6 @@
 // Create a new JavaScript Date object based on the timestamp
 // multiplied by 1000 so that the argument is in milliseconds, not seconds.
-export default function convertTimestamp (unix_timestamp) {
+export default function convertTimestamp (unix_timestamp_in_seconds) {
     var monthTextList = [
         'Tháng 1',
         'Tháng 2',
@@ -25,16 +25,16 @@ export default function convertTimestamp (unix_timestamp) {
         "Thứ bảy"
     ]
     // Convert timeStamp in to miliseconds
-    let date = new Date(unix_timestamp * 1000);
+    let date = new Date(unix_timestamp_in_seconds * 1000);
     let now = new Date();
     // Caculate the duration from timeStamp until now
     let getDurationToNow = () => {
-        let duration = new Date(now - date);
+        let duration = new Date(now.getTime() - date.getTime());
         return {
-            daysAgo: duration.getDate(),
-            hoursAgo: duration.getHours(),
-            minutesAgo: duration.getMinutes(),
-            secondsAgo: duration.getSeconds()
+            daysAgo: duration.getUTCDate() - 1,
+            hoursAgo: duration.getUTCHours(),
+            minutesAgo: duration.getUTCMinutes(),
+            secondsAgo: duration.getUTCSeconds()
         }
     }
     // Get month, year, and the date

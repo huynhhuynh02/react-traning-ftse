@@ -50,10 +50,21 @@ export default function LoginForm() {
                 setLoading(false);
             });
     };
+    // Login loading screen
     let checkLocalUserId = setInterval(() => {
         if (localStorage.getItem("id") && localStorage.getItem("uid")) {
             setLocalUserId(true);
-            clearTimeout(checkLocalUserId);
+            clearInterval(checkLocalUserId);
+        }
+    }, 500)
+    // Check if isLoggedIn in localStorage to redirect to Homepage
+    let checkLoggedIn = setInterval(() => {
+        if (localStorage.getItem("isLoggedIn") && !isLoggedIn) {
+            setLoggedIn(true);
+            clearInterval(checkLoggedIn);
+        } else if (localStorage.getItem("isLoggedIn") === null && isLoggedIn) {
+            setLoggedIn(false);
+            clearInterval(checkLoggedIn);
         }
     }, 500)
     return (

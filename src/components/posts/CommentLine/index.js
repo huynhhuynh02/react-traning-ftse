@@ -6,6 +6,7 @@ import convertTimestamp from "./../../../resources/functions/convertTimestamp";
 
 import CommentReply from "./../CommentReply";
 import "./../../../styles/posts/CommentLine.css";
+import avatarDemo from "./../../../resources/images/avatar.jpg";
 export default class CommentLine extends React.Component {
     constructor(props) {
         super(props);
@@ -28,36 +29,47 @@ export default class CommentLine extends React.Component {
         let storage = firebase.storage();
         database.collection("users").doc(this.props.comment.userId).get()
             .then((docRef) => {
-                storage.ref("avatars/" + docRef.data().avatar).getDownloadURL()
-                    .then((avatarUrl) => {
-                        let createdAtDoc = convertTimestamp(this.props.comment.createdAt.seconds);
-                        let createdAtRef = "";
-                        if (createdAtDoc.getDurationToNow().daysAgo < 7) {
-                            if (createdAtDoc.getDurationToNow().daysAgo > 0) {
-                                createdAtRef = createdAtDoc.getDurationToNow().daysAgo + " ngày trước"
-                            } else {
-                                if (createdAtDoc.getDurationToNow().hoursAgo > 0) {
-                                    createdAtRef = createdAtDoc.getDurationToNow().hoursAgo + " giờ trước"
-                                } else {
-                                    if (createdAtDoc.getDurationToNow().minutesAgo > 0) {
-                                        createdAtRef = createdAtDoc.getDurationToNow().minutesAgo + " phút trước"
-                                    } else {
-                                        createdAtRef = createdAtDoc.getDurationToNow().secondsAgo + " giây trước"
-                                    }
-                                }
-                            }
+                let createdAtDoc = convertTimestamp(this.props.comment.createdAt.seconds);
+                let createdAtRef = "";
+                if (createdAtDoc.getDurationToNow().daysAgo < 7) {
+                    if (createdAtDoc.getDurationToNow().daysAgo > 0) {
+                        createdAtRef = createdAtDoc.getDurationToNow().daysAgo + " ngày trước"
+                    } else {
+                        if (createdAtDoc.getDurationToNow().hoursAgo > 0) {
+                            createdAtRef = createdAtDoc.getDurationToNow().hoursAgo + " giờ trước"
                         } else {
-                            createdAtRef = createdAtDoc.formattedDate + " " + createdAtDoc.formattedTime
+                            if (createdAtDoc.getDurationToNow().minutesAgo > 0) {
+                                createdAtRef = createdAtDoc.getDurationToNow().minutesAgo + " phút trước"
+                            } else {
+                                createdAtRef = createdAtDoc.getDurationToNow().secondsAgo + " giây trước"
+                            }
                         }
-                        this.setState({
-                            avatar: avatarUrl,
-                            userCommentDisplayName: docRef.data().displayName,
-                            commentedDate: createdAtRef,
-                            commentContent: this.props.comment.commentContent,
-                            likeData: this.props.comment.liked,
-                            replyData: this.props.comment.replied
+                    }
+                } else {
+                    createdAtRef = createdAtDoc.formattedDate + " " + createdAtDoc.formattedTime
+                }
+                if (docRef.data().avatar) {
+                    storage.ref("avatars/" + docRef.data().avatar).getDownloadURL()
+                        .then((avatarUrl) => {
+                            this.setState({
+                                avatar: avatarUrl,
+                                userCommentDisplayName: docRef.data().displayName,
+                                commentedDate: createdAtRef,
+                                commentContent: this.props.comment.commentContent,
+                                likeData: this.props.comment.liked,
+                                replyData: this.props.comment.replied
+                            })
                         })
+                } else {
+                    this.setState({
+                        avatar: avatarDemo,
+                        userCommentDisplayName: docRef.data().displayName,
+                        commentedDate: createdAtRef,
+                        commentContent: this.props.comment.commentContent,
+                        likeData: this.props.comment.liked,
+                        replyData: this.props.comment.replied
                     })
+                }
             })
     }
     handleShowReplyClick() {

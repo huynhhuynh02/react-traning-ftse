@@ -2,6 +2,10 @@
     box-shadow: none !important;
 }
 
+.post-detail .info-field, .post-detail .thumbnail-field {
+    height: 600px;
+}
+
 .post-detail .avatar-post {
     max-width: 80px !important;
 }

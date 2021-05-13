@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { Redirect } from "react-router-dom";
+import { Redirect, useLocation } from "react-router-dom";
 import { firebase } from "./../App";
 
 import LoaderSpinner from "./../components/common/LoaderSpinner";
 import PostDetail from "./../components/posts/PostDetail";
 
 export default function PostPage(props) {
-    useEffect(() => { if (!props.navBarState) props.setNavBar(true) });
+    useEffect(() => { 
+        if (props.navBarState) props.setNavBar(false); 
+        if (props.userSideBarState) props.setUserSideBar(false);
+    });
     const [auth, setAuth] = useState(false);
+    const { pathname } = useLocation();
+    const postId = pathname.slice(6);
     const token = localStorage.getItem("token");
     const isLoggedIn = localStorage.getItem("isLoggedIn");
     if (!auth) {
@@ -26,6 +31,6 @@ export default function PostPage(props) {
         } else setAuth(true);
     }
     return (
-        auth ? <PostDetail postdata={this.state} close={this.handlePostDetailClick} /> : <LoaderSpinner />
+        auth ? <PostDetail postdata={postId} /> : <LoaderSpinner />
     );
 }

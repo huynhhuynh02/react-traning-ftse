@@ -25,40 +25,42 @@ class UserSideBar extends React.Component {
     componentDidMount() {
         // Get the uid from localStorage
         const userId = localStorage.getItem("id");
-        // Get Firebase firestore data
-        const database = firebase.firestore();
-        database.collection("users").doc(userId).get()
-            .then((doc) => {
-                // doc.data() is never undefined for query doc snapshots
-                console.log("Get user data successfully for sideBar");
-                // Get Firebase storage data
-                const storage = firebase.storage().ref();
-                if (doc.data().avatar !== undefined) {
-                    const avatarPath = "avatars/" + doc.data().avatar;
-                    storage.child(avatarPath)
-                        .getDownloadURL()
-                        .then((url) => {
-                            this.setState({
-                                avatar: url,
-                                displayName: doc.data().displayName
+        if (userId !== null) {
+            // Get Firebase firestore data
+            const database = firebase.firestore();
+            database.collection("users").doc(userId).get()
+                .then((doc) => {
+                    // doc.data() is never undefined for query doc snapshots
+                    console.log("Get user data successfully for sideBar");
+                    // Get Firebase storage data
+                    const storage = firebase.storage().ref();
+                    if (doc.data().avatar !== undefined) {
+                        const avatarPath = "avatars/" + doc.data().avatar;
+                        storage.child(avatarPath)
+                            .getDownloadURL()
+                            .then((url) => {
+                                this.setState({
+                                    avatar: url,
+                                    displayName: doc.data().displayName
+                                })
                             })
+                            .catch((error) => {
+                                console.log("Error while getting avatar: ", error);
+                                this.setState({
+                                    avatar: avatarDemo,
+                                    displayName: doc.data().displayName
+                                })
+                            });
+                    } else {
+                        this.setState({
+                            avatar: avatarDemo,
+                            displayName: doc.data().displayName
                         })
-                        .catch((error) => {
-                            console.log("Error while getting avatar: ", error);
-                            this.setState({
-                                avatar: avatarDemo,
-                                displayName: doc.data().displayName
-                            })
-                        });
-                } else {
-                    this.setState({
-                        avatar: avatarDemo,
-                        displayName: doc.data().displayName
-                    })
-                }
-            }).catch((error) => {
-                console.log("Error getting documents: ", error);
-            });
+                    }
+                }).catch((error) => {
+                    console.log("Error getting documents: ", error);
+                });
+        }
     }
     /* Set the width of the side navigation to 250px */
     openNav() {
@@ -118,7 +120,7 @@ class UserSideBar extends React.Component {
                                 Cài đặt ứng dụng
                             </Button>
                         </Link>
-                        <Link className="signout-button px-3" to="/login">
+                        <Link className="signout-button px-3" to={{ pathname: "/login", state: { logout: true } }}>
                             <Button
                                 variant="light"
                                 className="text-left py-3 mt-2 w-100"

@@ -1,13 +1,14 @@
-import SignupPage from "../containers/SignupPage";
-import LoginPage from "../containers/LoginPage";
-import MessagePage from "../containers/MessagePage";
-import FriendPage from "../containers/FriendPage";
-import HomePage from "../containers/HomePage";
-import ProfilePage from "../containers/ProfilePage";
-import UserPage from "../containers/UserPage";
+import SignupPage from "./../containers/SignupPage";
+import LoginPage from "./../containers/LoginPage";
+import MessagePage from "./../containers/MessagePage";
+import FriendPage from "./../containers/FriendPage";
+import HomePage from "./../containers/HomePage";
+import ProfilePage from "./../containers/ProfilePage";
+import UserPage from "./../containers/UserPage";
+import PostPage from "./../containers/PostPage";
 
 import PostList from "./../components/posts/PostList";
-import LibraryList from "../components/users/LibraryList";
+import LibraryList from "./../components/users/LibraryList";
 import BuddyList from "./../components/users/BuddyList";
 import FriendList from "./../components/friends/FriendList";
 import InviteList from "./../components/friends/InviteList";
@@ -89,6 +90,10 @@ const routes = [
                 exact: true
             }
         ]
+    },
+    {
+        path: "/post",
+        component: PostPage
     },
     {
         path: "/login",

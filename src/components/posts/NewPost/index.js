@@ -13,6 +13,7 @@ export default class NewPost extends React.Component {
         super(props);
         this.state = {
             isOpened: false,
+            openEditThumbnails: false,
             postContent: "",
             filesUpload: [],
             fileTransferProgress: 0,
@@ -22,7 +23,7 @@ export default class NewPost extends React.Component {
         this.handlePostContentInput = this.handlePostContentInput.bind(this);
         this.handleChangeThumbnails = this.handleChangeThumbnails.bind(this);
         this.handleUploadFiles = this.handleUploadFiles.bind(this);
-        this.clearAllUploadFiles = this.clearAllUploadFiles.bind(this);
+        this.handleEditThumbnails = this.handleEditThumbnails.bind(this);
     }
     openBox() {
         this.setState({ isOpened: !this.state.isOpened })
@@ -39,6 +40,11 @@ export default class NewPost extends React.Component {
         }
         this.setState({
             filesUpload: itemList
+        })
+    }
+    handleEditThumbnails() {
+        this.setState({
+            openEditThumbnails: !this.state.openEditThumbnails
         })
     }
     handleUploadFiles() {
@@ -137,11 +143,6 @@ export default class NewPost extends React.Component {
             console.log("Errors adding data: ", err);
         })
     }
-    clearAllUploadFiles() {
-        this.setState({
-            filesUpload: []
-        })
-    }
     render() {
         if (this.state.uploadState === "uploaded") {
             this.props.updatePost();
@@ -208,7 +209,7 @@ export default class NewPost extends React.Component {
                         <Button
                             className={"clear-files-button" + (this.state.filesUpload.length !== 0 ? "" : " d-none")}
                             variant="secondary"
-                            onClick={this.clearAllUploadFiles}>
+                            onClick={this.handleEditThumbnails}>
                             Chỉnh sửa
                         </Button>
                     </Row>

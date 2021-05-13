@@ -213,9 +213,9 @@ export default class ProfileWall extends React.Component {
                                     <Col xs={2}>
                                         <FontAwesomeIcon icon={faCity} size="lg" className="mr-3" />
                                     </Col>
-                                    {this.state.city === "" ? "Không có thông tin" : <Col xs={10}>
-                                        Đang sống ở <strong className="value text-dark">{this.state.city}</strong>
-                                    </Col>}
+                                    <Col xs={10}>
+                                        {this.state.city === "" ? "Không có thông tin" : <>"Đang sống ở"<strong className="value text-dark">{this.state.city}</strong></>}
+                                    </Col>
                                 </Row>
                                 <Row className="nationality py-1">
                                     <Col xs={2}>

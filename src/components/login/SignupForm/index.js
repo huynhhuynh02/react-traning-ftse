@@ -88,16 +88,20 @@ export default function SignUpForm() {
   const tooltipLastName = useRef(null);
   const tooltipGender = useRef(null);
   const tooltipEmail = useRef(null);
+  const tooltipDisplayName = useRef(null);
   const tooltipPassword = useRef(null);
   const tooltipPasswordComfirm = useRef(null);
   const tooltipFirstName = useRef(null);
   const tooltipCountry = useRef(null);
+  // Login loading screen
   let checkLocalUserId = setInterval(() => {
     if (localStorage.getItem("id") && localStorage.getItem("uid")) {
       setLocalUserId(true);
       clearTimeout(checkLocalUserId);
     }
-  }, 500)
+  }, 500);
+  // Check if isLoggedIn in localStorage to redirect to Homepage
+  if (localStorage.getItem("isLoggedIn") && !isSignedUpSuccessfully) login(true);
   return (
     isSignedUpSuccessfully ?
       isLocalUserIdValid ?
@@ -118,7 +122,7 @@ export default function SignUpForm() {
               <Form.Row>
                 <Form.Group as={Col}>
                   <Form.Label className="text-secondary" ref={tooltipFirstName}>Họ:</Form.Label>
-                  <Form.Control type="text" placeholder="Họ" {...register("firstName", { required: true, maxLength: 80, pattern: /[^0-9]/m })} />
+                  <Form.Control type="text" placeholder="Họ" {...register("firstName", { required: true, maxLength: 80, pattern: /^[^\s\x21-\x26\x28-\x2c\x2e-\x40\x5b-\x60\x7b-\x7e]+(\s?[^\s\x21-\x40\x5b-\x60\x7b-\x7e]+)*$/g })} />
                   {errors.firstName && (
                     <Overlay target={tooltipFirstName.current} show={true} placement="right">
                       {(props) => (
@@ -131,7 +135,7 @@ export default function SignUpForm() {
                 </Form.Group>
                 <Form.Group as={Col}>
                   <Form.Label className="text-secondary" ref={tooltipLastName}>Tên:</Form.Label>
-                  <Form.Control type="text" placeholder="Tên" {...register("lastName", { required: true, maxLength: 100, pattern: /[^0-9]/g })} />
+                  <Form.Control type="text" placeholder="Tên" {...register("lastName", { required: true, maxLength: 100, pattern: /^[^\s\x21-\x26\x28-\x2c\x2e-\x40\x5b-\x60\x7b-\x7e]+(\s?[^\s\x21-\x40\x5b-\x60\x7b-\x7e]+)*$/g })} />
                   {errors.lastName && (
                     <Overlay target={tooltipLastName.current} show={true} placement="right">
                       {(props) => (
@@ -174,11 +178,20 @@ export default function SignUpForm() {
                   )}
                 </Form.Group>
                 <Form.Group as={Col}>
-                  <Form.Label className="text-secondary">Tên hiển thị:</Form.Label>
-                  <Form.Control as="select" value={firstName + " " + lastName} {...register("displayName")}>
+                  <Form.Label className="text-secondary" ref={tooltipDisplayName}>Tên hiển thị:</Form.Label>
+                  <Form.Control as="select" value={firstName + " " + lastName} {...register("displayName", { required: true })}>
                     <option value={firstName + " " + lastName}>{firstName + " " + lastName}</option>
                     <option value={lastName + " " + firstName}>{lastName + " " + firstName}</option>
                   </Form.Control>
+                  {errors.displayName && (
+                    <Overlay target={tooltipDisplayName.current} show={true} placement="right">
+                      {(props) => (
+                        <Tooltip id="overlay-displayName" {...props}>
+                          Hãy nhập một tên hiển thị!
+                        </Tooltip>
+                      )}
+                    </Overlay>
+                  )}
                 </Form.Group>
               </Form.Row>
               <Form.Row>

@@ -1,15 +1,16 @@
 import React from 'react';
 import { Container, Image, Jumbotron, Col, Row, Button, Spinner, Dropdown } from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCog, faThumbsUp, faCommentAlt, faShareAlt, faTrashAlt, faEdit, faEyeSlash, faBan } from "@fortawesome/free-solid-svg-icons";
+import { faCog, faThumbsUp, faCommentAlt, faShareAlt, faTrashAlt, faEdit, faEyeSlash, faBan, faPlayCircle } from "@fortawesome/free-solid-svg-icons";
 
 import { firebase } from "./../../../App";
 import convertTimestamp from "./../../../resources/functions/convertTimestamp";
 
 import "./../../../styles/posts/PostItem.css";
 import CommentLine from "./../CommentLine";
-import PostDetail from "./../PostDetail";
 import EditPost from "./../EditPost";
+import avatarDemo from "./../../../resources/images/avatar.jpg";
+import { Redirect } from 'react-router';
 class PostItem extends React.Component {
     constructor(props) {
         super(props)
@@ -48,7 +49,7 @@ class PostItem extends React.Component {
                 isDeletingPost: false,
                 isPostDeleted: false
             },
-            showDetail: false,
+            redirectToPostPage: false,
             isUpdatingState: false
         }
 
@@ -88,48 +89,58 @@ class PostItem extends React.Component {
                     } else {
                         createdAtRef = createdAtDoc.formattedDate + " " + createdAtDoc.formattedTime
                     }
+                    this.setState({
+                        likedInfo: docPosts.data().liked,
+                        createdAt: createdAtRef,
+                        commentedInfo: {
+                            amount: docPosts.data().commented.amount,
+                            userCommented: docPosts.data().commented.userCommented.reverse()
+                        },
+                        sharedInfo: docPosts.data().shared,
+                        postContent: docPosts.data().textContent
+                    })
+                    docPosts.data().liked.userLiked.forEach(id => {
+                        if (id === userId) {
+                            this.setState({
+                                likeState: {
+                                    before: true,
+                                    current: true
+                                },
+                                likedInfo: {
+                                    amount: docPosts.data().liked.amount - 1,
+                                    userLiked: docPosts.data().userLiked
+                                }
+                            })
+                        }
+                    })
+                    docPosts.data().thumbnails.forEach((thumbnail) => {
+                        storage.ref(thumbnail.type + "s/" + thumbnail.data).getDownloadURL()
+                            .then((thumbnailUrl) => {
+                                this.setState({
+                                    postThumbnails: this.state.postThumbnails.concat([{
+                                        url: thumbnailUrl,
+                                        data: thumbnail.data,
+                                        type: thumbnail.type
+                                    }])
+                                })
+                            }).catch((error) => console.log("Error getting thumbnails: ", error));
+                    })
                     database.collection("users").doc(docPosts.data().userId).get()
                         .then((docUsers) => {
-                            storage.ref("avatars/" + docUsers.data().avatar).getDownloadURL()
-                                .then((avatarUrl) => {
-                                    this.setState({
-                                        likedInfo: docPosts.data().liked
-                                    })
-                                    docPosts.data().liked.userLiked.forEach(id => {
-                                        if (id === userId) {
-                                            this.setState({
-                                                likeState: {
-                                                    before: true,
-                                                    current: true
-                                                },
-                                                likedInfo: {
-                                                    amount: docPosts.data().liked.amount - 1,
-                                                    userLiked: docPosts.data().userLiked
-                                                }
-                                            })
-                                        }
-                                    })
-                                    this.setState({
-                                        avatarUserPost: avatarUrl,
-                                        displayNameUserPost: docUsers.data().displayName,
-                                        createdAt: createdAtRef,
-                                        commentedInfo: docPosts.data().commented,
-                                        sharedInfo: docPosts.data().shared,
-                                        postContent: docPosts.data().textContent,
-                                    });
-                                    docPosts.data().thumbnails.forEach((thumbnail) => {
-                                        storage.ref(thumbnail.type + "s/" + thumbnail.data).getDownloadURL()
-                                            .then((thumbnailUrl) => {
-                                                this.setState({
-                                                    postThumbnails: this.state.postThumbnails.concat([{
-                                                        url: thumbnailUrl,
-                                                        data: thumbnail.data,
-                                                        type: thumbnail.type
-                                                    }])
-                                                })
-                                            }).catch((error) => console.log("Error getting thumbnails: ", error));
-                                    })
-                                }).catch(error => console.log("Error getting avatar from storage: ", error))
+                            if (docUsers.data().avatar !== undefined) {
+                                storage.ref("avatars/" + docUsers.data().avatar).getDownloadURL()
+                                    .then((avatarUrl) => {
+                                        this.setState({
+                                            displayNameUserPost: docUsers.data().displayName,
+                                            avatarUserPost: avatarUrl
+                                        });
+                                    }).catch(error => console.log("Error getting avatar from storage: ", error))
+                            } else {
+                                this.setState({
+                                    displayNameUserPost: docUsers.data().displayName,
+                                    avatarUserPost: avatarDemo
+                                });
+                            }
                         }).catch(error => console.log("Error getting from firestore: ", error));
                 } else {
                     // doc.data() will be undefined in this case
@@ -158,7 +169,10 @@ class PostItem extends React.Component {
                                     amount: this.state.likeState.current ? doc.data().liked.amount - 1 : doc.data().liked.amount,
                                     userLiked: doc.data().liked.userLiked
                                 },
-                                commentedInfo: doc.data().commented,
+                                commentedInfo: {
+                                    amount: doc.data().commented.amount,
+                                    userCommented: doc.data().commented.userCommented.reverse()
+                                },
                                 sharedInfo: doc.data().shared,
                                 isUpdatingState: false
                             })
@@ -255,7 +269,7 @@ class PostItem extends React.Component {
     handleCommentClick() {
         this.setState({
             commentState: {
-                showCommentInput: !this.state.showCommentInput,
+                showCommentInput: !this.state.commentState.showCommentInput,
                 showMoreComment: this.state.commentState.showMoreComment
             }
         })
@@ -306,7 +320,7 @@ class PostItem extends React.Component {
     }
     handlePostDetailClick() {
         this.setState({
-            showDetail: !this.state.showDetail
+            redirectToPostPage: true
         })
     }
     handlePostEdit(isEditPostOpened, isUploadChangeFinished) {
@@ -383,180 +397,185 @@ class PostItem extends React.Component {
     }
     render() {
         return (
-            !this.state.deleteState.isPostDeleted ?
-                <>
-                    <Jumbotron className="post-item py-5">
-                        {this.state.deleteState.isDeletingPost ?
-                            <Spinner animation="border" /> :
-                            <Container fluid className="justify-content-between">
-                                <Row className="mx-0">
-                                    <Col xs={2} className="pl-0">
-                                        {
-                                            this.state.avatarUserPost === "" ?
-                                                <Spinner animation="border" variant="secondary" />
-                                                :
-                                                <Image src={this.state.avatarUserPost} thumbnail roundedCircle className="avatar-post" />
-                                        }
-                                    </Col>
-                                    <Col xs={8} className="post-info py-2 d-flex flex-column justify-content-between align-items-left">
-                                        <span className="user-name ml-0 my-auto">{this.state.displayNameUserPost}</span>
-                                        <span className="date-upload ml-0 my-auto">{this.state.createdAt}</span>
-                                    </Col>
-                                    <Col xs={2} className="d-flex justify-content-end py-3 pr-0">
-                                        <Dropdown>
-                                            <Dropdown.Toggle variant="light" id="dropdown-basic" className="post-settings-btn">
-                                                <FontAwesomeIcon icon={faCog} size="lg" />
-                                            </Dropdown.Toggle>
-                                            <Dropdown.Menu>
-                                                {
-                                                    this.state.isOwner ?
-                                                        <Dropdown.Item
-                                                            className="d-flex justify-content-start"
-                                                            onClick={() => this.handlePostEdit(true, false)}>
-                                                            <Col xs={2} className="px-0">
-                                                                <FontAwesomeIcon icon={faEdit} size="sm" className="mr-2" />
-                                                            </Col>
+            !this.state.deleteState.isPostDeleted
+                ?
+                this.state.redirectToPostPage ?
+                    <Redirect to={"/post/" + this.props.postdata} /> :
+                    <>
+                        <Jumbotron className="post-item py-5">
+                            {this.state.deleteState.isDeletingPost ?
+                                <Spinner animation="border" /> :
+                                <Container fluid className="justify-content-between">
+                                    <Row className="mx-0">
+                                        <Col xs={2} className="pl-0">
+                                            {
+                                                this.state.avatarUserPost === "" ?
+                                                    <Spinner animation="border" variant="secondary" />
+                                                    :
+                                                    <Image src={this.state.avatarUserPost} thumbnail roundedCircle className="avatar-post" />
+                                            }
+                                        </Col>
+                                        <Col xs={8} className="post-info py-2 d-flex flex-column justify-content-between align-items-left">
+                                            <span className="user-name ml-0 my-auto">{this.state.displayNameUserPost}</span>
+                                            <span className="date-upload ml-0 my-auto">{this.state.createdAt}</span>
+                                        </Col>
+                                        <Col xs={2} className="d-flex justify-content-end py-3 pr-0">
+                                            <Dropdown>
+                                                <Dropdown.Toggle variant="light" id="dropdown-basic" className="post-settings-btn">
+                                                    <FontAwesomeIcon icon={faCog} size="lg" />
+                                                </Dropdown.Toggle>
+                                                <Dropdown.Menu>
+                                                    {
+                                                        this.state.isOwner ?
+                                                            <Dropdown.Item
+                                                                className="d-flex justify-content-start"
+                                                                onClick={() => this.handlePostEdit(true, false)}>
+                                                                <Col xs={2} className="px-0">
+                                                                    <FontAwesomeIcon icon={faEdit} size="sm" className="mr-2" />
+                                                                </Col>
                                                             Chỉnh sửa bài viết
                                                         </Dropdown.Item>
-                                                        :
-                                                        <Dropdown.Item className="d-flex justify-content-start">
-                                                            <Col xs={2} className="px-0">
-                                                                <FontAwesomeIcon icon={faEyeSlash} size="sm" className="mr-2" />
-                                                            </Col>
+                                                            :
+                                                            <Dropdown.Item className="d-flex justify-content-start">
+                                                                <Col xs={2} className="px-0">
+                                                                    <FontAwesomeIcon icon={faEyeSlash} size="sm" className="mr-2" />
+                                                                </Col>
                                                             Ẩn bài viết
                                                         </Dropdown.Item>
-                                                }
-                                                {
-                                                    this.state.isOwner ?
-                                                        <Dropdown.Item className="d-flex justify-content-start" onClick={this.handlePostDelete}>
-                                                            <Col xs={2} className="px-0">
-                                                                <FontAwesomeIcon icon={faTrashAlt} size="sm" className="mr-2" />
-                                                            </Col>
+                                                    }
+                                                    {
+                                                        this.state.isOwner ?
+                                                            <Dropdown.Item className="d-flex justify-content-start" onClick={this.handlePostDelete}>
+                                                                <Col xs={2} className="px-0">
+                                                                    <FontAwesomeIcon icon={faTrashAlt} size="sm" className="mr-2" />
+                                                                </Col>
                                                             Xoá bỏ bài viết
                                                         </Dropdown.Item>
-                                                        :
-                                                        <Dropdown.Item className="d-flex justify-content-start">
-                                                            <Col xs={2} className="px-0">
-                                                                <FontAwesomeIcon icon={faBan} size="sm" className="mr-2" />
-                                                            </Col>
+                                                            :
+                                                            <Dropdown.Item className="d-flex justify-content-start">
+                                                                <Col xs={2} className="px-0">
+                                                                    <FontAwesomeIcon icon={faBan} size="sm" className="mr-2" />
+                                                                </Col>
                                                             Báo cáo
                                                         </Dropdown.Item>
-                                                }
-                                            </Dropdown.Menu>
-                                        </Dropdown>
-                                    </Col>
-                                </Row>
-                                <Row className="py-3">
-                                    <Col>
-                                        <span className="post-content">{this.state.postContent}</span>
-                                    </Col>
-                                </Row>
-                                <Row className="mx-0">
-                                    <Col className="thumbnail-list d-flex justify-content-center py-2">
-                                        {this.state.postThumbnails.map((thumbnail, i) =>
-                                            <Col xs={6} key={i}>
+                                                    }
+                                                </Dropdown.Menu>
+                                            </Dropdown>
+                                        </Col>
+                                    </Row>
+                                    <Row className="py-3">
+                                        <Col>
+                                            <span className="post-content">{this.state.postContent}</span>
+                                        </Col>
+                                    </Row>
+                                    <Row className="mx-0">
+                                        <Col className="thumbnail-list d-flex justify-content-center py-2">
+                                            {this.state.postThumbnails.map((thumbnail, i) =>
+                                                <Col xs={6} key={i} className="d-flex align-items-center">
+                                                    {
+                                                        thumbnail.type === "video" ?
+                                                            <div className="post-thumbnail" onClick={this.handlePostDetailClick}>
+                                                                <FontAwesomeIcon icon={faPlayCircle} size="lg" className="fake-play-button" />
+                                                                <video className="video-thumbnail rounded" src={thumbnail.url}></video>
+                                                            </div>
+                                                            :
+                                                            <Image src={thumbnail.url} thumbnail rounded className="post-thumbnail" onClick={this.handlePostDetailClick} />
+                                                    }
+                                                </Col>
+                                            )}
+                                        </Col>
+                                    </Row>
+                                    <Row className="align-item-center pt-3 mx-0 mb-1">
+                                        <Col xs={4} className="like-info text-left text-primary">
+                                            <FontAwesomeIcon icon={faThumbsUp} className="mr-1" />
+                                            <span className="amount justify-content-left">
+                                                {this.state.likeState.current ? "Bạn và " + this.state.likedInfo.amount + " người khác" : this.state.likedInfo.amount}
+                                            </span>
+                                        </Col>
+                                        <Col xs={4} className="comment-info text-center text-secondary">
+                                            <FontAwesomeIcon icon={faCommentAlt} className="mr-1" />
+                                            <span className="amount justify-content-center">{this.state.commentedInfo.amount}</span>
+                                        </Col>
+                                        <Col xs={4} className="share-info text-right text-success">
+                                            <FontAwesomeIcon icon={faShareAlt} className="mr-1" />
+                                            <span className="amount justify-content-center">{this.state.sharedInfo.amount}</span>
+                                        </Col>
+                                    </Row>
+                                    <Row className="mx-0">
+                                        <Col className="comment-box bg-white px-0">
+                                            <Row className="buttons mx-0 justify-content-between">
+                                                <Col className="text-info text-center px-0">
+                                                    <Button
+                                                        variant={this.state.likeState.current ? "primary" : "light"}
+                                                        className="like-button w-100 py-2"
+                                                        onClick={this.handleLikeClick}>
+                                                        Thích <FontAwesomeIcon icon={faThumbsUp} className="ml-1" />
+                                                    </Button>
+                                                </Col>
+                                                <Col className="text-info text-center px-0">
+                                                    <Button
+                                                        variant="light"
+                                                        className="comment-button w-100 py-2"
+                                                        onClick={this.handleCommentClick}>
+                                                        Bình luận <FontAwesomeIcon icon={faCommentAlt} className="ml-1" />
+                                                    </Button>
+                                                </Col>
+                                                <Col className="text-info text-center px-0">
+                                                    <Button
+                                                        variant="light"
+                                                        className="share-button w-100 py-2">
+                                                        Chia sẻ <FontAwesomeIcon icon={faShareAlt} className="ml-1" />
+                                                    </Button>
+                                                </Col>
+                                            </Row>
+                                            <Row className="comment-list mx-0 py-3 px-3">
+                                                <Col xs={12} className={(this.state.commentState.showCommentInput ? "" : "d-none") + " py-1"}>
+                                                    <input
+                                                        ref={this.textCommentInput}
+                                                        className="comment-input px-3 py-1"
+                                                        placeholder="Nhập bình luận"
+                                                        onKeyPress={this.handleAddCommentIntoDatabase} />
+                                                </Col>
                                                 {
-                                                    thumbnail.type === "video" ?
-                                                        <video className="post-thumbnail" src={thumbnail.url} onClick={this.handlePostDetailClick}></video>
-                                                        :
-                                                        <Image src={thumbnail.url} thumbnail rounded className="post-thumbnail" onClick={this.handlePostDetailClick} />
-                                                }
-                                            </Col>
-                                        )}
-                                    </Col>
-                                </Row>
-                                <Row className="align-item-center pt-3 mx-0 mb-1">
-                                    <Col xs={4} className="like-info text-left text-primary">
-                                        <FontAwesomeIcon icon={faThumbsUp} className="mr-1" />
-                                        <span className="amount justify-content-left">
-                                            {this.state.likeState.current ? "Bạn và " + this.state.likedInfo.amount + " người khác" : this.state.likedInfo.amount}
-                                        </span>
-                                    </Col>
-                                    <Col xs={4} className="comment-info text-center text-secondary">
-                                        <FontAwesomeIcon icon={faCommentAlt} className="mr-1" />
-                                        <span className="amount justify-content-center">{this.state.commentedInfo.amount}</span>
-                                    </Col>
-                                    <Col xs={4} className="share-info text-right text-success">
-                                        <FontAwesomeIcon icon={faShareAlt} className="mr-1" />
-                                        <span className="amount justify-content-center">{this.state.sharedInfo.amount}</span>
-                                    </Col>
-                                </Row>
-                                <Row className="mx-0">
-                                    <Col className="comment-box bg-white px-0">
-                                        <Row className="buttons mx-0 justify-content-between">
-                                            <Col className="text-info text-center px-0">
-                                                <Button
-                                                    variant={this.state.likeState.current ? "primary" : "light"}
-                                                    className="like-button w-100 py-2"
-                                                    onClick={this.handleLikeClick}>
-                                                    Thích <FontAwesomeIcon icon={faThumbsUp} className="ml-1" />
-                                                </Button>
-                                            </Col>
-                                            <Col className="text-info text-center px-0">
-                                                <Button
-                                                    variant="light"
-                                                    className="comment-button w-100 py-2"
-                                                    onClick={this.handleCommentClick}>
-                                                    Bình luận <FontAwesomeIcon icon={faCommentAlt} className="ml-1" />
-                                                </Button>
-                                            </Col>
-                                            <Col className="text-info text-center px-0">
-                                                <Button
-                                                    variant="light"
-                                                    className="share-button w-100 py-2">
-                                                    Chia sẻ <FontAwesomeIcon icon={faShareAlt} className="ml-1" />
-                                                </Button>
-                                            </Col>
-                                        </Row>
-                                        <Row className="comment-list mx-0 py-3 px-3">
-                                            {
-                                                this.state.commentedInfo.userCommented.reverse().map((comment, i) => {
-                                                    return (
-                                                        i === (this.state.commentedInfo.userCommented.length - 1) ?
-                                                            <CommentLine comment={comment} display="block" key={i} /> :
+                                                    this.state.commentedInfo.userCommented.map((comment, i) => {
+                                                        if (i === 0) return <CommentLine comment={comment} display="block" key={i} />
+                                                        else return (
                                                             this.state.commentState.showMoreComment ?
                                                                 <CommentLine comment={comment} display="block" key={i} /> :
                                                                 <CommentLine comment={comment} display="none" key={i} />
-                                                    )
-                                                })
+                                                        )
+                                                    })
+                                                }
+                                            </Row>
+                                            {
+                                                this.state.commentedInfo.amount > 1 ?
+                                                    <Row className="more-comment mx-0">
+                                                        <Col className="d-flex justify-content-end px-0">
+                                                            {
+                                                                this.state.commentState.showMoreComment ?
+                                                                    <></>
+                                                                    :
+                                                                    <Button variant="link" className="text-button text-danger" onClick={this.handleMoreCommentClick}>Xem thêm bình luận ...</Button>
+                                                            }
+                                                        </Col>
+                                                    </Row>
+                                                    :
+                                                    <></>
                                             }
-                                            <Col xs={12} className={(this.state.commentState.showCommentInput ? "" : "d-none") + " py-1"}>
-                                                <input
-                                                    ref={this.textCommentInput}
-                                                    className="comment-input px-3 py-1"
-                                                    placeholder="Nhập bình luận"
-                                                    onKeyPress={this.handleAddCommentIntoDatabase} />
-                                            </Col>
-                                        </Row>
-                                        {
-                                            this.state.commentedInfo.amount > 1 ?
-                                                <Row className="more-comment mx-0">
-                                                    <Col className="d-flex justify-content-end px-0">
-                                                        {
-                                                            this.state.commentState.showMoreComment ?
-                                                                <></>
-                                                                :
-                                                                <Button variant="link" className="text-button text-danger" onClick={this.handleMoreCommentClick}>Xem thêm bình luận ...</Button>
-                                                        }
-                                                    </Col>
-                                                </Row>
-                                                :
-                                                <></>
-                                        }
-                                    </Col>
-                                </Row>
-                            </Container>}
-                    </Jumbotron>
-                    {this.state.showDetail ? <PostDetail postdata={this.state} close={this.handlePostDetailClick} /> : <></>}
-                    {this.state.editState.isEditing ?
-                        <EditPost
-                            postdata={{
-                                postContent: this.state.postContent,
-                                postThumbnails: this.state.postThumbnails
-                            }}
-                            openAndClose={(isEditBoxOpened, changeUploaded) => this.handlePostEdit(isEditBoxOpened, changeUploaded)} /> :
-                        <></>}
-                </> :
+                                        </Col>
+                                    </Row>
+                                </Container>}
+                        </Jumbotron>
+                        {this.state.editState.isEditing ?
+                            <EditPost
+                                postdata={{
+                                    postContent: this.state.postContent,
+                                    postThumbnails: this.state.postThumbnails
+                                }}
+                                openAndClose={(isEditBoxOpened, changeUploaded) => this.handlePostEdit(isEditBoxOpened, changeUploaded)} /> :
+                            <></>}
+                    </>
+                :
                 <></>
         );
     }
