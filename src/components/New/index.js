@@ -28,6 +28,7 @@ class New extends React.Component {
         this.state = {
             hide: false
         }
+        this.handleLinkClick= this.handleLinkClick.bind(this);
     }
     handleLinkClick() {
         this.props.hide(true)
@@ -41,22 +42,22 @@ class New extends React.Component {
                 <Container className={this.state.hide ? "d-none" : ""}>
                     <Row>
                         <Col xs={3}>
-                            <Link className="newlink" to="/information" onClick={this.handleLinkClick.bind(this)}>
+                            <Link className="newlink" to="/information" onClick={this.handleLinkClick}>
                                 <Item img={mercedesE200} content="MERCEDES C180 AMG" price="1.499.000.000 vnđ" />
                             </Link>
                         </Col>
                         <Col xs={3}>
-                            <Link className="newlink" to="/information">
+                            <Link className="newlink" to="/information" onClick={this.handleLinkClick}>
                                 <Item img={Mercedese250} content="MERCEDES C200 EXCLUSIVE" price="1.699.000.000 vnđ" />
                             </Link>
                         </Col>
                         <Col xs={3}>
-                            <Link className="newlink" to="/information">
+                            <Link className="newlink" to="/information" onClick={this.handleLinkClick}>
                                 <Item img={DSCF2698} content="MERCEDES C300 AMG" price="1.999.000.000 vnđ" />
                             </Link>
                         </Col>
                         <Col xs={3}>
-                            <Link className="newlink" to="/information">
+                            <Link className="newlink" to="/information" onClick={this.handleLinkClick}>
                                 <Item img={FullSizeRender} content="MERCEDES GLC200" price="1.799.000.000 vnđ" />
                             </Link>
                         </Col>
@@ -64,22 +65,22 @@ class New extends React.Component {
                     {/* hang2 */}
                     <Row>
                         <Col xs={3}>
-                            <Link className="newlink" to="/infomartion">
+                            <Link className="newlink" to="/infomartion" onClick={this.handleLinkClick}>
                                 <Item img={mercsc98} content="MERCEDES C180 AMG" price="1.499.000.000 vnđ" />
                             </Link>
                         </Col>
                         <Col xs={3}>
-                            <Link className="newlink" to="/information">
+                            <Link className="newlink" to="/information" onClick={this.handleLinkClick}>
                                 <Item img={mercedesphumyhung} content="MERCEDES C200 EXCLUSIVE" price="1.699.000.000 vnđ" />
                             </Link>
                         </Col>
                         <Col xs={3}>
-                            <Link className="newlink" to="/information">
+                            <Link className="newlink" to="/information" onClick={this.handleLinkClick}>
                                 <Item img={MercedesE300} content="MERCEDES C300 AMG" price="1.699.000.000 vnđ" />
                             </Link>
                         </Col>
                         <Col xs={3}>
-                            <Link className="newlink" to="/information">
+                            <Link className="newlink" to="/information" onClick={this.handleLinkClick}>
                                 <Item img={mercedesF200} content="MERCEDES GLC200" price="1.799.000.000 vnđ" />
                             </Link>
                         </Col>
@@ -87,22 +88,22 @@ class New extends React.Component {
                     {/* hang3 */}
                     <Row>
                         <Col xs={3}>
-                            <Link className="newlink" to="/infomartion">
+                            <Link className="newlink" to="/infomartion" onClick={this.handleLinkClick.bind(this)}>
                                 <Item img={mercedesF200} content="MERCEDES C180 AMG" price="1.499.000.000 vnđ" />
                             </Link>
                         </Col>
                         <Col xs={3}>
-                            <Link className="newlink" to="/information">
+                            <Link className="newlink" to="/information" onClick={this.handleLinkClick.bind(this)}>
                                 <Item img={mercedesF200} content="MERCEDES C180 AMG" price="1.499.000.000 vnđ" />
                             </Link>
                         </Col>
                         <Col xs={3}>
-                            <Link className="newlink" to="/information">
+                            <Link className="newlink" to="/information" onClick={this.handleLinkClick.bind(this)}>
                                 <Item img={mercedess450luxury} content="MERCEDES C200 EXCLUSIVE" price="1.699.000.000 vnđ" />
                             </Link>
                         </Col>
                         <Col xs={3}>
-                            <Link className="newlink" to="/information">
+                            <Link className="newlink" to="/information" onClick={this.handleLinkClick.bind(this)}>
                                 <Item img={MERCEDESCLA200} content="MERCEDES C300 AMG" price="1.999.000.000 vnđ" />
                             </Link>
                         </Col>

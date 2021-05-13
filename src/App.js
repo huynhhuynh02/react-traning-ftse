@@ -31,13 +31,13 @@ function App() {
           <Container>
             <Nav className="navbarcontent">
               <Navbar.Brand to="#home">8:00 AM - 19:00 PM </Navbar.Brand>
-              <NavLink to="/">Trang Chủ</NavLink>
+              <NavLink to="/home">Trang Chủ</NavLink>
               <NavLink to="#features"> SHOWROOM</NavLink>
               <NavLink to="#pricing"> XE ĐÃ QUA SỬ DỤNG</NavLink>
               <NavLink to="#pricing"> DỊCH VỤ & HẬU MÃI</NavLink>
               <NavLink to="#pricing"> BẢNG GIÁ MỚI NHẤT </NavLink>
               <NavLink to="#pricing"> ĐẠI LÝ CHÍNH HÃNG BENZ</NavLink>
-              <NavLink to="#pricing"> LIÊN HỆ</NavLink>
+              <NavLink to="/pay"> Giỏ Hàng</NavLink>
             </Nav>
           </Container>
         </Navbar>

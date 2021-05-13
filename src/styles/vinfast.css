@@ -73,3 +73,60 @@
 .navbarcontentblack{
     width: 85%;
 }
+/* css2 */
+/* vi sao bop width 200px tu dong margin  */
+#sanphammuahang{
+    border-bottom:  2px solid rgb(19, 17, 17);
+    width: 95%;
+}
+#logosanpham{
+    width: 100px;
+    height: 100px;
+}
+.bodergiohang{
+    border-bottom: 1px solid black;
+}
+#col4boderleft{
+    border-left: 1px solid black;
+}
+.sub{
+    height: 50%;
+}
+.imgsanpham{
+    width: 150px;
+}
+.tienhanhthanhtoan{
+    margin-top: 70px;
+    margin-left: 70px;
+}
+.btngroupsub{
+    height: 50%;
+    margin-top: 150px;
+    padding-left: 50px;
+}
+.buttonborder{
+    height: 40px;
+}
+.video{
+    width: 100%;
+}
+#collasible-nav-dropdown{
+    color: white;
+}
+.contenttintuclienhen{
+    margin-top: 7.5px;
+}
+.itemleftdown{
+    display: inline-block !important;
+}
+.item{
+    overflow: hidden !important;
+    width: 70%;
+    margin: auto;
+}
+.item img{
+    transition: linear 0.2s;
+}
+.item:hover img{
+    transform: scale(1.5);
+}

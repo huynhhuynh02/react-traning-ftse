@@ -22,7 +22,7 @@ class Information extends React.Component {
         super(props);
         this.state = {
             tab: "",
-        }
+        }  
     }
     changeTab(value) {
         this.setState({ tab: value })

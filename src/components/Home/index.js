@@ -4,6 +4,7 @@ import logobanner from '../../images/logobanner.png';
 import { FaSearch, FaRegClock } from "react-icons/fa";
 import New from '../New/index.js';
 import Used from '../Used/index.js';
+// import axios from 'axionpm i axioss';
 
 // retouer
 import routes from '../../router/AppRouter';
@@ -19,25 +20,27 @@ class Home extends React.Component {
         super(props);
         this.state = {
             hide: false
+            // users: []
         }
     }
     render() {
+        console.log("textrender");
         return (
             <>
                 <Container>
-                    <Nav style={{display: (this.state.hide ? "none" : "flex")}} defaultActiveKey="/home" as="ul">
-                        <Link to="/new"><Button variant="secondary">New</Button>{' '}</Link>
-                        <Link to="/used"><Button variant="secondary">Used</Button>{' '}</Link>
+                    <Nav style={{display: (this.state.hide ? "none" : "flex")}} as="ul">
+                        <Link to="/home/new"><Button variant="secondary">New</Button>{' '}</Link>
+                        <Link to="/home/used"><Button variant="secondary">Used</Button>{' '}</Link>
                     </Nav>
                     <Switch>
-                        <Route path="/new">
+                        <Route path="/home/new">
                             <New hide={(v) => {
                                 this.setState({
                                     hide: v
                                 })
                             }} />
                         </Route>
-                        <Route path="/used">
+                        <Route path="/home/used">
                             <Used hide={(v) => {
                                 this.setState({
                                     hide: v

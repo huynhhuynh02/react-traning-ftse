@@ -21,23 +21,45 @@ import {
     Link
 } from "react-router-dom";
 
-class New extends React.Component {
+class Used extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            hide: false
+        }
+        this.handleLinkClick= this.handleLinkClick.bind(this);
+    }
+    handleLinkClick() {
+        this.props.hide(true)
+        this.setState({
+            hide: true
+        })
     }
     render() {
         return (
             <Router>
-                <Container>
+                <Container className={this.state.hide ? "d-none" : ""}>
                     <Row>
                         <Col xs={3}>
-                            <Link className="newlink" to="/information">
+                            <Link className="newlink" to="/information" onClick={this.handleLinkClick}>
                                 <Item img={mercedesE200} content="MERCEDES Cũ C180 AMG" price="1.499.000.000 vnđ" />
                             </Link>
                         </Col>
-                        <Col xs={3}><Item img={A200} content="MERCEDES Cũ C200 EXCLUSIVE" price="1.699.000.000 vnđ" /></Col>
-                        <Col xs={3}><Item img={DSCF2698} content="MERCEDES C300 Cũ AMG" price="1.999.000.000 vnđ" /></Col>
-                        <Col xs={3}><Item img={FullSizeRender} content="MERCEDES Cũ GLC200" price="1.799.000.000 vnđ" /></Col>
+                        <Col xs={3}>
+                            <Link className="newlink" to="/information"  onClick={this.handleLinkClick}>
+                                <Item img={A200} content="MERCEDES Cũ C200 EXCLUSIVE" price="1.699.000.000 vnđ" />
+                            </Link>
+                        </Col>
+                        <Col xs={3}>
+                            <Link className="newlink" to="/information"  onClick={this.handleLinkClick}>
+                                <Item img={DSCF2698} content="MERCEDES C300 Cũ AMG" price="1.999.000.000 vnđ" />
+                            </Link>
+                        </Col>
+                        <Col xs={3}>
+                            <Link className="newlink" to="/information"  onClick={this.handleLinkClick}>
+                                <Item img={FullSizeRender} content="MERCEDES Cũ GLC200" price="1.799.000.000 vnđ" />
+                            </Link>
+                        </Col>
                     </Row>
                     {/* hang2 */}
                     <Row>
@@ -46,9 +68,21 @@ class New extends React.Component {
                                 <Item img={cuchinhhang} content="MERCEDES Cũ C180 AMG" price="1.499.000.000 vnđ" />
                             </Link>
                         </Col>
-                        <Col xs={3}><Item img={mercedesphumyhung} content="MERCEDES Cũ C200 EXCLUSIVE" price="1.699.000.000 vnđ" /></Col>
-                        <Col xs={3}><Item img={MercedesE300} content="MERCEDES Cũ C300 AMG" price="1.699.000.000 vnđ" /></Col>
-                        <Col xs={3}><Item img={mercedesF200} content="MERCEDES Cũ GLC200" price="1.799.000.000 vnđ" /></Col>
+                        <Col xs={3}>
+                            <Link className="newlink" to="/information">
+                                <Item img={mercedesphumyhung} content="MERCEDES Cũ C200 EXCLUSIVE" price="1.699.000.000 vnđ" />
+                            </Link>
+                        </Col>
+                        <Col xs={3}>
+                            <Link className="newlink" to="/information">
+                                <Item img={MercedesE300} content="MERCEDES Cũ C300 AMG" price="1.699.000.000 vnđ" />
+                            </Link>
+                        </Col>
+                        <Col xs={3}>
+                            <Link className="newlink" to="/information">
+                                <Item img={mercedesF200} content="MERCEDES Cũ GLC200" price="1.799.000.000 vnđ" />
+                            </Link>
+                        </Col>
                     </Row>
                     {/* hang3 */}
                     <Row>
@@ -57,9 +91,21 @@ class New extends React.Component {
                                 <Item img={mercedesF200} content="MERCEDES Cũ C180 AMG" price="1.499.000.000 vnđ" />
                             </Link>
                         </Col>
-                        <Col xs={3}><Item img={mercedesF200} content="MERCEDES Cũ C180 AMG" price="1.499.000.000 vnđ" /></Col>
-                        <Col xs={3}><Item img={mercedess450luxury} content="MERCEDES Cũ C200 EXCLUSIVE" price="1.699.000.000 vnđ" /></Col>
-                        <Col xs={3}><Item img={MERCEDESCLA200} content="MERCEDES Cũ C300 AMG" price="1.999.000.000 vnđ" /></Col>
+                        <Col xs={3}>
+                            <Link className="newlink" to="/information">
+                                <Item img={mercedesF200} content="MERCEDES Cũ C180 AMG" price="1.499.000.000 vnđ" />
+                            </Link>
+                        </Col>
+                        <Col xs={3}>
+                            <Link className="newlink" to="/information">
+                                <Item img={mercedess450luxury} content="MERCEDES Cũ C200 EXCLUSIVE" price="1.699.000.000 vnđ" />
+                            </Link>
+                        </Col>
+                        <Col xs={3}>
+                            <Link className="newlink" to="/information">
+                                <Item img={MERCEDESCLA200} content="MERCEDES Cũ C300 AMG" price="1.999.000.000 vnđ" />
+                            </Link>
+                        </Col>
                     </Row>
                 </Container>
                 <Switch>
@@ -71,4 +117,4 @@ class New extends React.Component {
         )
     }
 }
-export default New;
+export default Used;
