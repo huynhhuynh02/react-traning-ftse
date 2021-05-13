@@ -35,13 +35,16 @@ import Atn from './data/clickmethod';
 import AudioPlayer from 'react-playlist-player'
 import ReactAudioPlayer from 'react-audio-player';
 import playlist from './album'
-
+import axios from 'axios'
 
 
 class App extends React.Component {
+
   constructor(props) {
     super(props)
     this.state = {
+      users: [],
+      using: {},
       valSearch: '',
 
       currentPlayList: {
@@ -55,13 +58,36 @@ class App extends React.Component {
     }
     
 
-
+    
     this.getValue = this.getValue.bind(this)
     this.getValuePlayList = this.getValuePlayList.bind(this)
     this.onChangeValSearch = this.onChangeValSearch.bind(this)
     this.getOnclickPlayList =this.getOnclickPlayList.bind(this)
+    this.loginUser = this.loginUser.bind(this)
   }
   
+  componentDidMount(){
+    const apiEndPoint = 'https://6097f2a9e48ec000178731f4.mockapi.io/api/users/'
+    const users = axios.get(apiEndPoint).then((res) => {
+      this.setState({
+        users: res.data
+      })
+    })
+  }
+
+  loginUser(a, b){
+
+    this.state.users.map((element, i) => {
+      if(a == element.username){
+        console.log(element)
+        this.setState({
+          using: element,
+        })
+      }
+      
+    })
+    console.log(a, b)
+  }
   loadPlayList = (n) =>
     this.setState({
       // imgSong: playlist[n].imgSong,
@@ -181,6 +207,7 @@ class App extends React.Component {
     this.loadPlayList(x)
   }
   render() {
+    console.log(this.state.users)
     // console.log(this.state.currentPlayList.songs.art)
     const test = this.state.currentPlayList.songs.map((element)=> {
       return(<>{element.songName}</>)
@@ -231,7 +258,7 @@ class App extends React.Component {
               <AiOutlineYoutube /><p>Zingchar</p>
 
             </NavLink>
-
+            <div className="user">asdfasd</div>
           </div>
           <div className="play-music">
             {test}
@@ -250,7 +277,7 @@ class App extends React.Component {
                 path={route.path}
                 render={props => (
                   // pass the sub-routes down to keep nesting
-                  <route.component {...props} routes={route.routes} itemplaylist={this.getItem} source={this.getValue} address={this.state.currentPlayList} getPlaylist={this.getOnclickPlayList} albums={this.getValuePlayList} />  
+                  <route.component listUsers={this.loginUser} {...props} routes={route.routes} itemplaylist={this.getItem} source={this.getValue} address={this.state.currentPlayList} flagUser={this.state.users} getPlaylist={this.getOnclickPlayList} albums={this.getValuePlayList} />  
                 )}
               />
             ))}
