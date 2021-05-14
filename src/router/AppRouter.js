@@ -1,5 +1,6 @@
-import AboutPage from "../containers/AboutPage";
-import ContactPage from "../containers/ContactPage";
+import MusicID from "../components/PlayMusic/MusicID";
+import History from "../containers/History";
+import Albums from "../containers/Albums";
 import HomePage from "../containers/HomePage";
 
 const routes = [
@@ -10,11 +11,15 @@ const routes = [
     },
     {
         path: "/about",
-        component: AboutPage
+        component: History
     },
     {
         path: "/contact",
-        component: ContactPage
+        component: Albums
+    },
+    {
+        path: "/getId",
+        component: MusicID
     }
 ];
 export default routes;

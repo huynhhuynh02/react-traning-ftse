@@ -1,0 +1,16 @@
+.btn-accout{
+    display: block;
+    width: 50%;
+    height: 50px;
+    padding-left: 20px;
+    border-radius: 50pc;
+}
+.btn-login{
+    text-align: center;
+    width: 50%;
+    height: 50px;
+    background-color: #170F23;
+    color: white;
+    border: none;
+    border-radius: 50pc;
+}
