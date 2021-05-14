@@ -1,0 +1,49 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.Sidebar{
+    background-color: #18181D;
+    width: 15%;
+    padding: 30px;
+    color: white;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+}
+.Logo:hover h5{
+    text-decoration: none;
+}
+.Logo{
+    display: flex;
+}
+.Logo svg{
+    font-size: 25px;
+}
+.Logo h5{
+    font-size: 22px;
+    padding-left: 10px;
+    margin: 0;
+}
+/*menu*/
+.Sidebar .Menu-1 h4{
+    color: #787882;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+}
+.Sidebar .Menu-1 ul{
+    list-style: none;
+    padding-left: 13px;
+    font-size: 20px;
+    line-height: 39px;
+}
+.Sidebar .Menu-1 svg{
+    margin-right: 10px;
+}
+
+.Sidebar .Menu-1 ul li:hover a{
+    text-decoration: none;
+}

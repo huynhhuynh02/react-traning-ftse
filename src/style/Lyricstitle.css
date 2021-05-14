@@ -1,0 +1,49 @@
+.Lyrics-title .Bg-title img{
+    width: 250px;
+    height:250px ;
+    object-fit: cover;
+    border-radius: 50%;
+    animation: example 7s linear infinite;
+}
+@keyframes example{
+    0%{
+        transform: rotate(0deg);
+    }
+    50%{
+        transform: rotate(180deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+.Lyrics-title .Namesong-title{
+    text-align: center;
+}
+.Lyrics-title .Namesong-title h5{
+    font-size: 25px;
+    font-weight: lighter;
+    padding-top: 10px;
+}
+.Lyrics-title .Namesong-title .Tool {
+    font-size: 35px;
+}
+.Lyrics-title .Namesong-title .Tool svg{
+    margin-right: 20px;
+}
+/* .Namesong-title .Control .Line{
+    width: 100%;
+    height: 10px;
+    background-color: #999C9F;
+    margin-top: 20px;
+} */
+.Namesong-title .Control .Direct {
+    font-size: 35px;
+    display: flex;
+    justify-content: space-between;
+}
+.Control .Direct svg:nth-child(1){
+    margin-right: 15px;
+}
+.Control .Direct svg:nth-child(2){
+    margin-right: 15px;
+}

@@ -1,0 +1,84 @@
+/* .Topchart-title .Topchart-brand{
+    background-image: url('../images/GLOW-MAG-JAN-TOP-10-MUSIC-CHART-03-1.jpg');
+    width: 250px;
+    height: 240px;
+    background-size: cover;
+    border-radius: 20px;
+}
+.Topchart-list{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.Topchart-list .Topchart-name{
+    color: white;
+}
+.Topchart-list .Topchart-name h3{
+    font-size: 40px;
+    font-weight: bold;
+}
+.Topchart-list .Topchart-name h4{
+    font-size: 30px;
+}
+.Topchart-list .Topchart-name p{
+    text-align: left;
+    font-size: 20px;
+}
+.Topchart-list .Topchart-control button{
+    width: 130px;
+    height: 50px;
+    border-radius: 50px;
+    font-size: 40px;
+    color: white;
+    margin-right: 15px; 
+    display: flex;
+    padding: 8px 23px; 
+}
+.Topchart-list .Topchart-control h6{
+    padding-top: 5px;
+}
+.Topchart-list .Topchart-control{
+    display: flex;
+    
+}
+.Topchart-list .Topchart-control svg{
+    font-size: 45px;
+    margin-right: 2px;
+    padding-bottom: 15px;
+} */
+
+#saying p{
+    color: white;
+    text-align: left;
+    margin-top: 15px;
+    font-size: 25px;
+    font-weight: lighter;
+}
+/* .Ranking{
+    color: white;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 63px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #999C9F;
+}
+.Number{
+    font-weight: bold;
+    font-size: 50px;
+    margin-right: 15px;
+}
+.Ranking-img{
+    background-image: url('../images/mood.jpg');
+    width: 150px;
+    height: 90px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 15px;
+    border-radius: 15px;
+}
+.Ranking-song .Name-song h3{
+    font-size:2rem;
+}
+.Ranking .Time{
+    line-height: 90px;
+} */

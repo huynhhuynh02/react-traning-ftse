@@ -1,0 +1,45 @@
+.Csspic{
+    background-size: cover;
+    width: 80%;
+    height: 70px;
+    border-radius: 15px;
+}
+.Top-chart .Level{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Top-chart .Level .Picture2{
+    background-image: url('../images/icecream.jpg');
+}
+.Top-chart .Level .Picture3{
+    background-image: url('../images/lonely.jpg');
+}
+.Top-chart .Level .Picture4{
+    background-image: url('../images/Monster.jpg');
+}
+.Top-chart .Level .Control svg{
+    font-size: 25px; 
+}   
+.Top-chart .Level .Control svg:nth-child(1){
+    margin-right: 8px;
+    font-size: 35px;
+    margin-left: 4px;
+}
+.Top-chart .Level .Timing h5{
+    margin: 0px;
+    font-size: 18px;
+    padding-right: 10px;
+}
+
+.Top-chart .Level .Name-song p{
+    font-size: 18px;
+    margin: 0px;
+    font-weight: lighter;
+    text-align: left;
+    padding: 0px;
+}
+.Top-chart .Level .Name-song h4{
+    font-size: 23px;
+}

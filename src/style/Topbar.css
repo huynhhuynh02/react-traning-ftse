@@ -1,0 +1,46 @@
+.Topbar{
+    padding: 10px 0px;
+    position: absolute;
+    top: 0;
+    left: 15%;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+.navbar-expand .navbar-nav .nav-link{
+    padding-left: 2.5rem;
+    font-size:20px ;
+    color: white;
+    font-weight: bold;
+}
+.navbar-expand .navbar-nav{
+    padding-right: 135px
+}
+.form-control{
+    background-color: transparent;
+    border: solid 3px #999C9F;
+    border-radius: 10px;
+    width: 250px;
+    height: 50px;
+}
+.form-control::placeholder{
+    font-size: 20px;
+    color: #9999;
+}
+.form-control:focus{
+    background-color: transparent;
+}
+.Sign-in{
+    color: white;
+    display: flex;
+    font-size: 25px;
+    align-items: center;
+    font-weight: bold;
+}
+.Sign-in svg{
+    margin-right: 10px;
+}
+.Sign-in .Member p{
+    color: white;
+    margin: 0px;
+}

@@ -1,0 +1,137 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.Title{
+    color: white;
+    padding-left: 14px;
+}
+.Title h3{
+    font-size: 30px;
+}
+.Title h1{
+    font-size: 60px;
+}
+.Title .Title-song,.Button-listen{
+    padding-left: 30px;
+}
+.Title .Title-song h3{
+    display: inline-block;
+    padding-right: 15px;
+    
+}
+.Title .Title-song p{
+    display:  inline;
+    font-size: 20px;
+}
+.Title .Button-listen #btn1{
+    width: 150px;
+    height: 50px;
+    font-size:20px;
+    font-weight: bold;
+    border-radius: 30px;
+    margin-right: 20px;
+    padding: 7px;
+}
+.Title .Button-listen #btn2{
+    height: 50px;
+    border-radius: 50%;
+    width: 60px;
+    background-color: transparent;
+    border: 3px solid #999C9F;
+}
+.Title .Button-listen #btn2 svg{
+    font-size: 30px;
+    color: #007bff;
+}
+.See-all{
+    padding-top: 10px;
+    display: flex;
+   justify-content: space-between;
+}
+.See-all h4{
+    color: white;
+    font-weight: 500px;
+    font-size: 20px;
+}
+.See-all p{
+    color: #999C9F;
+    font-size:20px ;
+}
+.Artist1{
+    background-image: url('../images/travis-scott.jpg');
+}
+.Artist2{
+    background-image: url('../images/justinbeiber.jpg');
+}
+.Artist3{
+    background-image: url('../images/sia.jpg');
+}
+.Artist4{
+    background-image: url('../images/imagedragon.jpg');
+}
+.Artist5{
+    background-image: url('../images/marron5.jpg');
+}
+.Name-artist{
+    padding-top: 10px;
+    color: white;
+}
+.Name-artist h5{
+    text-align: center;
+    font-size: 18px;
+}
+.Name-artist  p{
+    padding-left: 15px;
+    font-weight: 500;
+    color: #999C9F;
+}
+.Categories{
+    margin: 0px 5px 20px 0px;
+    border-radius: 15px;
+    height: 85px;
+    font-size: 20px;
+    line-height: 40px;
+    font-weight: 600;
+}
+/* .Top-chart .Level{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Top-chart .Level .Picture2{
+    background-image: url('../images/icecream.jpg');
+}
+.Top-chart .Level .Picture3{
+    background-image: url('../images/lonely.jpg');
+}
+.Top-chart .Level .Picture4{
+    background-image: url('../images/Monster.jpg');
+}
+.Top-chart .Level .Control svg{
+    font-size: 25px; 
+}   
+.Top-chart .Level .Control svg:nth-child(1){
+    margin-right: 8px;
+    font-size: 35px;
+    margin-left: 4px;
+}
+.Top-chart .Level .Timing h5{
+    margin: 0px;
+    font-size: 18px;
+    padding-right: 10px;
+}
+
+.Top-chart .Level .Name-song p{
+    font-size: 18px;
+    margin: 0px;
+    font-weight: lighter;
+    text-align: left;
+    padding: 0px;
+}
+.Top-chart .Level .Name-song h4{
+    font-size: 23px;
+} */
+

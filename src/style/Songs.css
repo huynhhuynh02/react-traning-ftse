@@ -1,0 +1,41 @@
+.Songs{
+    border-bottom: 1px solid white;
+    opacity: 1.5;
+    transition: ease-in;
+    cursor: pointer;
+}
+.Songs h4{
+    display: inline-block;
+}
+.Songs h4:nth-child(2){
+    margin-left: 10px;
+}
+.Songs h5{
+    display: inline-block;
+    margin-left: 10px;
+    font-style: italic;
+}
+.Songs:hover {
+    opacity: 0.6;
+}
+
+
+/* .Lyrics-song .Name{
+    border-bottom: 1px solid #999C9F;
+    display: inline;
+    padding-bottom: 10px;
+}
+.Lyrics-song .Lyrics p{
+    text-align: left;
+    font-size: 20px;
+    line-height: 45px;
+    font-weight: lighter;
+}
+.Lyrics-song .See-all{
+    cursor: pointer;
+    justify-content: left;
+}
+.Lyrics-song .See-all svg{
+    font-size: 25px;
+    margin-left: 10px;
+} */

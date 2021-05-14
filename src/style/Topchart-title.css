@@ -1,0 +1,46 @@
+.Topchart-title .Topchart-brand{
+    width: 250px;
+    height: 240px;
+    background-size: cover;
+    border-radius: 20px;
+}
+.Topchart-list{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+.Topchart-list .Topchart-name{
+    color: white;
+}
+.Topchart-list .Topchart-name h3{
+    font-size: 40px;
+    font-weight: bold;
+}
+.Topchart-list .Topchart-name h4{
+    font-size: 30px;
+}
+.Topchart-list .Topchart-name p{
+    text-align: left;
+    font-size: 20px;
+}
+.Topchart-list .Topchart-control button{
+    width: 130px;
+    height: 50px;
+    border-radius: 50px;
+    font-size: 40px;
+    color: white;
+    margin-right: 15px; 
+    display: flex;
+    padding: 8px 23px; 
+}
+.Topchart-list .Topchart-control h6{
+    padding-top: 5px;
+}
+.Topchart-list .Topchart-control{
+    display: flex;
+    
+}
+.Topchart-list .Topchart-control svg{
+    font-size: 45px;
+    margin-right: 2px;
+    padding-bottom: 15px;
+}

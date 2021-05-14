@@ -1,0 +1,18 @@
+.container-page{
+    background-image: url('../images/photo-1515106426117-7483c8b91e9b.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    min-height: 130vh;
+}
+
+.container-page::after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background:rgba(0, 0, 0,0.6);
+    z-index: -1;
+}

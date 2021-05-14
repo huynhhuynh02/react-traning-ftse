@@ -1,0 +1,49 @@
+/* .Album-page .Title h4{
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+} */
+.List{
+    display: flex;
+    justify-content: start;
+}
+.List .Items{
+    width: 100%;
+}
+.List .Items h5{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: white; 
+    margin-left: 15px;  
+}
+
+.List .Items .Item{
+    height: 200px;
+    overflow: hidden;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 15px;
+}
+ .List .Items .Item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.25s linear;
+    border-radius: 15px;
+}
+ .List .Items .Item:hover img{
+    transform: scale(1.1);
+}
+/* .carousel-control-prev,.carousel-control-next{
+    width: 50px;
+    height: 40px;
+    top: -50px;
+    border: 1px solid #fff;
+    
+} 
+.carousel-control-prev{
+   left: 90%;
+}
+.carousel-indicators{
+    display: none;
+} */

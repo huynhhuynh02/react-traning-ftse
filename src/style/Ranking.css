@@ -1,0 +1,28 @@
+.Ranking{
+    color: white;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    margin-right: 63px;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #999C9F;
+}
+.Number{
+    font-weight: bold;
+    font-size: 50px;
+    margin-right: 15px;
+}
+.Ranking-img img{
+    /* background-image: url('../images/mood.jpg'); */
+    width: 135px;
+    height: 85px;
+    object-fit: cover;
+    margin-right: 15px;
+    border-radius: 15px;
+}
+.Ranking-song .Name-song h3{
+    font-size:2rem;
+}
+.Ranking .Time{
+    line-height: 90px;
+}

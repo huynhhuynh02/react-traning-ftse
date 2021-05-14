@@ -1,55 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
-import routes from './router/AppRouter';
-import { 
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
-import AboutPage from './containers/AboutPage';
-import ContactPage from './containers/ContactPage';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import {
-  Navbar,
-  Nav,
-  Form,
-  FormControl,
-  Button
-} from 'react-bootstrap';
 
+import Sidebar from './components/Sidebar';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Topbar from './components/Topbar';
+import Topchart from './containers/TopChart';
+import Lyrics from './containers/Lyrics';
+import Home from './containers/Home';
+import { Container } from 'react-bootstrap';
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import './style/App.css';
+import routes from "./AppRouter";
 function App() {
+  if (localStorage.getItem('historySong') == null ) {
+      var list = [];
+      localStorage.setItem('historySong',JSON.stringify(list));
+  }
   return (
-    
     <Router>
-      <>
-      <Navbar bg="dark" variant="dark">
-        <Navbar.Brand href="#home">Navbar</Navbar.Brand>
-        <Nav className="mr-auto">
-          <Link className="nav-link" to="/">Home</Link>
-          <Link className="nav-link" to="/about">About</Link>
-          <Link className="nav-link" to="/contact">Contact</Link>
-        </Nav>
-        <Form inline>
-          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          <Button variant="outline-info">Search</Button>
-        </Form>
-      </Navbar>
-      </>
-      <Switch>
+      <div className="container-page">
+        <Sidebar />
+        <main style={{ marginLeft: '15%', paddingTop: '86px', paddingLeft: '18px' }}>
+          <Topbar />
+          <Switch>
             {routes.map((route, index) => (
-              // Render more <Route>s with the same paths as
-              // above, but different components this time.
+              // You can render a <Route> in as many places
+              // as you want in your app. It will render along
+              // with any other <Route>s that also match the URL.
+              // So, a sidebar or breadcrumbs or anything else
+              // that requires you to render multiple things
+              // in multiple places at the same URL is nothing
+              // more than multiple <Route>s.
               <Route
-                exact={route.exact}
+                key={index}
                 path={route.path}
-                render={props => (
-                  // pass the sub-routes down to keep nesting
-                  <route.component {...props} routes={route.routes} />
-                )}
+                exact={route.exact}
+                render={(props) => (<route.component {...props} />)}
               />
             ))}
           </Switch>
+
+        </main>
+
+
+
+      </div>
     </Router>
   );
 }

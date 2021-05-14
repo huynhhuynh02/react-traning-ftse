@@ -1,0 +1,24 @@
+.albumSongs{
+    border-bottom: 1px solid white;
+    opacity: 1.5;
+    transition: ease-in;
+    cursor: pointer;
+    color: white;
+    margin-left: 35px;
+    padding: 0px;
+    width: 1298px;
+}
+.albumSongs h4{
+    display: inline-block;
+}
+.albumSongs h4:nth-child(2){
+    margin-left: 10px;
+}
+.albumSongs h5{
+    display: inline-block;
+    margin-left: 10px;
+    font-style: italic;
+}
+.albumSongs:hover {
+    opacity: 0.6;
+}
