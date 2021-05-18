@@ -5,7 +5,8 @@ import { faCog, faSmile, faCaretRight } from "@fortawesome/free-solid-svg-icons"
 
 import "./../../../styles/messages/ChatBox.css";
 import ChatLine from "./../ChatLine";
-class ChatBox extends React.Component {
+
+export default class ChatBox extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -106,6 +107,3 @@ class ChatBox extends React.Component {
         }
     }
 }
-
-
-export default ChatBox;

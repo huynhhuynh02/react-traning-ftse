@@ -17,19 +17,26 @@
     color: black;
 }
 
-.post-item button.post-settings-btn {
+.post-item .post-settings .post-settings-menu {
+    z-index: 1;
+}
+.post-item .post-settings button.post-settings-btn {
     background: none;
     border: none;
 }
 
-.post-item button.post-settings-btn:hover, button.post-settings-btn:focus, button.post-settings-btn:active {
+.post-item .post-settings button.post-settings-btn:hover, button.post-settings-btn:focus, button.post-settings-btn:active {
     background: none !important;
     border: none;
     box-shadow: none;
 }
 
-.post-item button.post-settings-btn:hover {
+.post-item .post-settings button.post-settings-btn:hover {
     color: #555555;
+}
+
+.post-item .post-settings .post-settings-icon {
+    width: 30px;
 }
 
 .post-item .amount {

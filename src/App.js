@@ -65,7 +65,7 @@ export { firebase };
 export default function App() {
   const [navBar, setNavBar] = useState(false);
   const [userSideBar, setUserSideBar] = useState(false);
-  
+
   return (
     <Router>
       <Navbar style={{ display: (navBar ? "flex" : "none") }}>
@@ -120,13 +120,13 @@ export default function App() {
             render={props => (
               // pass the sub-routes down to keep nesting
               <route.component
-                {...props} 
+                {...props}
                 routes={route.routes}
                 tabs={route.tabs}
                 navBarState={navBar}
                 setNavBar={(params) => setNavBar(params)}
                 userSideBarState={userSideBar}
-                setUserSideBar={(params => setUserSideBar(params))}
+                setUserSideBar={(params) => setUserSideBar(params)}
               />
             )}
           />

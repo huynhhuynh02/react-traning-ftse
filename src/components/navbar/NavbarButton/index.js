@@ -1,9 +1,10 @@
 import React from 'react';
 import { Button } from "react-bootstrap";
-import "./../../../styles/navbar/NavbarButton.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-class NavbarButton extends React.Component {
+import "./../../../styles/navbar/NavbarButton.css";
+
+export default class NavbarButton extends React.Component {
     render() {
         return (
             <Button 
@@ -14,6 +15,3 @@ class NavbarButton extends React.Component {
         );
     }
 }
-
-
-export default NavbarButton;

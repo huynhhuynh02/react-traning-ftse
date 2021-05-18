@@ -6,6 +6,7 @@ import { firebase } from "./../../../App";
 
 import "./../../../styles/friends/SuggestFriend.css";
 import avatarDemo from "./../../../resources/images/avatar.jpg";
+
 export default class SuggestFriend extends React.Component {
     constructor(props) {
         super(props);
@@ -145,7 +146,7 @@ export default class SuggestFriend extends React.Component {
                                         </Link>
                                     )
                                 } else {
-                                    return <></>
+                                    return <span key={i}></span>
                                 }
                             })
                     }

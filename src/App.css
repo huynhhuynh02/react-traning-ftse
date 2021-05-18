@@ -25,7 +25,7 @@ body {
   outline-offset: 0 !important;
 }
 
-.header-tab a.selected button{
+.header-tab a.selected button {
   background-color: white !important;
   box-shadow: 0 0 10px 0 grey !important;
   color: black !important;

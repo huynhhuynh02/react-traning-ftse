@@ -8,7 +8,6 @@ import Contact from "./../components/messages/Contact";
 import SearchBar from "./../components/common/SearchBar";
 import ChatBox from "./../components/messages/ChatBox";
 import MessageList from "./../components/messages/MessageList";
-
 import messageList from "./../resources/database/messageData";
 
 export default function MessagePage(props) {

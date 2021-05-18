@@ -3,7 +3,8 @@ import { Col, Container, Row, Image, Button } from 'react-bootstrap';
 
 import "./../../../styles/messages/MessageList.css"
 import SearchBar from "./../../common/SearchBar";
-class MessageList extends React.Component {
+
+export default class MessageList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -52,6 +53,3 @@ class MessageList extends React.Component {
         );
     }
 }
-
-
-export default MessageList;

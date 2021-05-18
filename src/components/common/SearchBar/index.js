@@ -2,8 +2,10 @@ import React from 'react';
 import { FormControl, InputGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+
 import "./../../../styles/common/SearchBar.css"
-class SeachBar extends React.Component {
+
+export default class SeachBar extends React.Component {
     render() {
         const placeholder = "Tìm kiếm trên " + this.props.targetsearch + " ...";
         return (
@@ -22,6 +24,3 @@ class SeachBar extends React.Component {
         );
     }
 }
-
-
-export default SeachBar;

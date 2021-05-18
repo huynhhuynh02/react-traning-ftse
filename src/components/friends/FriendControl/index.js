@@ -3,6 +3,7 @@ import { Container, Row, Button } from 'react-bootstrap';
 
 import "./../../../styles/friends/FriendControl.css";
 import SearchBar from "./../../common/SearchBar";
+
 export default class FriendControl extends React.Component {
     constructor(props) {
         super(props);

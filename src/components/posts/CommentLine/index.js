@@ -7,6 +7,7 @@ import convertTimestamp from "./../../../resources/functions/convertTimestamp";
 import CommentReply from "./../CommentReply";
 import "./../../../styles/posts/CommentLine.css";
 import avatarDemo from "./../../../resources/images/avatar.jpg";
+
 export default class CommentLine extends React.Component {
     constructor(props) {
         super(props);

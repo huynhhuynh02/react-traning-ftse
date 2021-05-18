@@ -9,7 +9,7 @@ import { firebase } from "./../../../App";
 import "./../../../styles/common/UserSideBar.css";
 import avatarDemo from "./../../../resources/images/avatar.jpg";
 
-class UserSideBar extends React.Component {
+export default class UserSideBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -148,6 +148,3 @@ class UserSideBar extends React.Component {
         );
     }
 }
-
-
-export default UserSideBar;

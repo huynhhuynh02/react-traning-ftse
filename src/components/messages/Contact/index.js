@@ -3,7 +3,8 @@ import { Container, Row, Col, Button, Image } from 'react-bootstrap';
 
 import "./../../../styles/messages/Contact.css";
 import friendList from "../../../resources/database/friendData";
-class Contact extends React.Component {
+
+export default class Contact extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -43,6 +44,3 @@ class Contact extends React.Component {
         );
     }
 }
-
-
-export default Contact;

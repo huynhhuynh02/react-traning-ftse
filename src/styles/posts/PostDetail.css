@@ -179,3 +179,10 @@
 .post-detail .amount {
     font-size: 12px;
 }
+
+.post-detail .comment-input-detail {
+    border-radius: 20px;
+    border: 1px solid rgb(194, 194, 194);
+    width: 100%;
+    font-size: 14px;
+}

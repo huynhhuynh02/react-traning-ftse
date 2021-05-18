@@ -2,6 +2,7 @@ import React from 'react';
 
 import SuggestFriend from "./../SuggestFriend";
 import "./../../../styles/friends/SuggestList.css";
+
 export default class SuggestList extends React.Component {
     render() {
         return (

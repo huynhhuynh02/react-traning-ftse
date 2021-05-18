@@ -4,7 +4,8 @@ import { Container, Row, Image, Button, Spinner } from "react-bootstrap";
 import { firebase } from "./../../../App";
 import convertTimestamp from "./../../../resources/functions/convertTimestamp";
 
-import "./../../../styles/posts/CommentReply.css"
+import "./../../../styles/posts/CommentReply.css";
+
 export default class CommentReply extends React.Component {
     constructor(props) {
         super(props)

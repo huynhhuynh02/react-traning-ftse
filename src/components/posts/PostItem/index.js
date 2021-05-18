@@ -10,8 +10,9 @@ import "./../../../styles/posts/PostItem.css";
 import CommentLine from "./../CommentLine";
 import EditPost from "./../EditPost";
 import avatarDemo from "./../../../resources/images/avatar.jpg";
-import { Redirect } from 'react-router';
-class PostItem extends React.Component {
+import PostDetail from '../PostDetail';
+
+export default class PostItem extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -49,7 +50,7 @@ class PostItem extends React.Component {
                 isDeletingPost: false,
                 isPostDeleted: false
             },
-            redirectToPostPage: false,
+            isPostDetailOpen: false,
             isUpdatingState: false
         }
 
@@ -61,8 +62,12 @@ class PostItem extends React.Component {
         this.handlePostDetailClick = this.handlePostDetailClick.bind(this);
         this.handleMoreCommentClick = this.handleMoreCommentClick.bind(this);
         this.handlePostDelete = this.handlePostDelete.bind(this);
+        this.handlePostEdit = this.handlePostEdit.bind(this);
     }
     componentDidMount() {
+        if (window.location.search === "?postId=" + this.props.postdata) {
+            this.setState({ isPostDetailOpen: true });
+        }
         const userId = localStorage.getItem("id");
         const database = firebase.firestore();
         const storage = firebase.storage();
@@ -229,7 +234,10 @@ class PostItem extends React.Component {
                                                     before: this.state.likeState.current,
                                                     current: this.state.likeState.current
                                                 },
-                                                isUpdatingState: true
+                                                editState: {
+                                                    isEditing: this.state.editState.isEditing,
+                                                    isChangesUploaded: false
+                                                }
                                             });
                                             console.log("Document (like) successfully updated!");
                                         }).catch(error => console.log("Error while setting like database: ", error));
@@ -250,7 +258,10 @@ class PostItem extends React.Component {
                                                     before: this.state.likeState.current,
                                                     current: this.state.likeState.current
                                                 },
-                                                isUpdatingState: true
+                                                editState: {
+                                                    isEditing: this.state.editState.isEditing,
+                                                    isChangesUploaded: false
+                                                }
                                             });
                                             console.log("Document (like) successfully updated!");
                                         }).catch(error => console.log("Error while setting like database: ", error));
@@ -318,9 +329,9 @@ class PostItem extends React.Component {
             }
         })
     }
-    handlePostDetailClick() {
+    handlePostDetailClick(params) {
         this.setState({
-            redirectToPostPage: true
+            isPostDetailOpen: params
         })
     }
     handlePostEdit(isEditPostOpened, isUploadChangeFinished) {
@@ -343,243 +354,243 @@ class PostItem extends React.Component {
             const postId = this.props.postdata;
             const database = firebase.firestore();
             const storage = firebase.storage();
-            database.collection("users").doc(userId).get()
-                .then((userData) => {
-                    let postList = userData.data().postList;
-                    postList.splice(postList.indexOf(postId));
-                    database.collection("users").doc(userId).update({
-                        postList: postList
-                    }).then(() => {
-                        console.log("Removed post id " + postId + " from user data: ", postId);
-                        database.collection("posts").doc(postId).get()
-                            .then((postData) => {
-                                let filesInPost = postData.data().thumbnails;
-                                database.collection("posts").doc(postId).delete()
-                                    .then(() => {
-                                        console.log("Removed doc " + postId + " in posts collection");
-                                        let storageRef = storage.ref();
-                                        if (filesInPost.length !== 0) {
-                                            filesInPost.forEach((file) => {
-                                                storageRef.child(file.type + "s/" + file.data).delete()
-                                                    .then(() => {
-                                                        console.log("Deleted file " + file.data + " in folder " + file.type + "s");
-                                                        this.setState({
-                                                            deleteState: {
-                                                                isDeletingPost: false,
-                                                                isPostDeleted: true
-                                                            }
-                                                        });
-                                                    }).catch((error) => {
-                                                        console.log("Error while deleting file " + file.type + "s/" + file.data, error);
-                                                    })
+            database.collection("users").doc(userId).update({
+                postList: firebase.firestore.FieldValue.arrayRemove(postId)
+            }).then(() => {
+                console.log("Removed post id " + postId + " from user data: ", postId);
+                database.collection("posts").doc(postId).get()
+                    .then((postData) => {
+                        let filesInPost = postData.data().thumbnails;
+                        database.collection("posts").doc(postId).delete()
+                            .then(() => {
+                                console.log("Removed doc " + postId + " in posts collection");
+                                let storageRef = storage.ref();
+                                if (filesInPost.length !== 0) {
+                                    filesInPost.forEach((file) => {
+                                        storageRef.child(file.type + "s/" + file.data).delete()
+                                            .then(() => {
+                                                console.log("Deleted file " + file.data + " in folder " + file.type + "s");
+                                                this.setState({
+                                                    deleteState: {
+                                                        isDeletingPost: false,
+                                                        isPostDeleted: true
+                                                    }
+                                                });
+                                            }).catch((error) => {
+                                                console.log("Error while deleting file " + file.type + "s/" + file.data, error);
                                             })
-                                        } else {
-                                            this.setState({
-                                                deleteState: {
-                                                    isDeletingPost: false,
-                                                    isPostDeleted: true
-                                                }
-                                            });
-                                        }
-                                    }).catch(error => {
-                                        console.log("Error while removing post doc: ", postId, error);
                                     })
+                                } else {
+                                    this.setState({
+                                        deleteState: {
+                                            isDeletingPost: false,
+                                            isPostDeleted: true
+                                        }
+                                    });
+                                }
                             }).catch(error => {
-                                console.log("Error getting data of post about to delete", error);
-                            })
+                                console.log("Error while removing post doc: ", postId, error);
+                            });
                     }).catch(error => {
-                        console.log("Error while removing post id from user data", error);
-                    })
-                }).catch((error) => {
-                    console.log("Error getting user data id: " + userId, error);
-                })
+                        console.log("Error getting data of post about to delete", error);
+                    });
+            }).catch(error => {
+                console.log("Error while removing post id from user data", error);
+            });
         }
     }
     render() {
         return (
             !this.state.deleteState.isPostDeleted
                 ?
-                this.state.redirectToPostPage ?
-                    <Redirect to={"/post/" + this.props.postdata} /> :
-                    <>
-                        <Jumbotron className="post-item py-5">
-                            {this.state.deleteState.isDeletingPost ?
-                                <Spinner animation="border" /> :
-                                <Container fluid className="justify-content-between">
-                                    <Row className="mx-0">
-                                        <Col xs={2} className="pl-0">
-                                            {
-                                                this.state.avatarUserPost === "" ?
-                                                    <Spinner animation="border" variant="secondary" />
-                                                    :
-                                                    <Image src={this.state.avatarUserPost} thumbnail roundedCircle className="avatar-post" />
-                                            }
-                                        </Col>
-                                        <Col xs={8} className="post-info py-2 d-flex flex-column justify-content-between align-items-left">
-                                            <span className="user-name ml-0 my-auto">{this.state.displayNameUserPost}</span>
-                                            <span className="date-upload ml-0 my-auto">{this.state.createdAt}</span>
-                                        </Col>
-                                        <Col xs={2} className="d-flex justify-content-end py-3 pr-0">
-                                            <Dropdown>
-                                                <Dropdown.Toggle variant="light" id="dropdown-basic" className="post-settings-btn">
-                                                    <FontAwesomeIcon icon={faCog} size="lg" />
-                                                </Dropdown.Toggle>
-                                                <Dropdown.Menu>
-                                                    {
-                                                        this.state.isOwner ?
-                                                            <Dropdown.Item
-                                                                className="d-flex justify-content-start"
-                                                                onClick={() => this.handlePostEdit(true, false)}>
-                                                                <Col xs={2} className="px-0">
-                                                                    <FontAwesomeIcon icon={faEdit} size="sm" className="mr-2" />
-                                                                </Col>
+                <>
+                    <Jumbotron className="post-item py-5">
+                        {this.state.deleteState.isDeletingPost ?
+                            <Spinner animation="border" /> :
+                            <Container fluid className="justify-content-between">
+                                <Row className="mx-0">
+                                    <Col xs={2} className="pl-0">
+                                        {
+                                            this.state.avatarUserPost === "" ?
+                                                <Spinner animation="border" variant="secondary" />
+                                                :
+                                                <Image src={this.state.avatarUserPost} thumbnail roundedCircle className="avatar-post" />
+                                        }
+                                    </Col>
+                                    <Col xs={8} className="post-info py-2 d-flex flex-column justify-content-between align-items-left">
+                                        <span className="user-name ml-0 my-auto">{this.state.displayNameUserPost}</span>
+                                        <span className="date-upload ml-0 my-auto">{this.state.createdAt}</span>
+                                    </Col>
+                                    <Col xs={2} className="d-flex justify-content-end py-3 pr-0">
+                                        <Dropdown className="post-settings">
+                                            <Dropdown.Toggle variant="light" id="dropdown-basic" className="post-settings-btn">
+                                                <FontAwesomeIcon icon={faCog} size="lg" />
+                                            </Dropdown.Toggle>
+                                            <Dropdown.Menu className="post-settings-menu">
+                                                {
+                                                    this.state.isOwner ?
+                                                        <Dropdown.Item
+                                                            className="d-flex justify-content-start align-items-center"
+                                                            onClick={() => this.handlePostEdit(true, false)}>
+                                                            <span className="post-settings-icon">
+                                                                <FontAwesomeIcon icon={faEdit} size="sm" />
+                                                            </span>
                                                             Chỉnh sửa bài viết
                                                         </Dropdown.Item>
-                                                            :
-                                                            <Dropdown.Item className="d-flex justify-content-start">
-                                                                <Col xs={2} className="px-0">
-                                                                    <FontAwesomeIcon icon={faEyeSlash} size="sm" className="mr-2" />
-                                                                </Col>
+                                                        :
+                                                        <Dropdown.Item
+                                                            className="d-flex justify-content-start align-items-center">
+                                                            <span className="post-settings-icon">
+                                                                <FontAwesomeIcon icon={faEyeSlash} size="sm" />
+                                                            </span>
                                                             Ẩn bài viết
                                                         </Dropdown.Item>
-                                                    }
-                                                    {
-                                                        this.state.isOwner ?
-                                                            <Dropdown.Item className="d-flex justify-content-start" onClick={this.handlePostDelete}>
-                                                                <Col xs={2} className="px-0">
-                                                                    <FontAwesomeIcon icon={faTrashAlt} size="sm" className="mr-2" />
-                                                                </Col>
+                                                }
+                                                {
+                                                    this.state.isOwner ?
+                                                        <Dropdown.Item
+                                                            className="d-flex justify-content-start align-items-center"
+                                                            onClick={this.handlePostDelete}>
+                                                            <span className="post-settings-icon">
+                                                                <FontAwesomeIcon icon={faTrashAlt} size="sm" />
+                                                            </span>
                                                             Xoá bỏ bài viết
                                                         </Dropdown.Item>
-                                                            :
-                                                            <Dropdown.Item className="d-flex justify-content-start">
-                                                                <Col xs={2} className="px-0">
-                                                                    <FontAwesomeIcon icon={faBan} size="sm" className="mr-2" />
-                                                                </Col>
+                                                        :
+                                                        <Dropdown.Item
+                                                            className="d-flex justify-content-start align-items-center">
+                                                            <span className="post-settings-icon">
+                                                                <FontAwesomeIcon icon={faBan} size="sm" />
+                                                            </span>
                                                             Báo cáo
                                                         </Dropdown.Item>
-                                                    }
-                                                </Dropdown.Menu>
-                                            </Dropdown>
-                                        </Col>
-                                    </Row>
-                                    <Row className="py-3">
-                                        <Col>
-                                            <span className="post-content">{this.state.postContent}</span>
-                                        </Col>
-                                    </Row>
-                                    <Row className="mx-0">
-                                        <Col className="thumbnail-list d-flex justify-content-center py-2">
-                                            {this.state.postThumbnails.map((thumbnail, i) =>
-                                                <Col xs={6} key={i} className="d-flex align-items-center">
-                                                    {
-                                                        thumbnail.type === "video" ?
-                                                            <div className="post-thumbnail" onClick={this.handlePostDetailClick}>
-                                                                <FontAwesomeIcon icon={faPlayCircle} size="lg" className="fake-play-button" />
-                                                                <video className="video-thumbnail rounded" src={thumbnail.url}></video>
-                                                            </div>
-                                                            :
-                                                            <Image src={thumbnail.url} thumbnail rounded className="post-thumbnail" onClick={this.handlePostDetailClick} />
-                                                    }
-                                                </Col>
-                                            )}
-                                        </Col>
-                                    </Row>
-                                    <Row className="align-item-center pt-3 mx-0 mb-1">
-                                        <Col xs={4} className="like-info text-left text-primary">
-                                            <FontAwesomeIcon icon={faThumbsUp} className="mr-1" />
-                                            <span className="amount justify-content-left">
-                                                {this.state.likeState.current ? "Bạn và " + this.state.likedInfo.amount + " người khác" : this.state.likedInfo.amount}
-                                            </span>
-                                        </Col>
-                                        <Col xs={4} className="comment-info text-center text-secondary">
-                                            <FontAwesomeIcon icon={faCommentAlt} className="mr-1" />
-                                            <span className="amount justify-content-center">{this.state.commentedInfo.amount}</span>
-                                        </Col>
-                                        <Col xs={4} className="share-info text-right text-success">
-                                            <FontAwesomeIcon icon={faShareAlt} className="mr-1" />
-                                            <span className="amount justify-content-center">{this.state.sharedInfo.amount}</span>
-                                        </Col>
-                                    </Row>
-                                    <Row className="mx-0">
-                                        <Col className="comment-box bg-white px-0">
-                                            <Row className="buttons mx-0 justify-content-between">
-                                                <Col className="text-info text-center px-0">
-                                                    <Button
-                                                        variant={this.state.likeState.current ? "primary" : "light"}
-                                                        className="like-button w-100 py-2"
-                                                        onClick={this.handleLikeClick}>
-                                                        Thích <FontAwesomeIcon icon={faThumbsUp} className="ml-1" />
-                                                    </Button>
-                                                </Col>
-                                                <Col className="text-info text-center px-0">
-                                                    <Button
-                                                        variant="light"
-                                                        className="comment-button w-100 py-2"
-                                                        onClick={this.handleCommentClick}>
-                                                        Bình luận <FontAwesomeIcon icon={faCommentAlt} className="ml-1" />
-                                                    </Button>
-                                                </Col>
-                                                <Col className="text-info text-center px-0">
-                                                    <Button
-                                                        variant="light"
-                                                        className="share-button w-100 py-2">
-                                                        Chia sẻ <FontAwesomeIcon icon={faShareAlt} className="ml-1" />
-                                                    </Button>
-                                                </Col>
-                                            </Row>
-                                            <Row className="comment-list mx-0 py-3 px-3">
-                                                <Col xs={12} className={(this.state.commentState.showCommentInput ? "" : "d-none") + " py-1"}>
-                                                    <input
-                                                        ref={this.textCommentInput}
-                                                        className="comment-input px-3 py-1"
-                                                        placeholder="Nhập bình luận"
-                                                        onKeyPress={this.handleAddCommentIntoDatabase} />
-                                                </Col>
-                                                {
-                                                    this.state.commentedInfo.userCommented.map((comment, i) => {
-                                                        if (i === 0) return <CommentLine comment={comment} display="block" key={i} />
-                                                        else return (
-                                                            this.state.commentState.showMoreComment ?
-                                                                <CommentLine comment={comment} display="block" key={i} /> :
-                                                                <CommentLine comment={comment} display="none" key={i} />
-                                                        )
-                                                    })
                                                 }
-                                            </Row>
+                                            </Dropdown.Menu>
+                                        </Dropdown>
+                                    </Col>
+                                </Row>
+                                <Row className="py-3">
+                                    <Col>
+                                        <span className="post-content">{this.state.postContent}</span>
+                                    </Col>
+                                </Row>
+                                <Row className="mx-0">
+                                    <Col className="thumbnail-list d-flex justify-content-center py-2">
+                                        {this.state.postThumbnails.map((thumbnail, i) =>
+                                            <Col xs={6} key={i} className="d-flex align-items-center">
+                                                {
+                                                    thumbnail.type === "video" ?
+                                                        <div className="post-thumbnail" onClick={() => this.handlePostDetailClick(true)}>
+                                                            <FontAwesomeIcon icon={faPlayCircle} size="lg" className="fake-play-button" />
+                                                            <video className="video-thumbnail rounded" src={thumbnail.url}></video>
+                                                        </div>
+                                                        :
+                                                        <Image src={thumbnail.url} thumbnail rounded className="post-thumbnail" onClick={() => this.handlePostDetailClick(true)} />
+                                                }
+                                            </Col>
+                                        )}
+                                    </Col>
+                                </Row>
+                                <Row className="align-item-center pt-3 mx-0 mb-1">
+                                    <Col xs={4} className="like-info text-left text-primary">
+                                        <FontAwesomeIcon icon={faThumbsUp} className="mr-1" />
+                                        <span className="amount justify-content-left">
+                                            {this.state.likeState.current ? "Bạn và " + this.state.likedInfo.amount + " người khác" : this.state.likedInfo.amount}
+                                        </span>
+                                    </Col>
+                                    <Col xs={4} className="comment-info text-center text-secondary">
+                                        <FontAwesomeIcon icon={faCommentAlt} className="mr-1" />
+                                        <span className="amount justify-content-center">{this.state.commentedInfo.amount}</span>
+                                    </Col>
+                                    <Col xs={4} className="share-info text-right text-success">
+                                        <FontAwesomeIcon icon={faShareAlt} className="mr-1" />
+                                        <span className="amount justify-content-center">{this.state.sharedInfo.amount}</span>
+                                    </Col>
+                                </Row>
+                                <Row className="mx-0">
+                                    <Col className="comment-box bg-white px-0">
+                                        <Row className="buttons mx-0 justify-content-between">
+                                            <Col className="text-info text-center px-0">
+                                                <Button
+                                                    variant={this.state.likeState.current ? "primary" : "light"}
+                                                    className="like-button w-100 py-2"
+                                                    onClick={this.handleLikeClick}>
+                                                    Thích <FontAwesomeIcon icon={faThumbsUp} className="ml-1" />
+                                                </Button>
+                                            </Col>
+                                            <Col className="text-info text-center px-0">
+                                                <Button
+                                                    variant="light"
+                                                    className="comment-button w-100 py-2"
+                                                    onClick={this.handleCommentClick}>
+                                                    Bình luận <FontAwesomeIcon icon={faCommentAlt} className="ml-1" />
+                                                </Button>
+                                            </Col>
+                                            <Col className="text-info text-center px-0">
+                                                <Button
+                                                    variant="light"
+                                                    className="share-button w-100 py-2">
+                                                    Chia sẻ <FontAwesomeIcon icon={faShareAlt} className="ml-1" />
+                                                </Button>
+                                            </Col>
+                                        </Row>
+                                        <Row className="comment-list mx-0 py-3 px-3">
+                                            <Col xs={12} className={(this.state.commentState.showCommentInput ? "" : "d-none") + " py-1"}>
+                                                <input
+                                                    ref={this.textCommentInput}
+                                                    className="comment-input px-3 py-1"
+                                                    placeholder="Nhập bình luận"
+                                                    onKeyPress={this.handleAddCommentIntoDatabase} />
+                                            </Col>
                                             {
-                                                this.state.commentedInfo.amount > 1 ?
-                                                    <Row className="more-comment mx-0">
-                                                        <Col className="d-flex justify-content-end px-0">
-                                                            {
-                                                                this.state.commentState.showMoreComment ?
-                                                                    <></>
-                                                                    :
-                                                                    <Button variant="link" className="text-button text-danger" onClick={this.handleMoreCommentClick}>Xem thêm bình luận ...</Button>
-                                                            }
-                                                        </Col>
-                                                    </Row>
-                                                    :
-                                                    <></>
+                                                this.state.commentedInfo.userCommented.map((comment, i) => {
+                                                    if (i === 0) return <CommentLine comment={comment} display="block" key={i} />
+                                                    else return (
+                                                        this.state.commentState.showMoreComment ?
+                                                            <CommentLine comment={comment} display="block" key={i} /> :
+                                                            <CommentLine comment={comment} display="none" key={i} />
+                                                    )
+                                                })
                                             }
-                                        </Col>
-                                    </Row>
-                                </Container>}
-                        </Jumbotron>
-                        {this.state.editState.isEditing ?
-                            <EditPost
-                                postdata={{
-                                    postContent: this.state.postContent,
-                                    postThumbnails: this.state.postThumbnails
-                                }}
-                                openAndClose={(isEditBoxOpened, changeUploaded) => this.handlePostEdit(isEditBoxOpened, changeUploaded)} /> :
-                            <></>}
-                    </>
+                                        </Row>
+                                        {
+                                            this.state.commentedInfo.amount > 1 ?
+                                                <Row className="more-comment mx-0">
+                                                    <Col className="d-flex justify-content-end px-0">
+                                                        {
+                                                            this.state.commentState.showMoreComment ?
+                                                                <></>
+                                                                :
+                                                                <Button variant="link" className="text-button text-danger" onClick={this.handleMoreCommentClick}>Xem thêm bình luận ...</Button>
+                                                        }
+                                                    </Col>
+                                                </Row>
+                                                :
+                                                <></>
+                                        }
+                                    </Col>
+                                </Row>
+                            </Container>}
+                    </Jumbotron>
+                    {this.state.isPostDetailOpen ?
+                        <PostDetail
+                            poststate={this.state}
+                            postid={this.props.postdata}
+                            openAndClose={(arg) => this.handlePostDetailClick(arg)}
+                            handleLike={() => this.handleLikeClick()}
+                            handleComment={(arg) => this.handleAddCommentIntoDatabase(arg)} /> :
+                        <></>}
+                    {this.state.editState.isEditing ?
+                        <EditPost
+                            postdata={{
+                                postContent: this.state.postContent,
+                                postThumbnails: this.state.postThumbnails
+                            }}
+                            openAndClose={(isEditBoxOpened, changeUploaded) => this.handlePostEdit(isEditBoxOpened, changeUploaded)} /> :
+                        <></>}
+                </>
                 :
                 <></>
         );
     }
 }
-
-
-export default PostItem;

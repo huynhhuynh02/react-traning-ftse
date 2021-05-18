@@ -19,18 +19,31 @@ export default function HomePage(props) {
     });
     const token = localStorage.getItem("token");
     const isLoggedIn = localStorage.getItem("isLoggedIn");
+    const userId = localStorage.getItem("id");
+
     const [auth, setAuth] = useState(false);
     const [isRedirectToFriendPage, redirectToFriendPage] = useState(false);
-    const [postList, setPostList] = useState("");
-    const userId = localStorage.getItem("id");
+    const [postList, setPostList] = useState([]);
+
     // Get Firebase firestore data
     const database = firebase.firestore();
     const getPostData = () => {
         database.collection("users").doc(userId).get()
-            .then((doc) => {
+            .then((userDoc) => {
                 // doc.data() is never undefined for query doc snapshots
                 // Get Firebase storage data
-                setPostList(doc.data().postList);
+                let userArr = userDoc.data().friendList.concat([userId]);
+                let postArr = []
+                database.collection("posts").orderBy("createdAt", "desc").get()
+                    .then((querySnapshot) => {
+                        querySnapshot.forEach((postDoc) => {
+                            if (userArr.indexOf(postDoc.data().userId) !== -1) {
+                                postArr.push(postDoc.id);
+                            }
+                        })
+                    }).finally(() => {
+                        setPostList(postArr);
+                    }).catch(error => console.log("Error while getting user's posts: ", error));
             }).catch((error) => {
                 console.log("Error getting documents: ", error);
             });
@@ -67,7 +80,7 @@ export default function HomePage(props) {
                         </div>
                         <div className="main-box d-flex flex-column justify-content-center py-4">
                             <SearchBar targetsearch="Nista" />
-                            {postList === "" ?
+                            {postList.length === 0 ?
                                 <Row className="justify-content-center">
                                     <Spinner animation="border" variant="secondary" />
                                 </Row> :

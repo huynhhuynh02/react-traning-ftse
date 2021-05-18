@@ -2,7 +2,8 @@ import React from 'react';
 import { Image, Row } from "react-bootstrap";
 
 import "./../../../styles/messages/ChatLine.css";
-class ChatLine extends React.Component {
+
+export default class ChatLine extends React.Component {
     render() {
         if (this.props.sender === "friend") {
             return (
@@ -51,6 +52,3 @@ class ChatLine extends React.Component {
         }
     }
 }
-
-
-export default ChatLine;

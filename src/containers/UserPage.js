@@ -8,6 +8,7 @@ import Shortcut from "./../components/common/Shortcut";
 import SuggestFriend from "./../components/friends/SuggestFriend";
 import Contact from "./../components/messages/Contact";
 import ProfileWall from "./../components/users/ProfileWall";
+
 export default function UserPage(props) {
     useEffect(() => {
         if (auth) {

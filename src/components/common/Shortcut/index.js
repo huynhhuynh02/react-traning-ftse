@@ -5,7 +5,8 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 import "./../../../styles/common/Shortcut.css";
 import shortcutList from "./../../../resources/database/shortcutData";
-class Shortcut extends React.Component {
+
+export default class Shortcut extends React.Component {
     render() {
         return (
             <Container className="shortcut px-3">
@@ -43,6 +44,3 @@ class Shortcut extends React.Component {
         );
     }
 }
-
-
-export default Shortcut;

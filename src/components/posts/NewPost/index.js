@@ -8,6 +8,7 @@ import generateId from "./../../../resources/functions/generateId"
 
 import "./../../../styles/posts/NewPost.css";
 import LoaderSpinner from "./../../common/LoaderSpinner";
+
 export default class NewPost extends React.Component {
     constructor(props) {
         super(props);
@@ -144,6 +145,11 @@ export default class NewPost extends React.Component {
         })
     }
     render() {
+        if (this.state.isOpened) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "scroll";
+        }
         if (this.state.uploadState === "uploaded") {
             this.props.updatePost();
             return <></>;
@@ -210,7 +216,7 @@ export default class NewPost extends React.Component {
                             className={"clear-files-button" + (this.state.filesUpload.length !== 0 ? "" : " d-none")}
                             variant="secondary"
                             onClick={this.handleEditThumbnails}>
-                            Chỉnh sửa
+                            Chỉnh sửa đính kèm
                         </Button>
                     </Row>
                     <Button variant="success"

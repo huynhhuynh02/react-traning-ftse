@@ -10,6 +10,7 @@ import "./../../../styles/login/SignupForm.css"
 import { country_list } from "./../../../resources/database/necessaryData";
 import Logo from "./../../common/Logo";
 import LoaderSpinner from "./../../common/LoaderSpinner";
+
 export default function SignUpForm() {
   // Set loading button
   const [isLoading, setLoading] = useState(false);

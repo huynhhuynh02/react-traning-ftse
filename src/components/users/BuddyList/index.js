@@ -3,6 +3,7 @@ import { Container, Col, Row, Image } from 'react-bootstrap';
 
 import "./../../../styles/friends/FriendList.css";
 import friendList from "../../../resources/database/friendData";
+
 export default function BuddyList() {
     return (
         <Container fluid className="friend-list">

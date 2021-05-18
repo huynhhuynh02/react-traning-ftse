@@ -1,6 +1,5 @@
 .friend-list .friend-item {
     width: 100%;
-    cursor: pointer;
 }
 
 .friend-list .friend-item:hover {
@@ -21,6 +20,15 @@
 
 .friend-list .friend-item .friend-settings div {
     font-size: 16px;
+}
+
+.friend-list .friend-item a {
+    color: initial;
+}
+
+.friend-list .friend-item a:hover {
+    text-decoration: none;
+    color: initial;
 }
 
 .friend-list .loading-spinner {

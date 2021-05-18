@@ -8,24 +8,20 @@ import generateId from "./../../../resources/functions/generateId"
 
 import "./../../../styles/posts/EditPost.css";
 import LoaderSpinner from "./../../common/LoaderSpinner";
+
 export default class EditPost extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isOpened: false,
             postContent: "",
             filesUpload: [],
             fileTransferProgress: 0,
             uploadState: "no-upload"
         }
-        this.openBox = this.openBox.bind(this);
         this.handlePostContentInput = this.handlePostContentInput.bind(this);
         this.handleChangeThumbnails = this.handleChangeThumbnails.bind(this);
         this.handleUploadFiles = this.handleUploadFiles.bind(this);
         this.clearAllUploadFiles = this.clearAllUploadFiles.bind(this);
-    }
-    openBox() {
-        this.setState({ isOpened: !this.state.isOpened })
     }
     handlePostContentInput(e) {
         this.setState({ postContent: e.target.value })
@@ -144,21 +140,21 @@ export default class EditPost extends React.Component {
     }
     render() {
         if (this.state.uploadState === "uploaded") {
-            this.props.updatePost();
+            this.props.openAndClose(false, true);
             return <></>;
         }
         return (
             <>
                 {this.state.uploadState === "uploading" ? <LoaderSpinner progressbar={true} percentage={this.state.fileTransferProgress} /> : <></>}
-                <Jumbotron className={this.state.isOpened ? "new-post-box" : "new-post-box d-none"}>
+                <Jumbotron className="edit-post-box">
                     <Button
                         variant="danger"
                         className="close-button"
-                        onClick={this.openBox}>
+                        onClick={() => this.props.openAndClose(false, false)}>
                         <FontAwesomeIcon icon={faTimes} size="lg" />
                     </Button>
                     <div className="box-title d-flex justify-content-center py-2 mb-4">
-                        <span className="text-secondary font-weight-bold">Bài viết mới</span>
+                        <span className="text-secondary font-weight-bold">Chỉnh sửa bài viết</span>
                     </div>
                     <textarea
                         className="post-content px-2 py-2 mb-4 bg-white"
@@ -209,7 +205,7 @@ export default class EditPost extends React.Component {
                             className={"clear-files-button" + (this.state.filesUpload.length !== 0 ? "" : " d-none")}
                             variant="secondary"
                             onClick={this.clearAllUploadFiles}>
-                            Chỉnh sửa
+                            Xoá hết
                         </Button>
                     </Row>
                     <Button variant="success"
@@ -218,7 +214,7 @@ export default class EditPost extends React.Component {
                         Đăng bài
                     </Button>
                 </Jumbotron>
-                {this.state.isOpened ? <div className="new-page-blur-cover"></div> : <></>}
+                <div className="new-page-blur-cover"></div>
             </>
         );
     }
